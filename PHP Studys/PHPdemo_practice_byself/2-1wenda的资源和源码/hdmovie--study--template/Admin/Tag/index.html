@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>标签列表</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/inc.css">
+	</head>
+	<body>
+		<table class="table1 hd-form">
+			<tr>
+				<th class="w100 h40">tid</th>
+				<th class="w600 h40 tl">标签名称</th>
+				<th class="w200 h40">操作</th>
+			</tr>	
+			<foreach from="$data" value="$d">
+				<tr>
+					<td class="h40 tc">{$d['tid']}</td>
+					<td class="h40">{$d['tname']}</td>
+					<td class="h40">
+						<a href="{|U:'Tag/edit',array('tid'=>$d['tid'])}">编辑</a> ｜
+						<a href="{|U:'Tag/del',array('tid'=>$d['tid'])}">删除</a>
+					</td>
+				</tr>	
+			</foreach>
+		</table>		
+	</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<hdjs/>
+	<link rel="stylesheet" href="../../Public/Font-Awesome/css/font-awesome.min.css">
+ 	<link rel="stylesheet" href="../../Public/css/inc.css">
+ 	<link rel="stylesheet" href="../../Public/css/index.css">
+ 	<script type="text/javascript">
+ 		var login = {$_SESSION['user']['uid']|default:0}?1:0;
+ 		
+ 	</script>
+ 	<script type="text/javascript" src="__ROOT__/Public/js/js.js"></script>
+
+</head>
+<body style="background:#F1F1F1;">
+	<div id="top">
+		<div class="top_box">
+			<ul class="l">
+				<li class="l"><a href="" class="l lh25 white pr20">拍客</a></li>
+				<li class="l"><a href="" class="l lh25 white pr20">V社区</a></li>
+				<!-- <li class="l"><a href="" class="l lh25 white pr20">V电影</a></li> -->
+			</ul>
+		</div>
+	</div>
+	<!-- 公共导航区开始 -->
+	<include file="__PUBLIC__/header.html"/>
+	
+	<div id="main_box">
+		<div class="main_left">
+			<div class="content_box">
+				<h1><a href="">文章标题1</a> 
+					<div class="baidu"></div>
+				</h1>
+				<div class="time">
+					<p>
+						<span>发布于</span><span>2014-10-21</span><span>频道:</span><span>电影</span>
+					</p>
+					<div class="sns">
+						<span><a href="#comment_box" style="color:#ccc;"><i class="icon-comment icon-large mr5" style="cursor:pointer;"></i>12</a></span>
+						<i class="icon-heart icon-large mr5 {$data['class']}" style="cursor:pointer;" onclick="user_like(this)" {$data['likeattr']} aid="{$data['aid']}"></i><span  >10</span>
+						
+					</div>
+				</div>
+				
+
+				<div class="content_article">
+					这里是文章内容
+				</div>
+				
+				<div class="content_tags">
+					<p><i class="icon-tags icon-large"></i>&emsp;标签：</p>
+							<a href="">标签1</a>
+							<a href="">标签2</a>
+							<a href="">标签3</a>
+							<a href="">标签4</a>
+				</div>
+
+				<ul class="sns_pic">
+					<li class="sns_pic_heart">
+						<p class="icon-heart-empty icon-3x"></p>
+					</li>
+
+					<li class="sns_pic_phone">
+						<p class=" icon-mobile-phone icon-3x"></p>
+						
+					</li>
+					<li class="sns_pic_star">
+						<p class="  icon-star-empty icon-3x"></p>
+						
+					</li>
+					<li class="sns_pic_sina">
+						<p class="  icon-pinterest-sign icon-3x"></p>
+					</li>
+				</ul>
+			</div>
+
+			
+
+			<!-- 评论区开始 -->
+			<div class="content_comment" id="comment_box">
+				<h2>影片点评<span>已有12人发表评论</span></h2>
+				<div class="comment_text" id="comment_top">
+					<img src="__ROOT__/{$_SESSION['user']['hdpic']}" alt="">
+					<textarea name="" class="newComment" cols="30" rows="10"></textarea>
+					<p>还可以输入<span id="num_left">2000</span>个字 <input type="button" onclick="addComment(this)" aid="{$data['aid']}" value="发表评论"></p>
+				</div>
+				<foreach from="$data['discuz']" value="$d">
+					<div class="old_comment">
+						<div class="parent">
+							<img src="__ROOT__/{$d['hdpic']}" alt="">
+							<div class="comment_msg">
+								<p class="c_uname">用户名</p>
+								<p>这里是评论内容</p>
+								<p class="c_time">2014-10-21</p>
+							</div>
+						</div>
+					</div>
+				</foreach>
+					
+
+				<div class="comment_page">
+					
+				</div>
+			</div>
+
+			<!-- 评论区结束 -->
+
+		</div>
+
+		<div class="main_right">
+			<div class="right_item ">
+				<h4>热门频道</h4>
+				<div class="tags">
+						<a href="">标签名1</a>
+						<a href="">标签名2</a>
+						<a href="">标签名3</a>
+						<a href="">标签名4</a>
+				</div>
+			</div>
+
+			<div class="right_item ">
+				<h4>精彩幕后</h4>
+				<ul class="right_list">
+						<li><span>1</span><a href="">文章标题1</a></li>
+						<li><span>2</span><a href="">文章标题1</a></li>
+						<li><span>3</span><a href="">文章标题1</a></li>
+						<li><span>4</span><a href="">文章标题1</a></li>
+				</ul>
+			</div>
+
+			
+		</div>
+		
+	</div>
+</body>
+</html>

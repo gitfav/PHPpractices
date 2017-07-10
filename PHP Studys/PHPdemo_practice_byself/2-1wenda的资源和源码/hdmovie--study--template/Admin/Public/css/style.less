@@ -1,0 +1,474 @@
+@red:#F42D2D;
+@green:#2E9203;
+@blue:#0686F7;
+@purple:#C734DD;
+@yellow:#C3A500;
+@orange:#E57718;
+@teal:#02A9B3;
+@maroon:#C71659;
+@navy:#284767;
+@white:#fff;
+@black:#333;
+@gray:#858585;
+@c:#138CF7;
+.message{
+
+}
+*{
+    font-family: 微软雅黑;
+}
+
+.now{
+            background: #656565;
+            color:#FFF;
+        }
+.main_left{
+	width: 200px;
+	.left_item{
+		width: 200px;
+		border:1px solid #D9DADC;
+		float: left;
+		border-radius: 5px;
+		margin-top: 10px;
+        box-shadow: 10px 5px 2px  #656565;
+        a{
+            color: #333;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+		.item_title{
+			text-align: center;
+			width: 200px;
+			height: 40px;
+			line-height: 40px;
+			// background: #F4F4F4;
+            background: #656565;
+			border-bottom: 1px solid #D9DADC;
+            color:#FFF;
+		}
+
+		.item_list{
+			background: #FFF;
+			border-bottom: 1px solid #D9DADC;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+
+		}
+	}
+    .left_item:hover{
+        box-shadow: 10px 5px 2px  red;
+    }
+}
+
+.main_right{
+	width: 960px;
+	height: 800px;
+	float: right;
+	margin-top: 10px;
+	background: blue;
+	
+	border-radius: 5px;
+	background: #FFF;
+}
+
+// 选项卡样式
+.tags{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 1px solid #2689FF;
+	margin-bottom: 10px;
+	li{
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		float: left;
+		padding:3px 12px;
+	}
+    div.act{
+        float: right;
+      
+        a{
+            height: 20px;
+            line-height: 20px;
+            background: #656565;
+        }
+    }
+}
+.active{
+	border-bottom: 4px solid red;
+}
+/* ====================================================================================
+/* ===================================--|表单|--========================================
+/* ====================================================================================*/
+
+.hd-form input[type="text"], .hd-form input[type="password"], .hd-form input[type="file"], .hd-form textarea {
+    box-shadow: 2px 2px 2px #F0F0F0 inset;
+}
+
+.hd-form select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 2px 2px 2px #F0F0F0 inset;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+.hd-form select, .hd-form textarea, .hd-form input[type="text"], .hd-form input[type="password"] {
+    color: #555555;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 30px;
+    margin: 0px;
+    padding: 0px 6px;
+    vertical-align: middle;
+    border-radius: 0px;
+    box-shadow: 2px 2px 2px #F0F0F0 inset !important;
+    border: 2px solid #DDDDDD;
+    background-color: #FFFFFF;
+}
+
+.hd-form textarea {
+    line-height: 20px;
+}
+
+.hd-form option {
+    padding: 4px 6px;
+}
+
+.hd-form input[type='text']:focus, .hd-form input[type='password']:focus, .hd-form textarea:focus {
+    background: #fffbde;
+    outline: 1px solid #51B4FF;
+    box-shadow: none !important;
+    border: solid 2px #51B4FF;
+}
+
+.hd-form input[type="file"], .hd-form input[type="text"], .hd-form input[type="password"] {
+    height: 28px;
+}
+
+.hd-form select {
+    padding: 3px 3px 0px;
+}
+/* ====================================================================================
+/* ===================================--|表格Table1|--====================================
+/* ====================================================================================*/
+table.table1 {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.table1 tr, table.table1 th, table.table1 td {
+    background: url("../img/tr_border.png") repeat-x scroll 0 bottom rgba(0, 0, 0, 0);
+    vertical-align: middle;
+    padding: 8px 15px;
+}
+
+table.table1 tr th {
+    text-align: left;
+    background-color: #F8F8F8;
+    border-right: 1px solid #E5E3E3;
+    font-weight: bold;
+    color: #666;
+    line-height: 24px;
+    padding: 7px 10px 9px;
+    vertical-align: middle;
+}
+
+table.table1 tr td {
+    color: #666;
+}
+
+table.table1 tr.header {
+    background: #eef3f6;
+}
+
+table.table1 tr:hover {
+    background: #eaeff2;
+}
+
+/***************************table2表格************************/
+table.table2 {
+    border: none;
+    color: #666;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.table2 tr:hover {
+    background: #eaeff2;
+}
+
+table.table2 thead th, table.table2 thead td {
+    background: none repeat scroll 0 0 #E6E6E6;
+    border-top: 1px solid #cccccc;
+    border-bottom: solid 1px #5AA020;
+    overflow: hidden;
+}
+
+table.table2 tr, table.table2 th, table.table2 td {
+    background: url("../img/tr_border.png") repeat-x scroll 0 bottom rgba(0, 0, 0, 0);
+    height: 20px;
+    padding: 5px 8px;
+}
+
+/***************************table3表格************************/
+table.table3 {
+    width: 100%;
+}
+
+table.table3 {
+    border: none;
+    background: none;
+}
+
+table.table3 tr {
+
+}
+
+table.table3 tr td {
+    padding: 5px 8px;
+}
+
+table.table3 tr th {
+    width: 100px;
+}
+
+table.table3 thead tr td {
+    background: #eee;
+    color: #333;
+}
+
+
+table.tb1{
+    width: 100%;
+    height: auto;
+}
+table.tb1 .table_title{
+    width: 100%;
+    height: 40px;
+    background: red;
+}
+table.tb1 tr{
+    height: 30px;
+    line-height: 30px;
+}
+table.tb1 tr th{
+    padding: 8px 15px;
+    background: #F4F4F4;
+    color:#656565;
+    text-align: left;
+}
+table.tb1 tr td{
+    padding: 8px 15px;
+}
+
+/* ====================================================================================
+/* ===================================--|TAB面板|--====================================
+/* ====================================================================================*/
+div.tab {
+    clean: both;
+    position: relative;
+}
+
+div.tab ul.tab_menu {
+    width: 100%;
+    clean: both;
+    height: 28px;
+    position: relative;
+    z-index: 100;
+}
+
+div.tab ul.tab_menu li {
+    float: left;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+div.tab ul.tab_menu li a {
+    display: block;
+    background-color: #fff;
+    color: #555555;
+    line-height: 20px;
+    margin-right: 3px;
+    padding: 3px 10px 2px;
+    border: solid 1px #DCE3ED;
+    border-bottom: solid 1px #fff;
+    font-size: 12px;
+}
+
+div.tab ul.tab_menu li a.action {
+    border: solid 1px #F4F4F4;
+    background: #656565;
+    color: #fff;
+}
+
+div.tab ul.tab_menu li a:hover {
+    text-decoration: none;
+}
+
+div.wrap {
+    background: #f3f3f3;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 10px 10px 45px 10px;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+/**内容块**/
+div.tab_content {
+    position: relative;
+    top: 0px;
+    z-index: 1;
+}
+
+div.tab_content div.hidden {
+    position: absolute;
+    width: 98%;
+    clean: both;
+    border-top: solid 2px #656565;
+    height: auto;
+    overflow: hidden;
+    display: none;
+    padding: 0px;
+    margin-top: -1px;
+    z-index: 2;
+    background: #FFF;
+}
+
+div.tab_content div.action {
+    display: block;
+}
+
+//***********************绝对定位到底部
+
+.position_bottom{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #D9DADC;
+    input{
+        margin-top: 10px;
+        padding:8px  12px;
+    }
+}
+.div_title{
+    width: 100%;
+    height: 40px;
+    background: #656565;
+    color:#FFF;
+    line-height: 40px;
+    text-indent: 15px;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    font-weight: 600;
+    border-radius: 5px 5px 0 0 ;
+}
+
+#rbac_box{
+    width: 90%;
+    height: auto;
+    padding:20px;
+    border:1px solid #E6E6E6;
+    border-radius: 5px;
+    .rbac_node_title{
+        width: 400px;
+        height: 40px;
+        border-radius: 5px;
+        a{
+            padding:5px 12px;
+            background: #656565;
+            color:#FFF;
+            font-size: 15px;
+            font-family: 微软雅黑;
+            line-height: 40px;
+            border-radius: 5px;
+        }
+    }
+    .rbac_app{
+        margin-top: 10px;
+        border:1px solid #E6E6E6;
+        padding:10px;
+        border-radius: 5px;
+        .atitle{
+            height: 40px;
+            line-height: 40px;
+            color:#2689FF;
+            font-weight: 700;
+            font-size: 16px;
+            a{
+                height: 20px;
+                line-height: 20px;
+                font-weight: 300;
+                margin-left: 10px;
+            }
+
+        }
+        .rbac_control{
+            width: 100%;
+            height: auto;
+            border:1px solid #D9DADC;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+            .ctitle{
+                // width: 95%;
+                height: 40px;
+                background: #F4F4F4;
+                line-height: 40px;
+                p{
+                    line-height: 40px;
+                    color:#2689FF;
+                    font-size: 14px;
+                    text-indent: 20px;
+                    float: left;
+
+                }
+               
+                a{
+                    height: 20px;
+                    line-height: 20px;
+                    margin-top: 8px;
+                    font-weight: 300;
+                    margin-left: 10px;
+                    float: left;
+                }
+            }
+            .method{
+                p{
+                    float: left;
+                    height: 30px;
+                    line-height: 30px;
+                    padding-left: 10px;
+                    font-size: 14px;
+                    margin-right: 15px;
+                    span{
+                        line-height: 30px;
+                        height: 30px;
+                    }
+                    a{
+                        margin-left: 10px;
+                        color:#2689FF;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+#channel{
+    width: 920px;
+    height: 400px;
+    // background: yellow;
+}
+
+

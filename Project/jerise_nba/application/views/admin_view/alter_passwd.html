@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/add_category.css" />
+		<script type="text/javascript" src="<?php echo A_PUBLIC; ?>/Js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			var validate={
+				passwdF : false,
+				passwdS : false,
+			}
+			var alter=$("form[name=put]");
+			alter.submit(function() {
+				var _OK=validate.passwdF && validate.passwdS;
+				if (_OK) {
+					return true;
+				};
+				//为成功重新获取验证
+				$('input[name=passwdF]').trigger('blur');
+				$('input[name=passwdS]').trigger('blur');
+				return false;
+			});
+			$('input[name=passwdF]').blur(function(){
+				var passwdF=$(this).val();
+				var span = $(this).next();
+				//确认密码不能为空
+				if(passwdF == ''){
+					msg = '请输入密码';
+					span.html(msg);
+					validate.passwdF = false;
+					return;
+				}
+				//正则判断
+				if(!/^\w{6,20}$/g.test(passwdF)){
+					msg = '密码必须由6-20个字母，数字，或者下划线组成';
+					span.html(msg);
+					validate.passwdF = false;
+					return;
+				}
+				msg = '';
+				span.html(msg);
+				validate.passwdF = true;
+			});
+
+			$("input[name=passwdS]").blur(function(){
+				 var passwdS=$(this).val();
+				 var span = $(this).next();
+				 if (passwdS!=$('input[name=passwdF]').val()) {
+				 	msg='两次密码不一样';
+				 	span.html(msg);
+				 	validate.passwdS = false;
+					return;
+				 };
+				 msg = '';
+				span.html(msg);
+				validate.passwdS = true;
+			})
+		})
+		</script>
+	<title></title>
+</head>
+<body>
+	<form action="<?php echo site_url('admin_/admin_list/alter_pw') ?>" method="post" name="put">
+		<table class="table">
+			<tr >
+				<td class="th" colspan="2">修改密码</td>
+			</tr>
+			<tr>
+				<td>用户名</td>
+				<td><?php echo $user['username']; ?></td>
+			</tr>
+			<tr>
+				<td width="30%">密码：</td>
+				<td width="70%"><input type="password" name="passwdF"/><span style='color:red;'></span></td>
+			</tr>
+			<tr>
+				<td>确认密码：</td>
+				<td><input type="password" name="passwdS"/><span style='color:red;'></span></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="修改" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

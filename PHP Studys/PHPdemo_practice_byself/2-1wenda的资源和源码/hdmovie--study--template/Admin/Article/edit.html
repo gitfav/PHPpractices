@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<title>添加文章</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/inc.css">
+		<hdjs/>
+		<style type="text/css">
+			.tag_name{
+				padding:10px;
+				background: black;
+				color:#fff;
+				border-radius: 10px;
+				font-weight: 700;
+				cursor: pointer;
+			}
+
+			#tag_box i{
+				background: #0070E1;
+				color:#fff;
+				padding:8px 24px 8px 12px;
+				border-radius: 10px;
+				position: relative;
+				margin-right: 10px;
+			}
+			#tag_box i em{
+				position: absolute;
+				top:7px;
+				right:6px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+
+		<form action="{|U:'Article/edit'}" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="aid" value="{$content['aid']}">
+			<table class="table1 hd-form">
+				<tr>
+					<th class="w100">文章标题</th>
+					<td><input type="text" name="title" class="w400 h40" value="{$content['title']}"></td>
+				</tr>
+				<tr>
+					<th>栏目</th>
+					<td>
+						<select name="cid">
+							<foreach from="$category" value="$c">
+								<if value="$c['cid']==$content['cid']">
+									<option value="{$c['cid']}" selected="selected">{$c['cname']}</option>
+								<else>
+									<option value="{$c['cid']}">{$c['cname']}</option>
+								</if>
+							</foreach>
+						</select>	
+					</td>
+				</tr>
+				<tr>
+					<th>缩略图</th>
+					<td>
+						<if value="!empty($content['thumb'])">
+							<div>
+								<input type="hidden" name="oldthumb" value="{$content['thumb']}">
+								<img src="__ROOT__/{$content['thumb']}" class="w80">
+								<input type="file" name="thumb" >
+							</div>
+						<else>
+							<input type="file" name="thumb" >
+						</if>
+					</td>
+				</tr>
+				<tr>
+					<th>视频</th>
+					<td>
+						<if value="!empty($content['video'])">
+							<div>
+								<input type="text" name="oldvideo" value="{$content['video']}">
+								
+								<input type="file" name="video" >
+							</div>
+						<else>
+							<input type="file" name="video" >
+						</if>
+						
+					</td>
+				</tr>
+				<tr>
+					<th>已选标签</th>
+					<td id="tag_box">
+						<foreach from="$content['tag']" value="$t">
+							<i>{$t['tname']}<em>x</em><input type="hidden" name="tid[]" value="{$t['tid']}"></i>
+						</foreach>
+					</td>
+				</tr>	
+				<tr>
+					<th>标签</th>
+					<td>
+						<foreach from="$tag" value="$t">
+							<i class="tag_name" tid="{$t['tid']}" <if value="$t['chosed']==1">chosed='1'</if>>{$t['tname']}</i>
+						</foreach>
+					</td>
+					
+				</tr>
+				<script type="text/javascript">
+					$(function(){
+						$('.tag_name').live('click',function(){
+							var chosed = $(this).attr('chosed');
+							if(!chosed){
+								var text = $(this).html();
+								var tid = $(this).attr('tid');
+								var html = '<i>'+text+' <em>x</em><input type="hidden" name="tid[]" value="'+tid+'"></i>';
+								$('#tag_box').prepend(html);
+								$(this).attr('chosed',1);
+							}
+						})
+
+						$('#tag_box i em').live('click',function(){
+							var tid = $(this).parent().find('input').val();
+							$("i[tid='"+tid+"']").removeAttr('chosed');
+							$(this).parent().remove();
+						})
+
+					})
+				</script>
+				<tr>
+					<th>内容</th>
+					<td>
+						<ueditor name="content" content="{$content['content']}"/>
+					</td>	
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+						<input type="submit" value="保存" class="btn bgblack">
+					</td>	
+				</tr>			
+			</table>
+		</form>
+	</body>
+</html>

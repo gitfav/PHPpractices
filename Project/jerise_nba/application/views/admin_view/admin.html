@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/public.css" />
+	<script type="text/javascript" src="<?php echo A_PUBLIC; ?>/Js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="<?php echo A_PUBLIC; ?>/Js/public.js"></script>	
+</head>
+
+<body>
+	<table class="table">
+		<tr>
+			<td class="th" colspan="20">后台用户列表</td>
+		</tr>
+		<tr class="tableTop">
+			<td class="tdLittle1">ID</td>
+			<td>用户名</td>
+			<td>昵称</td>
+			<td>最后登录时间</td>
+			<td>是否为管理员</td>
+			<td>操作</td>
+		</tr>
+		<?php foreach ($user as $k => $v) { ?>
+		<tr>
+			<td><?php echo $v['uid']; ?></td>
+			<td><?php echo $v['username']; ?></td>
+			<td><?php echo $v['nname']; ?></td>
+			<td><?php date_default_timezone_set("PRC"); echo date('Y-m-d H:i:s',$v['logintime']); ?></td>
+			<td>
+				<?php if ($v['is_admin']=='Y') { echo "是"; }else{echo "否";} ?>
+			</td>
+			<td>
+				<?php if ($v['uid']!=1) { ?>
+				<a class='del' href="<?php echo site_url('admin_/admin_list/delete/').'/'.$v['uid']; ?>">[删除]</a>
+				<?php if ($v['is_admin']=='Y') { ?>
+				<a class='zhu' href="<?php echo site_url('admin_/admin_list/is_admin/').'/'.$v['uid']; ?>">[撤销管理员]</a>
+				<?php }else{ ?>
+				<a class='add' href="<?php echo site_url('admin_/admin_list/is_admin/').'/'.$v['uid']; ?>">[设置管理员]</a>
+				<?php } ?>
+				<?php } ?>
+			</td>
+		</tr>	
+		<?php } ?>
+		
+	</table>
+
+</body>
+</html>

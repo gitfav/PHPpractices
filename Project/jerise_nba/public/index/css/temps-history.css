@@ -1,0 +1,78 @@
+.wrapper .temp-text{
+	margin-top: 10px;
+	background: #fff;
+	width: 976px;
+	border:2px solid #0067af;
+	padding: 20 10px;
+}
+/*大标题*/
+.wrapper .temp-text .b1{
+	font-weight: 900;
+	font-family: '微软雅黑';
+	padding-left: 30px;
+}
+.wrapper .temp-text .b2{
+	width: 996px;
+	margin: 20px 0px 5px 0px;
+	font-family: '微软雅黑';
+	width: 998px;
+	line-height: 33px;
+	font-size: 24px;
+	font-weight: 500;
+}
+.wrapper .temp-text .b2 .num{
+	font-family: '微软雅黑';
+	display: inline-block;
+	width: 33px;
+	height: 33px;
+	background: #519cea;
+	border-radius: 5px;
+	color: #fff;
+	text-align: center;
+	font-size: 24px;
+}
+.wrapper .temp-text .text{
+	width: 963px;
+	margin: 15px 0px 5px 33px;
+	font-size: 14px;
+	font-weight: 500;
+	text-indent: 2em;
+}
+.wrapper .temp-text .b3{
+	width: 963px;
+	margin: 15px 0px 5px 33px;
+	font-size: 18px;
+	font-weight: 500;
+	font-family: '微软雅黑';
+}
+.wrapper .temp-text .text_img{
+	position: relative;
+	float: right;
+	margin-left: 20px;
+	border:1px solid #A9A9A9;
+	text-align: center;
+}
+.wrapper .temp-text .text_img img{
+	display: block;
+	border-bottom: 1px solid #A9A9A9;
+}
+.wrapper .temp-text .text_img span{
+	display: block;
+	font-size: 12px;
+	height: 25px;
+	line-height: 25px;
+}
+
+/*点击到页面最上面的按钮*/
+.to-top{
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	background: url('../images/sideToolbar.gif.png') no-repeat -3px -65px;
+	left: 1200px;
+	top:350px;
+	border-radius: 5px;
+}
+.to-top:hover{
+	background: url('../images/sideToolbar.gif.png') no-repeat -76px -65px;
+}

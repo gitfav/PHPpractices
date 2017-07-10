@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/public.css" />
+	<script type="text/javascript" src="<?php echo A_PUBLIC; ?>/Js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="<?php echo A_PUBLIC; ?>/Js/public.js"></script>
+</head>
+
+<body>
+	<table class="table">
+		<tr>
+			<td class="th" colspan="20">球队分类列表</td>
+		</tr>
+		<tr class="tableTop">
+			<!-- <td class="tdLittle0 center">展开</td> -->
+			<td class="tdLittle1">ID</td>
+			<td>球队名称</td>
+			<td>球队老板</td>
+			<td>球队教练</td>
+			<td class="tdLtitle7">操作</td>
+		</tr>
+		<?php foreach ($area as $k => $v) { ?>
+		<?php if ($v['fid']==0) { ?>
+			<tr>
+				<td colspan="5" style="font-size: 20px;font-weight: 800;text-align: center;"><?php echo $v['area'] ?></td>
+			</tr>
+			<?php foreach ($area as $_k => $_v) { ?>
+			<?php if ($_v['fid']==$v['acid']) { ?>
+				
+			<tr>
+				<td colspan="5" style="font-size: 15px;text-align: center;"><?php echo $_v['area'] ?></td>
+			</tr>
+			<?php foreach ($temp as $ke => $va) { ?>
+				<?php if ($va['acid']==$_v['acid']) { ?>
+				<tr>
+					<td><?php echo $va['teid'] ?></td>
+					<td width="20%"><?php echo $va['te_name'] ?></td>
+					<td width="30%"><?php echo $va['te_boss'] ?></td>
+					<td width="20%"><?php echo $va['te_coach'] ?></td>
+					<td>
+						[<a href='<?php echo site_url("admin_/temp_list/alter_temp_view").'/'.$va['teid']; ?>'>编辑球队</a>]
+						[<a href='<?php echo site_url("admin_/temp_list/img_add_view").'/'.$va['teid']; ?>'>球队图片编辑</a>]
+						[<a class='del' href='<?php echo site_url("admin_/temp_list/del_temp").'/'.$va['teid']; ?>'>球队删除</a>]
+					</td>
+				</tr>
+				<?php } ?>
+			<?php } ?>
+			
+			<?php } ?>
+			<?php } ?>
+		<?php } ?>
+		<?php } ?>
+	</table>
+
+</body>
+</html>

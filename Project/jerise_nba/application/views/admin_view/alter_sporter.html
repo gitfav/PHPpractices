@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/add_category.css" />
+<script src="<?php echo A_PUBLIC; ?>/uploadify/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="<?php echo A_PUBLIC; ?>/Js/public.js" type="text/javascript"></script>
+<script src="<?php echo A_PUBLIC; ?>/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo A_PUBLIC; ?>/uploadify/uploadify.css">
+<title></title>
+
+<script type="text/javascript">
+	<?php $timestamp = time();?>
+	// 传头像按钮的js
+	$(function() {
+		$('#file_upload').uploadify({
+			'formData'     : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+			},
+			'swf'      : '<?php echo A_PUBLIC; ?>/uploadify/uploadify.swf',
+			'uploader' : '<?php echo A_PUBLIC; ?>/uploadify/sporter_face_upload.php',
+			'auto' : false,//是否自动上传
+			'buttonText' : '上传头像',//改变按钮文字
+			'multi' : false,//允许同时上传多张图片
+			'width' : '100',
+			'height' : '25',
+			'cancelImg': './uploadify-cancel.png',
+			'onUploadSuccess' : function(file,data,response){
+				$('.img1').attr('src', '<?php echo A_PUBLIC; ?>/Images/sporter_face/'+data);
+				$('input[name=sp_face]').attr('value', data);
+			}
+		});
+		$('.start').click(function() {
+			$('#file_upload').uploadify('upload','*');
+		});
+	});
+</script>
+<style type="text/css">
+	body {
+	font: 13px Arial, Helvetica, Sans-serif;
+}
+.start{
+	text-align: center;
+	text-decoration: none;
+	font-family: '微软雅黑','黑体','宋体';
+	color: black;
+	display: inline-block;
+	border-radius: 5px;
+	width:50px;
+	height: 16px;
+	border: 2px #E8E8E8 solid;
+}
+.start:hover{
+	background: #DEDEDE;
+}
+</style>
+</head>
+
+<body>
+		<table class="table">
+			<tr >
+				<td class="th" colspan="2">更改球员信息</td>
+			</tr>
+			<tr height='200px'>
+				<td style="text-align:center;"><img class="img1" src="<?php echo A_PUBLIC.'/Images/sporter_face/'.$sporter['sp_face']; ?>" alt=""  width="140px" height="170px" /></td>
+				<td>
+				<form>
+					<div id="queue"></div>
+					<input id="file_upload" name="file_upload" type="file" multiple="true">
+				</form><span style="color:red;"></span><br>
+				<a href="javascript:void(0)" class="start">开始</a>
+				</td>	
+			</tr>
+	
+	<form action="" name="sporter" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="sp_face" value="<?php echo $sporter['sp_face']; ?>" />
+			<tr>
+				<td>姓名</td>
+				<td><input type="text" name="sp_name" value="<?php echo $sporter['sp_name']; ?>" /><span style="color:red;">*请完善信息</span></td>
+			</tr>
+			<tr>
+				<td>出生日期</td>
+				<td><input type="text" name="sp_birthday" value="<?php echo $sporter['sp_birthday']; ?>"/><span style="color:red;">输入格式（Y-M-D 如2000-1-1）</span></td>
+			</tr>
+			<tr>
+				<td>出生地</td>
+				<td><input type="text" name="sp_where" value="<?php echo $sporter['sp_where']; ?>"/></td>
+			</tr>
+			<tr>
+				<td>毕业学校</td>
+				<td><input type="text" name="sp_school" value="<?php echo $sporter['sp_school']; ?>"/></td>
+			</tr>
+			<tr>
+				<td>进入nba</td>
+				<td><input type="text" name="sp_inj" value="<?php echo $sporter['sp_inj']; ?>"/><span style="color:red;"></span></td>
+			</tr>
+			<tr>
+				<td>身高</td>
+				<td><input type="text" name="sp_h" value="<?php echo $sporter['sp_h']; ?>"/><span style="color:red;"></span></td>
+			</tr>
+			<tr>
+				<td>体重</td>
+				<td><input type="text" name="sp_w" value="<?php echo $sporter['sp_w']; ?>"/><span style="color:red;"></span></td>
+			</tr>
+			
+			<tr>
+				<td>伤病情况</td>
+				<td><input type="text" name="sp_cause" value="<?php echo $sporter['sp_cause']; ?>"/></td>
+			</tr>
+			<tr>
+				<td>选秀顺位</td>
+				<td><input type="text" name="sp_cip" value="<?php echo $sporter['sp_cip']; ?>"><span style="color:red;"></span></td>
+			</tr>
+			<tr>
+				<td>球员球衣号码</td>
+				<td><input type="text" name="sp_num" value="<?php echo $sporter['sp_num']; ?>"/><span style="color:red;"></span></td>
+			</tr>
+			<tr>
+				<td>生涯最高分</td>
+				<td><input type="text" name="max" value="<?php echo $sporter['max']; ?>"/><span style="color:red;"></span></td>
+			</tr>
+			<tr>
+				<td>所属球队</td>
+				<td>
+					<select name="teid">
+						<option value="">无</option>
+						<option value="YES">已退役</option>
+					<?php foreach ($temp as $k => $v): ?>
+						<option value="<?php echo $v['teid']; ?>"<?php if ($sporter['teid']==$v['teid']) { ?>selected='selected'<?php } ?>><?php echo $v['te_name']; ?></option>
+					<?php endforeach; ?>	
+					</select>
+					<span style="color:red;"></span>
+				</td>
+			</tr>	
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="修改" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,209 @@
+.new-text{
+	margin-top: 20px;
+	border-top:2px solid #0067af;
+	width: 1000px;
+	float: left;
+	background: #fff;
+}
+.new-text .left{
+	float: left;
+	width: 700px;
+}
+.new-text .left .new .b1{
+	font-size: 24px;
+	font-family: '微软雅黑','宋体','黑体';
+	font-weight: 500;
+	text-align: center;
+}
+/*让字体变大变小*/
+.new-text .left .new .s-b{
+	position: relative;
+	width: 630px;
+	height: 20px;
+	padding-right: 70px;
+	margin-top: 10px;
+
+}
+.new-text .left .new .s-b div{
+	float: right;
+	margin-right: 10px;
+	width: 20px;
+	height: 20px;
+	font-family: '微软雅黑';
+	font-variant: 600;
+	font-size: 14px;
+	background: #0067af;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+}
+.new-text .left .new .s-b div:hover{
+	background: #fff;
+	color: #000;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #0067af;
+}
+.new-text .left .new .texts{
+	margin-top: 10px;
+	padding: 0px 60px 0px 60px;
+}
+
+.new-text .left .new .texts .img-wapper{
+	text-align: center;
+	padding-bottom: 20px;
+
+}
+.new-text .left .new .texts .img-wapper .title{
+	display: inline-block;
+	padding-top: 10px;
+	font-size: 12px;
+	color: #666;
+}
+.new-text .left .new .texts p{
+	text-indent: 2em;
+	font-size: 14px;
+	font-family: '宋体';
+	line-height: 23px;
+	padding-bottom: 10px;
+}
+/*发言板块*/
+.new-text .left .speak{
+	margin-top: 10px;
+	padding: 0px 60px 0px 60px;
+}
+.new-text .left .speak .reply .w{
+	color: #0067af;
+	font-size: 18px;
+	font-family: '微软雅黑';
+}
+/*发言和回复框*/
+.fabiao{
+	border: 1px solid #ddd;
+	margin-top: 10px;
+	height: 113px;
+	/*display:none;*/
+}
+.fabiao .de{
+	
+	padding-left: 20px;
+}
+.fabiao .de .te{
+	width: 100%;
+	resize:none;
+	padding: 10px;
+	display: inline-block;
+	border: 0px;
+	margin-left: -20px;
+}
+.fabiao .anniu{
+	position: relative;
+	padding: 5px;
+	border-top: 1px solid #ddd;
+}
+.fabiao .anniu .button{
+	float: right;
+	background: #0067af;
+	border-radius: 5px;
+	line-height: 25px;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	cursor: pointer;
+}
+.anniu .button:hover{
+	background: #379be9;
+}
+/*留言板*/
+.post-list{
+	padding-top: 20px;
+}
+.post-list .np-post{
+	border-top: 1px solid #ddd;
+	padding-top: 8px;
+	padding-bottom: 20px;
+	position: relative;
+	padding-left: 50px;
+	/*width: 530px;*/
+}
+.post-list .np-post img{
+	position: absolute;
+	top: 15px;
+	left: 0px;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+.post-list .np-post  .np-post-head .name{
+	color: #0067af;
+	font-size: 12px;
+}
+.post-list .np-post  .np-post-head  .time{
+	color: #666;
+	font-size: 12px;
+}
+.post-list .np-post .np-post-content p{
+	font-size: 14px;
+	padding: 5px 0px;
+}
+.post-list .np-post .np-post-body .np-post-footer a{
+	color: #666;
+	font-size: 12px;
+	padding-left: 15px;
+}
+.post-list .np-post .np-post-body .np-post-footer span{
+	color: #666;
+	font-size: 14px;
+}
+
+/*右边栏*/
+.new-text .right{
+	width: 300px;
+	float: left;
+	position: relative;
+}
+/*新闻栏目*/
+.new-text .right .new-news{
+	float: left;
+	border-left: 1px solid #0067af;
+	border-bottom: 1px solid #0067af;
+}
+.new-text .right .new-news .p1{
+	font-size: 18px;
+	font-family: '微软雅黑','宋体','黑体';
+	background: #0067af;
+	color: #fff;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.new-text .right .new-news .title{
+	font-size: 13px;
+	font-family: '微软雅黑','宋体','黑体';
+	color: #000;
+	float: left;
+	padding: 5px 0px 5px 10px;
+}
+.new-text .right .new-news .title:hover{
+	color: #0067af;
+}
+/*广告*/
+.new-text .right object{
+	margin-top: 20px;
+}
+.new-text .right .gg{
+	width: 300px;
+	margin-top: 20px;
+}
+.new-text .right .gg2{
+	width: 300px;
+	margin-top: 20px;
+	position: absolute;
+	left: 0px;
+	top: 610px;
+}
+.new-text .right .gg2-2{
+	position: fixed;
+	top: 0px;
+	left: 875px;
+}

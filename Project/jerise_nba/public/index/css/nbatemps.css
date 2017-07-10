@@ -1,0 +1,76 @@
+.nbatemps{
+	width: 940px;
+	margin-top: 20px;
+	background: #0067af;
+	padding: 30px;
+	position: relative;
+}
+.nbatemps .nbatitle{
+	width: 900px;
+	height: 40px;
+	margin: 0px auto;
+	border: 1px solid #fff;
+	color: #fff;
+	line-height: 40px;
+	text-align: center;
+	font-family: '微软雅黑','宋体','黑体';
+	font-size: 18px;
+	font-weight: 900;
+}
+.nbatemps .nbatab{
+	width: 800px;
+	margin: 0px auto;
+	border-left: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-right: 1px solid #fff;
+	padding: 50px 50px;
+}
+.nbatemps .nbatab .nbat{
+	border-top:1px solid #064982;
+	border-left:1px solid #064982;
+	background: #fff;
+}
+.nbatemps .nbatab .nbat tr td{
+	border-bottom:1px solid #064982;
+	border-right:1px solid #064982;
+	text-align: center;
+	width: 130px;
+	
+}
+.nbatemps .nbatab .nbat .all{
+	background: #00008B;
+}
+.nbatemps .nbatab .nbat .all td{
+	color: #fff;
+	font-family: '微软雅黑','宋体','黑体';
+	font-size: 16px;
+	height: 35px;
+}
+.nbatemps .nbatab .nbat .w_e{
+	background:  	#00008B;
+}
+.nbatemps .nbatab .nbat .w_e td{
+	color: #fff;
+	font-family: '微软雅黑','宋体','黑体';
+	font-size: 14px;
+	height: 30px;
+}
+.nbatemps .nbatab .nbat .small{
+	background: #0000FF;
+}
+.nbatemps .nbatab .nbat .small td{
+	color: #fff;
+	font-family: '微软雅黑','宋体','黑体';
+	font-size: 12px;
+	height: 30px;
+}
+.nbatemps .nbatab .nbat .tname td{
+	height: 25px;
+}
+.nbatemps .nbatab .nbat .tname td a{
+	font-size: 12px;
+	color: #000;
+}
+.nbatemps .nbatab .nbat .tname td a:hover{
+	color: #064982;
+};

@@ -1,0 +1,523 @@
+﻿body{position:relative;}
+
+.content{position:absolute;top:0;left:0;overflow:hidden;background:url(../img/bg.jpg) no-repeat left top;background-size:100% auto;}
+
+/*游戏分享*/
+
+#share{display:none;z-index:30;background:url(../img/share.png) no-repeat left top;background-size:100% 100%;}
+
+/*游戏规则*/
+
+#rule{display:none;z-index:30;background:url(../img/rule.png) no-repeat center top;background-size:100% auto;}
+
+#rule .ruleBtn{
+
+	height:auto;
+
+	width:41.6%;
+
+	position:absolute;
+
+	top:82%;
+
+	left:50%;
+
+	margin-left:-20.8%;
+
+}
+
+/*游戏开始*/
+
+#start{display:block;z-index:20;background:url(../img/p1_bg.jpg) no-repeat left top;background-size:100% 100%;}
+
+#start img{position:absolute;height:auto;left:50%;}
+
+#start .startTil{
+
+	width:70%;
+
+	top:15%;
+
+	margin-left:-35%;
+
+}
+
+#start .startWord{
+
+	width:70%;
+
+	margin-left:-35%;
+
+	top:34%;
+
+}
+
+#start .StartBtn{
+
+	width:42%;
+
+	margin-left:-21%;
+
+	top:50%;
+
+}
+
+#start .startRule{
+
+	width:42%;
+
+	margin-left:-21%;
+
+	top:60%;
+
+}
+
+#start .startRank{
+
+	width:42%;
+
+	margin-left:-21%;
+
+	top:70%;
+
+}
+
+/*游戏主体*/
+
+#content{display:none;z-index:10;background:url(../img/p2_bg.jpg) no-repeat left top;background-size:100% 100%;}
+
+	/*头部4个洞*/
+
+/*#content nav{width:100%;height:15%;position:absolute;top:0;left:0;background:#0F9;}
+
+#content nav ul{position:absolute;top:0;left:0;width:100%;height:100%;}
+
+#content nav li{position:absolute;top:0;width:23%;height:100%;background:#F00;}
+
+#content .dong_1{left:1%;}
+
+#content .dong_2{left:26%;}
+
+#content .dong_3{left:51%;}
+
+#content .dong_4{left:76%;}*/
+
+	/*底部1个接的*/
+
+#jieshou{position:absolute;top:88.5%;left:10%;height:11%;z-index:100;}
+
+/*#jieshou{position:absolute;bottom:0;left:10%;width:10%;height:5%;background:#F00;}*/
+
+#obj_diaoluo{position:absolute;width:100%;height:100%;z-index:10;}
+
+#content .pingziD{width:100%;height:12%;position:absolute;top:20px;left:0;}
+
+#obj_diaoluo .pingziD{
+
+	-webkit-animation:none 2s linear infinite;
+
+	animation:none 2s linear infinite;
+
+}
+
+#obj_diaoluo img{position:absolute;z-index:100;
+
+	 -webkit-animation:change 1s linear infinite;
+
+	 animation:change 1s linear infinite;
+
+}
+
+@-webkit-keyframes change
+
+{
+
+　　0%{-webkit-transform:rotate(0deg);transform:rotate(0deg);}
+
+　　50%{-webkit-transform:rotate(180deg);transform:rotate(180deg);}
+
+　　100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}
+
+}
+
+	/*掉落的瓶子*/
+
+#content section{position:absolute;width:16%;height:10%;background:#000;}
+
+/*.diao_1{position:absolute;top:17%;left:4.5%;}
+
+.diao_2{position:absolute;top:17%;left:29.5%;}
+
+.diao_3{position:absolute;top:17%;left:54.5%;}
+
+.diao_4{position:absolute;top:17%;left:79.5%;}*/
+
+.diao_1{top:17%;left:4.5%;}
+
+.diao_2{top:17%;left:29.5%;}
+
+.diao_3{top:17%;left:54.5%;}
+
+.diao_4{top:17%;left:79.5%;}
+
+#aa{display:none;position:absolute;width:100%;height:20px;left:0;top:0;z-index:1001;}
+
+#headImg{position:absolute;width:60px;text-align:center;height:60px;left:5px;top:5px;z-index:1000;border:2px solid #CCC;border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;}
+
+#scoreNow{/*display:none;*/position:absolute;width:74px;text-align:center;font-size:14px;line-height:24px;color:#e0bd19;height:24px;left:0;top:75px;z-index:1000;background:#224220;border:2px solid #d0ffc1;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;}
+
+#timeSet{position:absolute;z-index:2000;width:90px;height:44px;text-align:center;font-size:14px;line-height:22px;color:#e0bd19;left:80px;top:13px;z-index:1000;background:#224220;border:2px solid #a9f79c;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+
+
+
+/*游戏结束*/
+
+#end{display:none;z-index:20;background:url(../img/p3_bg.jpg) no-repeat left top;background-size:100% 100%;}
+
+#end img{position:absolute;left:50%;}
+
+.endHead{
+
+	width:24%;
+
+	height:auto;
+
+	margin-left:-12%;
+
+	top:7%;
+
+	z-index:10;
+
+	border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;
+
+}
+
+.endTxt{
+
+	width:85%;
+
+	height:30%;
+
+	margin-left:-42.5%;
+
+	left:50%;
+
+	top:17%;
+
+	background:url(../img/p3_textbox.png) no-repeat left top;background-size:100% 100%;
+
+}
+
+.endTxt p{
+
+	position:absolute;
+
+	width:78%;
+
+	height:70%;
+
+	left:11%;
+
+	top:25%;
+
+	overflow:hidden;
+
+	font-size:14px;
+
+	line-height:20px;
+
+	color:#000;
+
+	/*background:#CCC;*/
+
+}
+@media (max-width:500px){
+	.endTxt{
+		width:90%;
+		height:35%;
+		margin-left:-45%;
+		left:50%;
+		top:16%;
+		background:url(../img/p3_textbox.png) no-repeat left top;background-size:100% 100%;
+	}
+	.endTxt p{
+		position:absolute;
+		width:78%;
+		height:70%;
+		left:11%;
+		top:25%;
+		overflow:hidden;
+		font-size:13px;
+		line-height:17px;
+		color:#000;
+	}
+}
+
+.endImg{
+
+	height:auto;
+
+	width:39%;
+
+	margin-left:-19.5%;
+
+	z-index:5;
+
+}
+
+.endWord{
+
+	width:70%;
+
+	margin-left:-35%;
+
+	top:45%;
+
+}
+
+.endShare{
+
+	top:59%;
+
+}
+
+.endRank{
+
+	top:66%;
+
+}
+
+.endStart{
+
+	top:73%;
+
+}
+
+.endFunds{
+
+	top:80%;
+
+}
+
+
+
+
+
+/*游戏排行*/
+
+#rank{display:none;z-index:40;background:url(../img/rankBg.png) repeat;}
+
+#rankTil{
+
+	position:relative;
+
+	height:40px;
+
+	width:100%;
+
+	font-size:24px;
+
+	line-height:40px;
+
+	color:#fff;
+
+	text-indent:20px;
+
+	margin-top:10px;
+
+	border-bottom:2px solid #FFF;
+
+}
+
+.rankCon{
+
+	margin-top:10px;
+
+}
+
+#rank .rankList{
+
+	height:52.5%;
+
+	width:93.8%;
+
+	position:absolute;
+
+	top:22.5%;
+
+	left:50%;
+
+	padding:5px 0;
+
+	margin-left:-46.9%;
+
+	border-radius:10px;
+
+	-moz-border-radius:10px;
+
+	-webkit-border-radius:10px;
+
+	background:url(../img/rankBg1.png) repeat-x left center;
+
+	background-size:auto 100%;
+
+	overflow-y:auto;
+
+	-webkit-overflow-scrolling: touch;
+
+}
+
+#rank .detailsMe{
+
+	width:93.8%;
+
+	height:5%;
+
+	position:absolute;
+
+	top:78.5%;
+
+	left:50%;
+
+	margin-left:-46.9%;
+
+	text-align:center;
+
+	font-size:18px;
+
+	color:#000;
+
+}
+
+.rankClose{
+
+	width:auto;
+
+	height:70%;
+
+	position:absolute;
+
+	top:15%;
+
+	right:5%;
+
+	margin-left:-19.79%;
+
+}
+
+#rank table{
+
+	width:96%;
+
+	margin:0 auto;
+
+	/*height:auto;
+
+	position:absolute;
+
+	left:50%;
+
+	margin-left:-48%;
+
+	top:10px;
+
+	margin-bottom:10px;*/
+
+}
+
+#rank thead{width:100%;}
+
+#rank thead tr{
+
+	width:100%;
+
+	vertical-align:middle;
+
+	text-align:center;
+
+	height:32px;
+
+	font-size:18px;
+
+	line-height:32px;
+
+	color:#fff;
+
+	border-radius:10px;
+
+	-moz-border-radius:10px;
+
+	-webkit-border-radius:10px;
+
+	/*background:url(../img/rankBg3.png) no-repeat center top;*/
+
+	background-size:100% 100%;
+
+}
+
+#rank tbody{width:100%;}
+
+#rank tbody tr{
+
+	vertical-align:middle;
+
+	width:100%;
+
+	height:40px;
+
+	font-size:16px;
+
+	line-height:26px;
+
+	color:#fff;
+
+	text-align:center;
+
+	/*border-bottom:1px solid #3378ae;*/
+
+	margin-top:5px;
+
+}
+
+#rank tbody td{vertical-align:middle;
+
+	height:26px;
+
+	font-size:14px;
+
+	line-height:26px;
+
+	color:#fff;
+
+	text-align:center;
+
+}
+
+#rank tbody td img{
+
+	display:block;
+
+	vertical-align:middle;
+
+	text-align:center;
+
+	margin:0 auto; 
+
+	border-radius:13px;
+
+	-moz-border-radius:13px;
+
+	-webkit-border-radius:13px;
+
+}
+
+/*#rank tbody tr td:first-child{background:url(../img/rankIco2.png) no-repeat left center;background-size:auto 70%;font-weight:bold;font-size:16px;}
+
+#rank tbody tr:first-child td:first-child{background:url(../img/rankIco1.png) no-repeat left center;background-size:auto 70%}
+
+#rank tbody tr:nth-child(2) td:first-child{background:url(../img/rankIco1.png) no-repeat left center;background-size:auto 70%}*/
+
+.rankScore{width:100%;text-align:center;color:#FFF;font-size:20px;font-weight:bold;margin-top:5px;}
+
+.rankRank{width:100%;text-align:center;color:#FFF;font-size:20px;font-weight:bold;margin-top:5px;}
+

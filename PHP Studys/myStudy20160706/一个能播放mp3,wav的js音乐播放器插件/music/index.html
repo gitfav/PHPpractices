@@ -1,0 +1,129 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>录音播放器</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=IE=EmulateIE7 http-equiv=X-UA-Compatible>
+<META name=GENERATOR content="MSHTML 8.00.6001.19019">
+<SCRIPT type=text/javascript src="sinaObj.js"></SCRIPT>
+<SCRIPT language=JavaScript type=text/javascript src="playernew_min_ext.js"></SCRIPT>
+<link href="main.css" rel="stylesheet" type="text/css" />
+</HEAD>
+<BODY>
+<DIV>
+<DIV class=part_top>
+<DIV class=p_left>
+<DIV class=w_01>
+<H2 class=w_title><SPAN style="MARGIN-TOP: 10px; COLOR: rgb(0,0,0)" 
+class=w_name>播放录音</SPAN>  </H2>
+<DIV class=w_cont>
+<DIV class=w_cont_bg><!-- content begin -->
+<DIV class=w_cont_box>
+<DIV class=contBox><!-- 音频播放器 begin --><!-- wmplayer xhtml start -->
+<DIV 
+style="POSITION: relative; TEXT-ALIGN: left; WIDTH: 450px; HEIGHT: 68px; OVERFLOW: hidden" id=wmplayer><!-- contral area start -->
+<DIV style="DISPLAY: none"><!-- video display start -->
+<DIV id=videoDisplay></DIV><!-- video display end --><!-- video ad start -->
+<DIV id=playerAd></DIV><!-- video ad end --></DIV>
+<DIV style="MARGIN: 0px; WIDTH: 430px; HEIGHT: 50px" id=controlPanel>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD><!-- play time control bar start -->
+      <DIV style="POSITION: relative; WIDTH: 0px; HEIGHT: 0px" id=pZone><!-- play time control button start -->
+      <DIV style="POSITION: absolute; WIDTH: 0px; HEIGHT: 0px; TOP: 3px; LEFT: 0px" id=pBox></DIV><!-- play time control button end --></DIV><!-- play time control bar end -->
+      <DIV style="POSITION: relative"><!-- play and pause button start --><IMG 
+      style="MARGIN: 12px 0px 0px 8px" id=playBtn name=playBtn alt="" 
+      src="play1.gif" width=43 
+      height=43> 
+      <!-- play and pause button end --><!-- stop button start --><IMG 
+      style="MARGIN-TOP: 15px" id=stopBtn alt="" 
+      src="stop1.gif" width=43 
+      height=43> <!-- stop button end --><SPAN 
+      style="POSITION: absolute; COLOR: #333; FONT-SIZE: 12px; TOP: 20px; LEFT: 115px">录音</SPAN><SPAN 
+      style="POSITION: absolute; COLOR: #3b71b2; FONT-SIZE: 12px; TOP: 42px; LEFT: 115px" 
+      id=stateText>停止</SPAN><SPAN 
+      style="POSITION: absolute; FONT-FAMILY: Arial; COLOR: #3b71b2; FONT-SIZE: 12px; TOP: 40px; LEFT: 175px" 
+      id=timeText>00:00/00:00</SPAN><SPAN 
+      style="POSITION: absolute; DISPLAY: none; TOP: 25px; LEFT: 130px" 
+      id=bnTxtPlayerPList></SPAN> <!-- mute button start --><IMG 
+      style="POSITION: absolute; TOP: 24px; RIGHT: 80px" id=muteBtn name=muteBtn 
+      alt="" src="sound2.gif"> <!-- mute button end --><!-- volume control bar start -->
+      <DIV 
+      style="POSITION: absolute; WIDTH: 52px; BACKGROUND: url(sound4.gif) repeat-x left bottom; HEIGHT: 14px; TOP: 27px; RIGHT: 6px" 
+      id=vZone>
+      <DIV style="POSITION: absolute;cursor:pointer; WIDTH: 14px; BACKGROUND: url(sound3.gif) no-repeat left bottom; HEIGHT: 9px; TOP: 6px; LEFT: 0px" id="vBox">
+      </DIV>
+      </DIV><!-- volume control bar end --><!-- fullScreen button start -->
+      <IMG style="POSITION: absolute; DISPLAY: none; TOP: 32px; RIGHT: 14px" id=screenFBtn alt="" src="fullScreen_disable.gif" width=32 height=16> <!-- fullScreen button end --><!-- zoom in button start --><IMG 
+      style="POSITION: absolute; DISPLAY: none; TOP: 37px; RIGHT: 97px" 
+      id=zoomBtn1 alt="" 
+      src="zoom1_disable.gif" 
+      width=33 height=20> <!-- zoom in button end --><!-- zoom in 2 button start --><IMG 
+      style="POSITION: absolute; DISPLAY: none; TOP: 37px; RIGHT: 57px" 
+      id=zoomBtn2 alt="" 
+      src="zoom2_disable.gif" 
+      width=33 height=20> <!-- zoom in 2 button end --><!-- switch bandwidth button start --><IMG 
+      style="POSITION: absolute; DISPLAY: none; TOP: 9px; RIGHT: 4px" id=bornBtn 
+      alt="" 
+      src="playMode_disable.gif" 
+      width=86 height=20> <!-- switch bandwidth button end --><!-- other info start --><!-- 分段数字显示 start -->
+      <DIV 
+      style="POSITION: absolute; TEXT-ALIGN: left; COLOR: #303030; TOP: 43px; LEFT: 56px" 
+      id=bnTxtPlayerPList></DIV><!-- 分段数字显示 end --><!-- other info start --></DIV></TD></TR></TBODY></TABLE></DIV><!-- control area end --></DIV><!-- wmplayer xhtml end --><!-- wmplayer js start -->
+
+<SCRIPT language=JavaScript type=text/JavaScript>
+<!--//--><![CDATA[//><!--
+var bnTxtPlayer = new sina.Player("bnTxtPlayer");
+bnTxtPlayer.wSize = new Array(
+"276|198",			//默认视频尺寸：宽|高
+"500|400|zoomBtn1",	//第一种放大后的视频：宽|高|放大按钮的id
+"600|500|zoomBtn2"	//第二种...
+);
+bnTxtPlayer.id 				= "myplayer";
+bnTxtPlayer.skinPath 		= "./";
+bnTxtPlayer.playerNodeId	= "wmplayer";		//播放器容器ID
+bnTxtPlayer.videoNodeId 	= "videoDisplay";	//放置视频的容器的ID
+bnTxtPlayer.playerAdId		= "playerAd";		//播放前广告容器的id
+bnTxtPlayer.ctrZoneId 		= "controlPanel";	//控制区域 获得此对象目的在NS下隐藏它
+bnTxtPlayer.pZoneId			= "pZone";			//进度区域的ID
+bnTxtPlayer.pBoxId			= "pBox";			//进度控制钮的ID
+bnTxtPlayer.vZoneId 		= "vZone";			//声音区域的ID
+bnTxtPlayer.vBoxId 			= "vBox";			//声音滑块的ID
+bnTxtPlayer.playBtnId 		= "playBtn";		//播放按钮的ID
+bnTxtPlayer.stopBtnId 		= "stopBtn";		//停止按钮的ID
+bnTxtPlayer.muteBtnId 		= "muteBtn";		//静音按钮的ID
+bnTxtPlayer.fullScreenBtnId	= "screenFBtn";		//全屏按钮的ID	
+bnTxtPlayer.bOrNBtnId 		= "bornBtn";		//宽窄频单一button
+
+bnTxtPlayer.bFile 			= "http://www.daixiaorui.com/a1.mp3"; //要播放的音频文件
+//bnTxtPlayer.nFile 			= "n.wmv";			//默认窄带文件
+bnTxtPlayer.adPath			= "";				//默认的缓冲path
+bnTxtPlayer.autoStart		= true;			//是否自动播放	boolean
+bnTxtPlayer.showStatusBar	= true;			//是否允许显示状态信息	boolean		
+bnTxtPlayer.netModel		= 1;				//当前网络连接模式 Number 0:窄频 1:宽频
+
+bnTxtPlayer.Init();
+/* 点播
+
+ * void Play(String bFile,String nFile,String adPath)
+ * bFile	:当前宽频文件
+ * nFile	:当前窄频文件
+ * adurl	: 可选 当前视频的缓冲广告path
+ */
+//bnTxtPlayer.Play("b.wmv","n.wmv");
+
+//--><!]]>
+</SCRIPT>
+
+<SCRIPT language=javascript type=text/javascript>
+<!--//--><![CDATA[//><!--
+echoInfo(); //显示播放状态和播放时间 mengjia 070427
+function echoInfo(){var playStateText,timeText;try{switch(bnTxtPlayer.wObject.playState){case 1:playStateText="停止";break;case 2:playStateText="暂停中";break;case 3:playStateText="播放中";break;case 4:playStateText="向前搜索";break;case 5:playStateText="向后搜索";break;case 6:playStateText="缓冲中";break;case 7:playStateText="等待中";break;case 8:playStateText="播放完毕";break;case 9:playStateText="正在连接";break;case 10:playStateText="准备就绪";break;default:playStateText="未知错误:"+bnTxtPlayer.wObject.playState}
+timeText=(bnTxtPlayer.wObject.controls.currentPositionString==''?"00:00":bnTxtPlayer.wObject.controls.currentPositionString);setTimeout("echoInfo()",300)}
+catch(e){playStateText="未知错误";timeText=""}
+finally{sina.$("stateText").innerHTML=playStateText;sina.$("timeText").innerHTML=timeText}}
+
+//--><!]]>
+</SCRIPT>
+<!-- wmplayer js end --><!-- 音频播放器 end -->
+</DIV></DIV><!-- content end --></DIV></DIV>
+</DIV></DIV></DIV><!-- footer begin --><!-- footer end --></DIV></BODY></HTML>

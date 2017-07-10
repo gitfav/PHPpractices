@@ -1,0 +1,116 @@
+<body>
+
+<div class="wrapper">
+	<!-- 头部布局 -->
+	<div class="header">
+		<!-- logo布局 -->
+		<div class="header-top">
+			<div class="logo">
+				<div class="img-logo"></div>
+				<div class="text-logo">
+					<a href="">NBA jerise网站</a>
+				</div>
+			</div>
+			<div class="register">
+			<?php if (isset($user)) { ?>
+				<div><a href="<?php echo site_url('index_/register/out'); ?>" >退出</a></div>
+				<div class="geli"></div>
+				<div><a target="_blank" href="" class="user-register" >欢迎：<?php echo $user['nname'] ?></a></div>
+			<?php }else{ ?>
+				<div><a href="javascript:void(0);" class="user-login" >登录</a></div>
+				<div class="geli"></div>
+				<div><a target="_blank" href="<?php echo site_url('index_/register'); ?>" class="user-register" >注册</a></div>
+			<?php } ?>	
+			</div>
+		</div>
+		<!-- 标签选项 -->
+		<div class="header-bottom">
+				<ul class="header-bottom-ul">
+					<li>
+						<a target="_blank" href="<?php echo site_url(''); ?>">首页</a>
+						<!-- <div class="times menue" style="display:none;">
+							<div><a target="_blank" href="http://china.nba.com/">NBA官方网</a></div>
+						</div> -->
+					</li>
+					<li>
+						<a target="_blank" href="<?php echo site_url('index_/agende_list/agende_view'); ?>">赛程</a>
+						<!-- <div class="times menue" style="display:none;">
+							<div><a href="">湖人赛程</a></div>
+							<div><a href="">骑士赛程</a></div>
+							<div><a href="">火箭赛程</a></div>
+						</div> -->
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0)">球队</a>
+						<div class="temps" style="display:none;">
+						<?php foreach ($west as $k => $v) { ?>
+							<div class="temps-core">
+								<div class="title"><?php echo $v['area']; ?><br>赛区</div>
+								<div class="img">
+									<?php foreach ($v['temp'] as $k_ => $v_) { ?>
+									<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v_['teid']; ?>"><img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$v_['te_logo']; ?>" alt="" /><p><?php echo $v_['te_s_name']; ?></p></a>	
+									<?php } ?>
+									
+								</div>
+							</div>
+							<div class="temps-core">
+								<div class="title"><?php echo $east[$k]['area']; ?><br>赛区</div>
+								<div class="img">
+									<?php foreach ($east[$k]['temp'] as $k_ => $v_) { ?>
+									<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v_['teid']; ?>"><img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$v_['te_logo']; ?>" alt="" /><p><?php echo $v_['te_s_name']; ?></p></a>	
+									<?php } ?>
+								</div>
+							</div>
+						<?php } ?>
+						</div>
+					</li>
+					<li>
+						<a target="_blank" href="<?php echo site_url('index_/sporter_list'); ?>">球员</a>
+						<!-- <div class="sporter menue" style="display:none;">
+							<div><a href="">现役球员</a></div>
+							<div><a href="">退役球员</a></div>
+						</div> -->
+					</li>
+					<li><a target="_blank" href="<?php echo site_url('index_/temp/history_cate'); ?>">历史</a></li>
+					<li><a target="_blank" href="<?php echo site_url('index_/news/news_list'); ?>">新闻</a></li>
+					<!-- <li>
+						<a target="_blank" href="">排名</a>
+						<div class="paiming menue" style="display:none;">
+							<div><a href="">东西部排名</a></div>
+							<div><a href="">分区排名</a></div>
+						</div>
+					</li>
+					<li>
+						<a target="_blank" href="">统计</a>
+						<div class="total menue" style="display:none;">
+							<div><a href="">球员数据</a></div>
+							<div><a href="">球队数据</a></div>
+							<div><a href="">联盟数据王</a></div>
+						</div>
+					</li>
+					<li><a target="_blank" href="">图片</a></li>
+					<li><a href="javascript:void(0);" class="reseach"></a></li> -->
+				</ul>
+		</div>
+	</div>
+
+	<!-- 登录表单 -->
+	<div class="login" style="display:none;">
+		<div class="center">		
+			<form action="<?php echo site_url('index_/register/login'); ?>" method="post" name="login">
+				<input class="in" type="text" name="logname"  placeholder="请输入账号"/>
+				<div class="error_s" style="height:16px;width:100%;font-family:'微软雅黑';font-size:12px;color:red;"></div>
+				<input class="in" type="password" name="logpw" placeholder="请输入密码"/>
+				<div class="error_se" style="height:16px;width:100%;font-family:'微软雅黑';font-size:12px;color:red;"></div>
+				<div class="li">
+					<input type="checkbox" name="rem" class="c1" /> 记住我
+					<a target="_blank" href="<?php echo site_url('index_/register'); ?>">立即注册</a>
+					<a href="">忘记密码？</a>
+				</div>
+				<input class="log" type="submit" value="登    录" />
+			</form>
+			<div class="close">关&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp闭</div>
+		</div>
+	</div>
+
+	

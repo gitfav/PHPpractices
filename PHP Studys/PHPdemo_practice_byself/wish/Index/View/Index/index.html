@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="<?php echo __PUBLIC__?>/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="<?php echo __PUBLIC__?>/bootstrap3/dist/js/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo __PUBLIC__?>/bootstrap3/dist/js/bootstrap.js"></script>
+	<link href="<?php echo __PUBLIC__?>/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" />
+	<link href="<?php echo __PUBLIC__?>/css/index.css" rel="stylesheet" type="text/css">
+	
+	<style type="text/css">
+		.face{
+			width: 250px;
+			height: 90px;
+			position: absolute;
+			right: 10px;
+			top: 5px;
+		}
+		.face img{
+			height: 60px;
+		}
+		.face div{
+			position: relative;
+			height: 80px;
+			border-radius: 5px;
+			overflow-y: hidden;
+			width: 62px;
+			float: left;
+			margin-left: 10px;
+			text-align: right;
+			font-weight: 700;
+			font-family: '微软雅黑';
+			color: #999;
+		}
+		.face .face_radio{
+			position: absolute;
+			left: 3px;
+			bottom: 4px;
+		}
+		.form-horizontal{
+			position: relative;
+		}
+	</style>
+	<title>留言本</title>
+</head>
+<body>
+	
+	
+	<div id="main">
+		<?php if(!isset($_SESSION['user'])){?>
+
+		<div class="user"><a href="./index.php?c=login&a=login">登陆</a>| <a href="./index.php?c=login&a=register">注册</a></div>
+		<?php }else{ ?>
+			<div>
+				欢迎回来 <?php echo $_SESSION['user']['username']?> <a href="./index.php?c=login&a=out">退出</a>
+			</div>
+		<?php }?>
+		<div class='content'>
+			<?php foreach($message as $k=>$m):?>
+				<dl>
+					<dt>
+						<img src="<?php echo __PUBLIC__?>/images/<?php echo $m['face']?>"/>
+					</dt>
+					<dd class='head'>
+						<span><?php echo $m['username']?></span> <i><?php echo $m['sex']?></i><b>发表于：</b> <i><?php echo date('Y-m-d H:i:s',$m['time']);?></i>
+					</dd>
+					<dd class='con'>
+						<?php echo $m['content'];?>
+						<div  style="float: right;">
+							<a target="_blank" href="./edit.php?id=<?php echo $k;?>" class="btn btn-info">修改</a>
+							<a href="javascript:;" class="btn btn-danger" onclick="if(confirm('确定删除么？')) location.href='./del.php?id=<?php echo $k;?>'">删除</a>
+						
+						</div>
+					</dd>
+				</dl>
+			<?php endforeach?>
+		</div>
+
+		<script type="text/javascript">
+			function add(){
+				username = $('input[name=username]').val();
+				sex = $('input[name=sex]').val();
+				content = $('textarea[name=content]').val();
+				face = $('input[name=face]').val();
+
+				str = '<dl><dt><img src=""/></dt><dd class="head"><span>'+username+'</span> <i>'+sex+'</i><b>发表于：</b> <i></i></dd><dd class="con">'+content+'<div  style="float: right;"><a target="_blank" href="" class="btn btn-info">修改</a><a href="javascript:;" class="btn btn-danger">删除</a></div></dd></dl>';			
+
+				$.ajax({
+					url:'./index.php?c=index&a=ajaxAdd',
+					data:{username:username,content:content,sex:sex,face:face},
+					type:'post',
+					success:function(data){
+						if(data==1){
+							$('.content').append(str);
+						}
+					}
+
+				})
+				
+			}
+		</script>
+		<div class='form'>
+			<form class="form-horizontal" action="" method="post" onsubmit="return false;" id="form_data">
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">昵称:</label>
+					<div class="controls">
+						<input type="text" name="username" placeholder="请输入你的昵称.."></div>
+				</div>
+				<div class="control-group">
+					<input type="radio" name="sex" id="" value="男" checked="checked">
+					男
+					<input type="radio" name="sex" id="" value="女">女</div>
+				<div class="control-group">
+					<label class="control-label" for="inputPassword">留言内容：</label>
+					<div  class="controls">
+						<textarea   name="content"></textarea>
+					</div>
+				</div>
+				<div class="face">
+					<div>
+						<img src="<?php echo __PUBLIC__?>/images/1.jpg" alt="">
+						<input type="radio" name="face" class="face_radio" checked="checked" value="1.jpg">
+						头像1
+					</div>
+					<div>
+						<img src="<?php echo __PUBLIC__?>/images/2.jpg" alt="">
+						<input type="radio" name="face" class="face_radio" value="2.jpg">
+						头像2
+					</div>
+					<div>
+						<img src="<?php echo __PUBLIC__?>/images/3.jpg" alt="">
+						<input type="radio" name="face" class="face_radio" value="3.jpg">
+						头像3
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button type="submit" class="btn btn-primary" onclick="add();">给我留言</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

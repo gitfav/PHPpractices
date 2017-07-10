@@ -1,0 +1,4 @@
+INSERT INTO message (sender,geter,content,stime)VALUES ('长颈鹿','小熊','ds',now())
+INSERT INTO message (sender,geter,content,stime)VALUES ('小熊','长颈鹿','dsd',now())
+INSERT INTO message (sender,geter,content,stime)VALUES ('长颈鹿','小熊','fsd',now())
+INSERT INTO message (sender,geter,content,stime)VALUES ('小熊','长颈鹿','sd',now())

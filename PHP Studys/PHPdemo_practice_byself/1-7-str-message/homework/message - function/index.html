@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		#content_box{
+			width:600px;
+			min-height: 150px;
+			box-shadow: 4px 4px 4px red;
+			margin:0 auto;
+			margin-top: 50px;
+			border-radius: 10px;
+		}
+		#content_box ul li .userInfo span{
+			padding:10px 15px;
+			font-family: 微软雅黑;
+		}
+		.pic_content{
+
+			width: 500px;
+			height: 100px;
+			margin:0 auto;
+			margin-top: 30px;
+		}
+		.pic_content .pic{
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			float: left;
+			background: red;
+			overflow: hidden;
+		}
+		.opt{
+			float: right;
+			width: 50px;
+			height: 50px;
+		}
+
+		.content{
+			margin-left: 30px;
+			width: 300px;
+			height: 80px;
+			float: left;
+			background: yellow;
+		}
+
+		#form_box{
+			width:600px;
+			min-height: 150px;
+			box-shadow: 4px 4px 4px red;
+			margin:0 auto;
+			margin-top: 50px;
+			border-radius: 10px;
+		}
+	</style>	
+</head>
+<body style="margin-bottom:400px;">
+	<div id="content_box">
+		<ul>
+			<?php foreach($message as $k=> $m):?>
+				<li>
+					<div class="userInfo">
+						<span><?php echo $m['username']?></span>
+						<span><?php echo $m['sex']?></span>
+						<span><?php echo $m['time']?></span>
+					</div>
+					<div class="pic_content">
+						<div class="pic">
+							<img src="./images/<?php echo $m['face']?>" alt="">
+						</div>
+						<div class="content">
+							<?php echo $m['content']?>
+						</div>
+						<div class="opt">
+							<a href="./edit.php?index=<?php echo $k?>">编辑</a> |
+							<a href="javascript:;" onclick="if(confirm('确定删除么？')){location.href='./del.php?index=<?php echo $k?>'}">删除</a>
+						</div>
+					</div>
+
+				</li>
+			<?php endforeach?>
+		</ul>
+	</div>
+
+	<div id="form_box">
+		<form action="" method="post">
+			<div class="line">
+				<span>用户名</span>
+				<input type="text" name="username" value="">
+			</div>
+			<div class="line">
+				<span>性别</span>
+				<input type="radio" name="sex" value="男" checked="" > 男
+				<input type="radio" name="sex" value="女"> 女
+			</div>
+			<div class="line">
+				<img src="./images/1.jpg" alt="">
+				<input type="radio" name="face" value="1.jpg" checked="">
+				<img src="./images/2.jpg" alt="">
+				<input type="radio" name="face" value="2.jpg">
+				<img src="./images/3.jpg" alt="">
+				<input type="radio" name="face" value="3.jpg">
+			</div>
+			<div class="line">
+				<textarea name="content" id="" cols="30" rows="10"></textarea>
+			</div>
+			<div class="line">
+				<input type="submit" value="留言">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

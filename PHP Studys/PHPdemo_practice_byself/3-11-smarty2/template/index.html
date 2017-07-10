@@ -1,0 +1,73 @@
+{*include file='head.html'}
+{* css file='./template/css/public.css'}
+<!-- 创建了一个css的函数 -->
+
+<table border="1" cellpadding="" cellspacing="">
+<tr>
+	<th>id</th><th>content</th><th>操作</th>
+</tr>
+{* section loop=$rows name=n start=0 max=10 step=1 }
+	{* if $smarty.section.n.first}
+		<tr style="color:red;">
+			<td>{* $rows[n].asid }</td>
+			<td>{* $rows[n].content }</td>
+			<td><a href="">操作</a><a href="">删除</a></td>
+		</tr>
+	{*else}
+		<tr>
+			<td>{* $rows[n].asid }</td>
+			<td>{* $rows[n].content }</td>
+			<td><a href="">操作</a><a href="">删除</a></td>
+		</tr>
+	{*/if}
+{*/section}
+</table>
+
+<table border="1" cellpadding="" cellspacing="">
+<tr>
+	<th>id</th><th>content</th><th>操作</th>
+</tr>
+{* section loop=$rows name=n }
+	{* if $smarty.section.n.index<5 && $smarty.section.n.index>0}
+		<tr style="color:red;">
+			<td>{* $rows[n].asid }</td>
+			<td>{* $rows[n].content }</td>
+			<td><a href="">操作</a><a href="">删除</a></td>
+		</tr>
+	{*else}
+		<tr>
+			<td>{* $rows[n].asid }</td>
+			<td>{* $rows[n].content }</td>
+			<td><a href="">操作</a><a href="">删除</a></td>
+		</tr>
+	{*/if}
+{*/section}
+</table>
+<hr />
+	{* $words|truncate_w:3:''}
+	<!-- 自己创建的 自定义 变量调节器 名为truncate_w -->
+<hr />
+
+<table border="1" cellspacing="" cellpadding="">
+<tr>
+		<th>id</th><th>content</th><th>操作</th>
+</tr>
+{*arclist cid=1 rows=4}
+	<tr>
+		<td>[$field.asid]</td>
+		<td>[$field.content]</td>
+		<td><a href="">操作</a><a href="">删除</a></td>
+	</tr>
+{* /arclist}
+</table>
+
+<table border="1" cellpadding="" cellspacing="">
+<tr><th>用户名</th></tr>
+	{* foreach from=$userInfo key=k item=v}
+		<tr>
+			<td>{* $v.username}</td>
+		</tr>
+
+
+	{*/foreach}
+</table>

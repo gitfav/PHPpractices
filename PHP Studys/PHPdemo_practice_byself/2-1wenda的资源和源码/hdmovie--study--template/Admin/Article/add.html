@@ -1,0 +1,110 @@
+<html>
+	<head>
+		<title>添加文章</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/inc.css">
+		<hdjs/>
+		<style type="text/css">
+			.tag_name{
+				padding:10px;
+				background: black;
+				color:#fff;
+				border-radius: 10px;
+				font-weight: 700;
+				cursor: pointer;
+			}
+
+			#tag_box i{
+				background: #0070E1;
+				color:#fff;
+				padding:8px 24px 8px 12px;
+				border-radius: 10px;
+				position: relative;
+				margin-right: 10px;
+			}
+			#tag_box i em{
+				position: absolute;
+				top:7px;
+				right:6px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+
+		<form action="{|U:'Article/add'}" method="post" enctype="multipart/form-data">
+
+			<table class="table1 hd-form">
+				<tr>
+					<th class="w100">文章标题</th>
+					<td><input type="text" name="title" class="w400 h40"></td>
+				</tr>
+				<tr>
+					<th>栏目</th>
+					<td>
+						<select name="cid">
+							<foreach from="$category" value="$c">
+								<option value="{$c['cid']}">{$c['cname']}</option>
+							</foreach>
+						</select>	
+					</td>
+				</tr>
+				<tr>
+					<th>缩略图</th>
+					<td><input type="file" name="thumb" ></td>
+				</tr>
+				<tr>
+					<th>视频</th>
+					<td><input type="file" name="video" ></td>
+				</tr>
+				<tr>
+					<th>已选标签</th>
+					<td id="tag_box">
+						
+					</td>
+				</tr>	
+				<tr>
+					<th>标签</th>
+					<td>
+						<foreach from="$tag" value="$t">
+							<i class="tag_name" tid="{$t['tid']}">{$t['tname']}</i>
+						</foreach>
+					</td>
+					
+				</tr>
+				<script type="text/javascript">
+					$(function(){
+						$('.tag_name').live('click',function(){
+							var chosed = $(this).attr('chosed');
+							if(!chosed){
+								var text = $(this).html();
+								var tid = $(this).attr('tid');
+								var html = '<i>'+text+' <em>x</em><input type="hidden" name="tid[]" value="'+tid+'"></i>';
+								$('#tag_box').prepend(html);
+								$(this).attr('chosed',1);
+							}
+						})
+
+						$('#tag_box i em').live('click',function(){
+							var tid = $(this).parent().find('input').val();
+							$("i[tid='"+tid+"']").removeAttr('chosed');
+							$(this).parent().remove();
+						})
+
+					})
+				</script>
+				<tr>
+					<th>内容</th>
+					<td>
+						<ueditor name="content"/>
+					</td>	
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+						<input type="submit" value="保存" class="btn bgblack">
+					</td>	
+				</tr>			
+			</table>
+		</form>
+	</body>
+</html>

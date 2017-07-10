@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>UploadiFive Test</title>
+<script src="<?php echo A_PUBLIC; ?>/uploadify/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="<?php echo A_PUBLIC; ?>/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo A_PUBLIC; ?>/uploadify/uploadify.css">
+<style type="text/css">
+body {
+	font: 13px Arial, Helvetica, Sans-serif;
+}
+.temp{
+	font-family: '微软雅黑','黑体','宋体';
+	font-size: 24px;
+	text-align: center;
+}
+.head{
+	width: 900px;
+	margin: auto;
+	position: relative;
+	height: 300px;
+}
+.head .left{
+	padding-top: 20px;
+	width:50%;
+	float: left;
+}
+.show_img{
+	width: 120px;
+	margin: auto;
+	text-align: center;
+	font-family: '微软雅黑','黑体','宋体';
+}
+.re_up{
+	width: 100px;
+	margin: auto;
+	
+	padding-top: 20px;
+}
+.start{
+	text-align: center;
+	text-decoration: none;
+	font-family: '微软雅黑','黑体','宋体';
+	color: black;
+	display: inline-block;
+	border-radius: 5px;
+	width:50px;
+	height: 16px;
+	border: 2px #E8E8E8 solid;
+}
+.start:hover{
+	background: #DEDEDE;
+}
+
+</style>
+</head>
+
+<body>
+	<div class="temp" width="900px">
+		<span><?php echo $temp['te_name'].'('.$temp['te_e_name'].')'; ?></span>
+	</div>
+	<div class="head">
+		<div class="left">
+			<!-- 图片展示区 -->
+			<div class="show_img">
+			<?php if ($temp['f_coach']!='') { ?>
+				<img class="img1" width="120px" height="80px" src="<?php echo A_PUBLIC.'/Images/T_coach/'.$temp['f_coach']; ?>" alt="">
+			<?php }else{ ?>
+				<img class="img1"  width="120px" height="80px" src="" alt="">
+			<?php } ?>
+				<span>教练照片区（120*80）</span>
+			</div>
+			<!-- 点击上传区 -->
+			<div class="re_up">
+				<form>
+				<div id="queue"></div>
+				<input id="file_upload" name="file_upload" type="file" multiple="true">
+				</form>
+				<a href="javascript:void(0)" class="start1 start">开始</a>
+			</div>
+		</div>
+
+
+		<div class="left">
+			<!-- 图片展示区 -->
+			<div class="show_img">
+			<?php if ($temp['f_coach']!='') { ?>
+				<img class="img2"  width="120px" height="120px" src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$temp['te_logo']; ?>" alt="">
+			<?php }else{ ?>
+				<img class="img2"  width="120px" height="150px" src="" alt="">
+			<?php } ?>
+				<span>球队logo（120*120）</span>	
+			</div>
+			<!-- 点击上传区 -->
+			<div class="re_up">
+				<form>
+				<div id="queue"></div>
+				<input id="file_upload2" name="file_upload2" type="file" multiple="true">
+				</form>
+				<a href="javascript:void(0)" class="start2 start">开始</a>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- <div class="show"></div> -->
+<!-- 	<img src="./uploads/1.jpg" alt=""> -->
+	<script type="text/javascript">
+		<?php $timestamp = time();?>
+		$(function() {
+			//教练头像
+			$('#file_upload').uploadify({
+				'formData'     : {
+					'timestamp' : '<?php echo $timestamp;?>',
+					'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+				},
+				'swf'      : '<?php echo A_PUBLIC; ?>/uploadify/uploadify.swf',
+				'uploader' : '<?php echo A_PUBLIC; ?>/uploadify/uploadify.php',
+				'auto' : false,//是否自动上传
+				'buttonText' : '重新上传头像',//改变按钮文字
+				'multi' : false,//允许同时上传多张图片
+				'width' : '100',
+				'height' : '25',
+				'cancelImg': './uploadify-cancel.png',
+				'onUploadSuccess' : function(file,data,response){
+					// html="<p><img src='"+data+"'></p>";//data为后台调来的图片路径
+					// $('.show').append(html);
+					// alert(data);
+					$('.img1').attr('src', '<?php echo A_PUBLIC; ?>/Images/T_coach/'+data);
+					$.ajax({
+						url: "<?php echo site_url('admin_/temp_list/img_ajax'); ?>/<?php echo $temp['teid']; ?>",
+						data: {f_coach: data},
+						type: 'POST',
+						dataType: 'json',
+					})	
+				}
+			});
+			//球队logo图像
+			$('#file_upload2').uploadify({
+				'formData'     : {
+					'timestamp' : '<?php echo $timestamp;?>',
+					'token'     : '<?php echo md5('unique_salt' . $timestamp);?>'
+				},
+				'swf'      : '<?php echo A_PUBLIC; ?>/uploadify/uploadify.swf',
+				'uploader' : '<?php echo A_PUBLIC; ?>/uploadify/uploadify2.php',
+				'auto' : false,//是否自动上传
+				'buttonText' : '重新上传logo',//改变按钮文字
+				'multi' : false,//允许同时上传多张图片
+				'width' : '100',
+				'height' : '25',
+				'cancelImg': './uploadify-cancel.png',
+				'onUploadSuccess' : function(file,data,response){
+					$('.img2').attr('src', '<?php echo A_PUBLIC; ?>/Images/temp_logo/'+data);
+					$.ajax({
+						url: "<?php echo site_url('admin_/temp_list/img_ajax'); ?>/<?php echo $temp['teid']; ?>",
+						data: {te_logo: data},
+						type: 'POST',
+						dataType: 'json',
+					})
+				}
+			});
+
+
+		});
+		$('.start1').click(function() {
+			$('#file_upload').uploadify('upload','*');
+		});
+		$('.start2').click(function() {
+			$('#file_upload2').uploadify('upload','*');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+
+	<!-- 赛程表 -->
+	<div class="race-times">
+		<div class="days yesterday">
+			<div class="list-hd">
+			<?php $all_s=count($agende['yesdayD']); ?><!--  -->
+				<h2 class="day">昨日</h2><span class="time"><?php echo $yesdayD ?></span><?php if ($all_s>2) { ?><i class="down"></i><?php } ?><span class="more-btn"><span class="match-count"><?php echo $all_s; ?></span>场</span>
+				<?php if ($all_s>2) { ?>
+				<div class="match-list" style="display:none;">
+					<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+					<?php foreach ($agende['yesdayD'] as $k => $v) { ?>
+						<tr>
+							<td class="col-1"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['h_id']; ?>"><?php echo $v['temp_home']; ?></a></td>
+							<td class="col-2">
+							<p class="img">
+							<?php if ($v['end']=='N') { ?>
+								<span>未赛</span></p><p class="text"><span><?php echo $v['rtime']; ?></span>
+							<?php }else{ ?>
+								<span>已结束</span></p><p class="text"><span><?php echo $v['h_score']; ?>-<?php echo $v['v_score']; ?></span>
+							<?php } ?>
+							</p>
+							</td>
+							<td class="col-3"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['v_id']; ?>"><?php echo $v['temp_visit']; ?></a></td>
+						</tr>	
+					<?php } ?>
+					</table>
+				</div>
+				<?php } ?>
+			</div>
+			<div class="list">
+				<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+				<?php if (!empty($agende['yesdayD'])) { ?>
+				<?php if ($all_s>=2) {
+					$a=2;
+				}else{
+					$a=1;
+				} ?>
+				<?php for ($i=0; $i < $a; $i++) { ?>
+					<tr>
+						<td class="col-1">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['yesdayD'][$i]['h_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['yesdayD'][$i]['h_logo'] ?>" alt="" />
+								<p><?php echo $agende['yesdayD'][$i]['temp_home']; ?></p>
+							</a>
+						</td>
+						<td class="col-2">
+							<p class="img">
+							<?php if ($agende['yesdayD'][$i]['end']=='N') { ?><span>未赛</span></p><p class="text"><span><?php echo $agende['yesdayD'][$i]['rtime'] ?></span>
+							<?php } else{ ?><span>比赛结束</span></p><p class="text"><span><?php echo $agende['yesdayD'][$i]['h_score']; ?>-<?php echo $agende['yesdayD'][$i]['v_score']; ?></span>
+							<?php } ?>
+							</p>
+						</td>
+						<td class="col-3">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['yesdayD'][$i]['v_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['yesdayD'][$i]['v_logo'] ?>" alt="" />
+								<p><?php echo $agende['yesdayD'][$i]['temp_visit']; ?></p>
+							</a>
+						</td>
+					</tr>
+				<?php } ?>
+				<?php }else{ ?>
+					<p style="line-height:100px;text-align:center;font-family: '微软雅黑';">昨天无比赛</p>
+				<?php } ?>
+				</table>
+			</div>
+		</div>
+
+		<div class="days today">
+			<div class="list-hd">
+			<?php $all_s=count($agende['todayD']); ?>
+				<h2 class="day">今日</h2><span class="time"><?php echo $todayD ?></span><?php if ($all_s>2) { ?><i class="down"></i><?php } ?><span class="more-btn"><span class="match-count"><?php echo $all_s; ?></span>场</span>
+				<?php if ($all_s>2) { ?>
+				<div class="match-list" style="display:none;">
+					<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+					<?php foreach ($agende['todayD'] as $k => $v) { ?>
+						<tr>
+							<td class="col-1"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['h_id']; ?>"><?php echo $v['temp_home']; ?></a></td>
+							<td class="col-2">
+							<p class="img">
+							<?php if ($v['end']=='N') { ?>
+								<span>未赛</span></p><p class="text"><span><?php echo $v['rtime']; ?></span>
+							<?php }else{ ?>
+								<span>已结束</span></p><p class="text"><span><?php echo $v['h_score']; ?>-<?php echo $v['v_score']; ?></span>
+							<?php } ?>
+							</p></td>
+							<td class="col-3"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['v_id']; ?>"><?php echo $v['temp_visit']; ?></a></td>
+						</tr>	
+					<?php } ?>
+					</table>
+				</div>
+				<?php } ?>
+			</div>
+			<div class="list">
+				<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+				<?php if (!empty($agende['todayD'])) { ?>
+				<?php if ($all_s>=2) {
+					$a=2;
+				}else{
+					$a=1;
+				} ?>
+				<?php for ($i=0; $i < $a; $i++) { ?>
+					<tr>
+						<td class="col-1">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['todayD'][$i]['h_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['todayD'][$i]['h_logo'] ?>" alt="" />
+								<p><?php echo $agende['todayD'][$i]['temp_home']; ?></p>
+							</a>
+						</td>
+						<td class="col-2">
+							<p class="img">
+							<?php if ($agende['todayD'][$i]['end']=='N') { ?><span>未赛</span></p><p class="text"><span><?php echo $agende['todayD'][$i]['rtime'] ?></span>
+							<?php } else{ ?><span>已结束</span></p><p class="text"><span><?php echo $agende['todayD'][$i]['h_score']; ?>-<?php echo $agende['todayD'][$i]['v_score']; ?></span>
+							<?php } ?>
+							</p>
+						</td>
+						<td class="col-3">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['todayD'][$i]['v_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['todayD'][$i]['v_logo'] ?>" alt="" />
+								<p><?php echo $agende['todayD'][$i]['temp_visit']; ?></p>
+							</a>
+						</td>
+					</tr>
+				<?php } ?>
+				<?php }else{ ?>
+					<p style="line-height:100px;text-align:center;font-family: '微软雅黑';">今日无比赛</p>
+				<?php } ?>
+				</table>
+			</div>
+		</div>
+
+		<div class="days tommer">
+			<div class="list-hd">
+			<?php $all_s=count($agende['trodayD']); ?>
+				<h2 class="day">明日</h2><span class="time"><?php echo $trodayD ?></span><?php if ($all_s>2) { ?><i class="down"></i><?php } ?><span class="more-btn"><span class="match-count"><?php echo $all_s; ?></span>场</span>
+				<?php if ($all_s>2) { ?>
+				<div class="match-list" style="display:none;">
+					<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+					<?php foreach ($agende['trodayD'] as $k => $v) { ?>
+						<tr>
+							<td class="col-1"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['h_id']; ?>"><?php echo $v['temp_home']; ?></a></td>
+							<td class="col-2">
+							<p class="img">
+							<?php if ($v['end']=='N') { ?>
+								<span>未赛</span></p><p class="text"><span><?php echo $v['rtime']; ?></span>
+							<?php }else{ ?>
+								<span>已结束</span></p><p class="text"><span><?php echo $v['h_score']; ?>-<?php echo $v['v_score']; ?></span>
+							<?php } ?>
+							</p></td>
+							<td class="col-3"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['v_id']; ?>"><?php echo $v['temp_visit']; ?></a></td>
+						</tr>	
+					<?php } ?>
+					</table>
+				</div>
+				<?php } ?>
+			</div>
+			<div class="list">
+				<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+				<?php if (!empty($agende['trodayD'])) { ?>
+				<?php if ($all_s>=2) {
+					$a=2;
+				}else{
+					$a=1;
+				} ?>
+				<?php for ($i=0; $i < $a; $i++) { ?>
+					<tr>
+						<td class="col-1">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['trodayD'][$i]['h_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['trodayD'][$i]['h_logo'] ?>" alt="" />
+								<p><?php echo $agende['trodayD'][$i]['temp_home']; ?></p>
+							</a>
+						</td>
+						<td class="col-2">
+							<p class="img">
+							<?php if ($agende['trodayD'][$i]['end']=='N') { ?><span>未赛</span></p><p class="text"><span><?php echo $agende['trodayD'][$i]['rtime'] ?></span>
+							<?php } else{ ?><span>已结束</span></p><p class="text"><span><?php echo $agende['trodayD'][$i]['h_score']; ?>-<?php echo $agende['trodayD'][$i]['v_score']; ?></span>
+							<?php } ?>
+							</p>
+						</td>
+						<td class="col-3">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['trodayD'][$i]['v_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['trodayD'][$i]['v_logo'] ?>" alt="" />
+								<p><?php echo $agende['trodayD'][$i]['temp_visit']; ?></p>
+							</a>
+						</td>
+					</tr>
+				<?php } ?>
+				<?php }else{ ?>
+					<p style="line-height:100px;text-align:center;font-family: '微软雅黑';">明天无比赛</p>
+				<?php } ?>
+				</table>
+			</div>
+		</div>
+
+		<div class="days foreshow">
+			<div class="list-hd">
+			<?php $all_s=count($agende['btrodayD']); ?>
+				<h2 class="day">后日</h2><span class="time"><?php echo $btrodayD ?></span><?php if ($all_s>2) { ?><i class="down"></i><?php } ?><span class="more-btn"><span class="match-count"><?php echo $all_s; ?></span>场</span>
+				<?php if ($all_s>2) { ?>
+				<div class="match-list" style="display:none;">
+					<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+					<?php foreach ($agende['btrodayD'] as $k => $v) { ?>
+						<tr>
+							<td class="col-1"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['h_id']; ?>"><?php echo $v['temp_home']; ?></a></td>
+							<td class="col-2">
+							<p class="img">
+							<?php if ($v['end']=='N') { ?>
+								<span>未赛</span></p><p class="text"><span><?php echo $v['rtime']; ?></span>
+							<?php }else{ ?>
+								<span>已结束</span></p><p class="text"><span><?php echo $v['h_score']; ?>-<?php echo $v['v_score']; ?></span>
+							<?php } ?>
+							</p></td>
+							<td class="col-3"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['v_id']; ?>"><?php echo $v['temp_visit']; ?></a></td>
+						</tr>	
+					<?php } ?>
+					</table>
+				</div>
+				<?php } ?>
+			</div>
+			<div class="list">
+				<table width="100%" title="9" border="0" cellspacing="0" cellspacing="0">
+				<?php if (!empty($agende['btrodayD'])) { ?>
+				<?php if ($all_s>=2) {
+					$a=2;
+				}else{
+					$a=1;
+				} ?>
+				<?php for ($i=0; $i < $a; $i++) { ?>
+					<tr>
+						<td class="col-1">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['btrodayD'][$i]['h_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['btrodayD'][$i]['h_logo'] ?>" alt="" />
+								<p><?php echo $agende['btrodayD'][$i]['temp_home']; ?></p>
+							</a>
+						</td>
+						<td class="col-2">
+							<p class="img">
+							<?php if ($agende['btrodayD'][$i]['end']=='N') { ?><span>未赛</span></p><p class="text"><span><?php echo $agende['btrodayD'][$i]['rtime'] ?></span>
+							<?php } else{ ?><span>已结束</span></p><p class="text"><span><?php echo $agende['btrodayD'][$i]['h_score']; ?>-<?php echo $agende['btrodayD'][$i]['v_score']; ?></span>
+							<?php } ?>
+							</p>
+						</td>
+						<td class="col-3">
+							<a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$agende['btrodayD'][$i]['v_id']; ?>">
+								<img src="<?php echo A_PUBLIC.'/Images/temp_logo/'.$agende['btrodayD'][$i]['v_logo'] ?>" alt="" />
+								<p><?php echo $agende['btrodayD'][$i]['temp_visit']; ?></p>
+							</a>
+						</td>
+					</tr>
+				<?php } ?>
+				<?php }else{ ?>
+					<p style="line-height:100px;text-align:center;font-family: '微软雅黑';">后天无比赛</p>
+				<?php } ?>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!--新闻与滚动条-->
+	<div class="news">
+		<!-- 滚动条 -->
+		<div class="sroll">
+			<div class="imgs">
+			<?php foreach ($news_head as $k => $v) { ?>
+				<div class="big">
+					<a target="_blank" href="<?php echo site_url('index_/news/index').'/'.$v['newid']; ?>">
+						<img src="<?php echo A_PUBLIC.'/Images/new/'.$v["new_image"]; ?>" alt="" />
+					</a>
+					<h2 class="text"><a target="_blank" href="<?php echo site_url('index_/news/index').'/'.$v['newid']; ?>"><?php echo $v['new_title']; ?></a></h2>
+				</div>
+			<?php } ?>
+				<div class="big img-six">
+					<a target="_blank" href="http://qiaodan.com/">
+						<img src="<?php echo I_PUBLIC; ?>/Images/sroll/116501608.jpg" alt="" />
+					</a>
+					<h2 class="text"><a target="_blank" href="http://qiaodan.com/">一起散步，就是最好的约会</a></h2>
+				</div>
+			</div>
+			<div class="under-text">
+				<div class="where left">
+					<a href="javascript:void(0);"><img src="<?php echo I_PUBLIC; ?>/images/0905_lqf_chinanba_scrollPicPrev.png" alt="" /></a>
+				</div>
+				<div class="yuans">
+					<div class="items">
+						<span class="dotItemOn"></span>
+						<span class="dotItem"></span>
+						<span class="dotItem"></span>
+						<span class="dotItem"></span>
+						<span class="dotItem"></span>
+						<span class="dotItem"></span>
+					</div>
+				</div>
+				<div class="where right">
+					<a href="javascript:void(0);"><img src="<?php echo I_PUBLIC; ?>/images/0905_lqf_chinanba_scrollPicNext.png" alt="" /></a>
+				</div>
+			</div>
+		</div>
+		<!-- 新闻 -->
+		<div class="img-news">
+			<!-- 标题 -->
+			<div class="title">
+				<h2><a href="">NBA要闻</a></h2>
+				<h4><a href="">14-15赛季直播表 </a></h4>
+			</div>
+			<ul class="texts">
+			<?php foreach ($news as $k => $v) { ?>
+				<li>
+					<a target="_blank" href="<?php echo site_url('index_/news/index').'/'.$v['newid']; ?>"><?php echo $v['new_title']; ?></a>
+					<!-- <a href="">哈登34+7+7罚球准绝杀快船</a> -->
+				</li>
+			<?php } ?>
+			</ul>
+		</div>
+	</div>
+
+	<!-- 广告栏 -->
+	<div class="guangao">
+		<div class="guangao_one"><a href=""><img src="<?php echo I_PUBLIC; ?>/images/guanggao/596352_nbakids.jpg" alt="" /></a></div>
+		<div class="guangao_two"><a href=""><img src="<?php echo I_PUBLIC; ?>/images/guanggao/596686_728x90.jpg" alt="" /></a></div>
+	</div>
+
+	<!-- 数据专区 -->
+	<div class="datas">
+		<!-- 今日排名 -->
+		<div class="today-data" id="today-data">
+			<div class="lists">
+				<span class="table-on">得分</span>
+				<span class="table">篮板</span>
+				<span class="table">助攻</span>
+				<span class="table">盖帽</span>
+				<span class="table">抢断</span>
+			</div>
+			<div class="paiming"><h3>今日排名</h3></div>
+			<?php if (!empty($today_data)) { ?>
+			<?php foreach ($today_data as $k => $v) { ?>
+			<div class="tab_item" style="<?php if ($k!='max_score') {echo('display:none;');} ?>">
+				<table border="0" cellspacing="0" cellpadding="0">
+				<?php foreach ($v as $k_ => $v_) { ?>
+					<tr class="<?php if ($k_==0) {echo 'cur';} ?>">
+						<td class="col-1" width="10%"><?php echo $k_+1 ?></td>
+						<td width="40%">
+							<a href="">
+								<img src="<?php echo A_PUBLIC.'/'.'Images/sporter_face/'.$v_['face'] ?>" alt="" />
+								<p><?php echo $v_['sp_name'] ?></p>
+							</a>
+						</td>
+						<td width="25%">
+							<?php if ($k=='max_score') {
+								echo $v_['sp_score'];
+							}elseif ($k=='max_be') {
+								echo $v_['sp_be_re']+$v_['sp_be_af'];
+							}elseif ($k=='max_assist') {
+								echo $v_['sp_assist'];
+							}elseif ($k=='max_block') {
+								echo $v_['sp_block'];
+							}else{
+								echo $v_['sp_steal'];
+							} ?>
+						</td>
+						<td width="25%"><a href=""><?php echo $v_['sp_temp']; ?></a></td>
+					</tr>
+				<?php } ?>
+				</table>
+			</div>
+			<?php } ?>
+			<?php } ?>
+		</div>
+		<!-- 赛季排名 -->
+		<div class="season-data today-data" id="season-data">
+			<div class="lists">
+				<span class="table-on">得分</span>
+				<span class="table">篮板</span>
+				<span class="table">助攻</span>
+				<span class="table">盖帽</span>
+				<span class="table">抢断</span>
+			</div>
+			<div class="paiming"><h3>赛季排名</h3></div>
+			<?php if (!empty($season_data)) { ?>
+			<?php foreach ($season_data as $k => $v) { ?>
+			<div class="tab_item" style="<?php if ($k!='max_score') {echo('display:none;');} ?>">
+				<table border="0" cellspacing="0" cellpadding="0">
+				<?php foreach ($v as $k_ => $v_) { ?>
+					<tr class="<?php if ($k_==0) {echo 'cur';} ?>">
+						<td class="col-1" width="10%"><?php echo $k_+1 ?></td>
+						<td width="40%">
+							<a href="">
+								<img src="<?php echo A_PUBLIC.'/'.'Images/sporter_face/'.$v_['face'] ?>" alt="" />
+								<p><?php echo $v_['sp_name'] ?></p>
+							</a>
+						</td>
+						<td width="25%">
+							<?php if ($k=='max_score') {
+								echo round($v_['sp_score']/$v_['sp_appear'],1);
+							}elseif ($k=='max_be') {
+								echo round(($v_['sp_be_re']+$v_['sp_be_af'])/$v_['sp_appear'],1);
+							}elseif ($k=='max_assist') {
+								echo round($v_['sp_assist']/$v_['sp_appear'],1);
+							}elseif ($k=='max_block') {
+								echo round($v_['sp_block']/$v_['sp_appear'],1);
+							}else{
+								echo round($v_['sp_steal']/$v_['sp_appear'],1);
+							} ?>
+						</td>
+						<td width="25%"><a href=""><?php echo $v_['sp_temp']; ?></a></td>
+					</tr>
+				<?php } ?>
+				</table>
+			</div>
+			<?php } ?>
+			<?php } ?>
+		</div>
+		<!-- 赛季球队统计 -->
+		<div class="ranking">
+			<p class="text">nba排名</p>
+			<div class="e-w">
+				<div class="on">西部</div>
+				<div class="">东部</div>
+			</div>
+			<div class="sore">
+				<table class="tb" border="0" cellpadding="0" cellspacing="0">
+					<tr class="head">
+						<td width="10%"></td>
+						<td width="30%"></td>
+						<td width="10%">胜</td>
+						<td width="10%">负</td>
+						<td width="20%">胜率</td>
+						<td width="20%">胜差</td>
+					</tr>
+					<?php foreach ($west_temp as $k => $v) { ?>
+					<tr class="<?php if (($k+1)%2==0) {echo 'tempon';}else{echo 'temp';} ?>">
+						<td><?php echo $k+1; ?></td>
+						<td class="a"><?php echo $v['te_name']; ?></td>
+						<td><?php echo $v['win']; ?></td>
+						<td><?php echo $v['lose']; ?></td>
+						<td><?php if ($v['num']!=0) {echo round($v['win']/($v['num']),3);}else{echo 0.000;} ?></td>
+						<td width="20%"><?php echo (($west_temp[0]['win']-$v['win'])-($west_temp[0]['lose']-$v['lose']))/2 ?></td>
+					</tr>
+					<?php } ?>
+				</table>
+			</div>
+			<div class="sore" style="display:none;">
+				<table class="tb" border="0" cellpadding="0" cellspacing="0">
+					<tr class="head">
+						<td width="10%"></td>
+						<td width="30%"></td>
+						<td width="10%">胜</td>
+						<td width="10%">负</td>
+						<td width="20%">胜率</td>
+						<td width="20%">胜差</td>
+					</tr>
+					<?php foreach ($east_temp as $k => $v) { ?>
+					<tr class="<?php if (($k+1)%2==0) {echo 'tempon';}else{echo 'temp';} ?>">
+						<td><?php echo $k+1; ?></td>
+						<td class="a"><?php echo $v['te_name']; ?></td>
+						<td><?php echo $v['win']; ?></td>
+						<td><?php echo $v['lose']; ?></td>
+						<td><?php if ($v['num']!=0) {echo round($v['win']/($v['num']),3);}else{echo 0.000;} ?></td>
+						<td width="20%"><?php echo (($east_temp[0]['win']-$v['win'])-($east_temp[0]['lose']-$v['lose']))/2 ?></td>
+					</tr>
+					<?php } ?>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- nba相关联系 -->
+	<div class="rel">
+		<div class="text">NBA微信</div>
+		<div class="imgs">
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344985.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>NBA微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344984.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>腾讯NBA微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344990.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>鱼乐NBA微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344986.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>于嘉微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344989.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>苏群微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344988.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>杨毅微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+</body>
+</html>

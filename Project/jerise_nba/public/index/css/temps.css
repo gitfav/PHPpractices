@@ -1,0 +1,544 @@
+/*总体设置*/
+*{
+	padding: 0px;
+	margin: 0px;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: 0px;
+}
+body{
+	background: #949494;
+}
+
+.wrapper{
+	width: 1000px;
+	/*height: 2000px;*/
+	/*border: 1px solid red;*/
+	margin: auto;
+	position: relative;
+}
+.wrapper .header{
+	width: 1000px;
+	margin-top: 10px;
+}
+/*logo 登录 统计*/
+/*logo与字体*/
+.wrapper .header .header-top{
+	width: 1000px;
+	height: 87px;
+	position: relative;
+	background: #0067af;
+}
+.wrapper .header .header-top .logo{
+	width: 313px;
+	height: 87px;
+	position: absolute;
+	float: left;
+}
+.wrapper .header .header-top .logo .img-logo{
+	width: 46px;
+	height: 102px;
+	position: absolute;
+	left: 20px;
+	top: 10px;
+	background: url(../images/0826_lqf_chinanba_imageLogo.png);
+}
+.wrapper .header .header-top .logo .text-logo{
+	width: 225px;
+	height: 57px;
+	margin-left: 88px;
+	padding-top: 20px;
+	float: left;
+}
+.wrapper .header .header-top .logo .text-logo a{
+	color: #ffffff;
+	font-family: "Arial",​"Microsoft YaHei",​"微软雅黑",​"SimSun",​"宋体";
+	font-size: 30px;
+	font-style: italic;
+	font-weight: bolder;
+}
+/*登录与注册*/
+.wrapper .header .header-top .register{
+	position: relative;
+	float: right;
+	margin-top:5px; 
+}
+.wrapper .header .header-top .register div{
+	float: right;
+	padding-right: 10px;
+}
+.wrapper .header .header-top .register div a{
+	color: #b7dcf9;
+	font-weight: 700px;
+	font-family: "微软雅黑","黑体";
+	font-size: 14px;
+}
+.wrapper .header .header-top .register .geli{
+	border-right: 1px solid #007bc5;
+	border-left: 1px solid #005b9a;
+	width: 0px;
+	height: 14px;
+	margin: 3px 10px 0px 0px;
+	padding-right: 0px;
+}
+
+/*标签选项 */
+.wrapper .header .header-bottom{
+	width: 912px;
+	height: 40px;
+	padding-left: 88px;
+	background: #064982;
+}
+.wrapper .header .header-bottom .header-bottom-ul{
+	position: relative;
+	line-height: 40px;
+	width: 912px;
+	height: 40px;
+}
+.wrapper .header .header-bottom .header-bottom-ul li{
+	float: left;
+	text-align: center;
+	width: 76px;
+	height: 40px;
+}
+.wrapper .header .header-bottom .header-bottom-ul li a{
+	color: #ffffff;
+	font-family: "微软雅黑";
+}
+.wrapper .header .header-bottom .header-bottom-ul li .reseach{
+	width: 76px;
+	height: 40px;
+	display: block;
+	background: url(../images/0911_lqf_chinanba_indexIcons.gif) no-repeat -350px -130px;
+}
+
+/*球队选项*/
+.wrapper .header .header-bottom .header-bottom-ul li .temps{
+	position: absolute;
+	width: 1000px;
+	height: 300px;
+	left: -88px;
+	top: 40px;
+	z-index: 10;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .temps .temps-core{
+	width: 500px;
+	height: 100px;
+	position: relative;
+	float: left;
+	border-top: 1px solid #236cd6;
+	margin-top: -1px;
+	background: #ffffff;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .temps .temps-core .title{
+	float: left;
+	background: #0067af;
+	width: 66px;
+	height: 60px;
+	color: #ffffff;
+	line-height: 12px;
+	font-size: 12px;
+	padding-top: 40px;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .temps .temps-core .img{
+	float: left;
+	position: relative;
+	width: 425px;
+	height: 100px;
+	margin: 0px 4px 0px 5px;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .temps .temps-core .img a{
+	float: left;
+	width: 85px;
+	height: 85px;
+	padding-top:15px; 
+	color: #000000;
+	font-family: '黑体';
+	font-size: 13px;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .temps .temps-core .img a:hover{
+	color: red;
+}
+
+/*赛程、球员选项、排名、统计*/
+.wrapper .header .header-bottom .header-bottom-ul li .menue div a{
+	color: #000000;
+	font-size: 14px;
+	font-family: '微软雅黑';
+	float: left;
+	width: 84px;
+	height: 30px;
+	line-height: 30px;
+	border-bottom:1px solid #808080; 
+	border-right: 1px solid #808080;
+	border-left: 1px solid #808080;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .sporter{
+	position: absolute;
+	width: 86px;
+	height: 62px;
+	background: #ffffff;
+	top: 40px;
+	z-index: 10;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .sporter a:hover{
+	background: #DCDCDC;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .paiming{
+	position: absolute;
+	width: 86px;
+	height: 62px;
+	background: #ffffff;
+	top: 40px;
+	z-index: 10;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .paiming a:hover{
+	background: #DCDCDC;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .times{
+	position: absolute;
+	width: 86px;
+	height: 93px;
+	background: #ffffff;
+	top: 40px;
+	z-index: 10;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .times a:hover{
+	background: #DCDCDC;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .total{
+	position: absolute;
+	width: 86px;
+	height: 93px;
+	background: #ffffff;
+	top: 40px;
+	z-index: 10;
+}
+.wrapper .header .header-bottom .header-bottom-ul li .total a:hover{
+	background: #DCDCDC;
+}
+
+/*登入表单*/
+.login{
+	width: 400px;
+	z-index: 20;
+	top: 100px;
+	left: 500px;
+	background: #0067af;
+	box-shadow: 0px 0px 8px #888888;
+	position: fixed;
+}
+.login .center{
+	width: 340px;
+	padding: 20px 30px;
+}
+.login .center .in{
+	border: 0px;
+	width: 330px;
+	height: 30px;
+	margin: 5px 0px;
+	padding: 3px 5px;
+	font-size: 16px;
+	font-family: '微软雅黑';
+	color: #888888;
+}
+.login .center .in:focus{
+	border: 0px;
+	width: 330px;
+	height: 30px;
+	margin: 5px 0px;
+	padding: 3px 5px;
+	font-size: 16px;
+	font-family: '微软雅黑';
+	color: #888888;
+	box-shadow: 0px 0px 6px #b5f0ef;
+}
+.login .center .li{
+	width: 330px;
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	font-size: 16px;
+	font-family: '微软雅黑';
+}
+.login .center .li a{
+	margin-left: 55px;
+	color: #fff;
+}
+.login .center .li a:hover{
+	text-decoration: underline;
+}
+.login .center .log{
+	margin-top: 10px;
+	width: 150px;
+	height: 40px;
+	background: #fff;
+	border: 0px;
+	font-family: '微软雅黑';
+	font-size: 18px;
+	font-weight: 500;
+	color: #0067af;
+}
+.login .center .log:hover{
+	background: #064982;
+	color: #fff;
+	cursor: pointer;
+}
+.login .center .log:active{
+	background: #064982;
+	color: #fff;
+	border: 1px solid #fff;
+}
+.login .center .close{
+	width: 340px;
+	height: 20px;
+	background: #fff;
+	text-align: center;
+	line-height: 20px;
+	font-weight: 600;
+	margin-top: 10px;
+	font-size: 12px;
+}
+.login .center .close:hover{
+	background: #064982;
+	color: #fff;
+	cursor: pointer;
+}
+.login .center .close:active{
+	width: 338px;
+	height: 18px;
+	background: #064982;
+	color: #fff;
+	border: 1px solid #fff;
+}
+
+/*球队相关信息*/
+.wrapper .temp-all{
+	position: relative;
+	float: left;
+	/*display: inline-block;*/
+	width: 1000px;
+	margin-top: 10px;
+	background: #0067af;
+}
+/*左边栏*/
+.temp-all .left{
+	float: left;
+	width: 750px;
+}
+.temp-all .left .names{
+	width: 735px;
+	height: 30px;
+	border: 5px solid #0067af;
+	padding-left: 5px;
+	background: #fff;
+	color: #064982;
+	font-weight: 600;
+	line-height: 30px;
+	font-size: 16px;
+}
+.temp-all .left .interv{
+	width: 741px;
+	border-left: 5px solid #0067af;
+	border-right: 4px solid #0067af;
+	border-bottom: 25px solid #0067af;
+	background: #fff;
+}
+.temp-all .left .interv table{
+	width: 741px;
+}
+.temp-all .left .interv table tr td{
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 14px;
+	color: #064982;
+	font-weight: 600;
+	border-bottom: 1px solid #0067af;
+	border-right: 1px solid #0067af;
+}
+.temp-all .left .battle{
+	width: 740px;
+	border-left: 5px solid #0067af;
+	border-right: 5px solid #0067af;
+	border-bottom: 25px solid #0067af;
+	background: #fff;
+}
+.temp-all .left .top{
+	position: relative;
+	width: 740px;
+	height: 20px;
+	border-bottom: 1px solid #0067af;
+}
+.temp-all .left .top .l{
+	float: left;
+}
+.temp-all .left .top .r{
+	float: right;
+}
+.temp-all .left .top div{
+	line-height: 20px;
+	font-size: 14px;
+	color: #064982;
+	font-weight: 800;
+}
+.temp-all .left .top a{
+	line-height: 20px;
+	font-size: 14px;
+	color: #064982;
+	font-weight: 800;
+}
+.temp-all .left .battle .pe{
+	width: 741px;
+}
+.temp-all .left .battle .pe .pe-ta{
+	width: 741px;
+}
+.temp-all .left .battle .pe .pe-ta .ts td{
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #fff;
+	border-right: 1px solid #0067af;
+	border-bottom: 1px solid #0067af;
+	background: #064982;
+}
+.temp-all .left .battle .pe .pe-ta .t1 td{
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #064982;
+	border-right: 1px solid #0067af;
+	border-bottom: 1px solid #0067af;
+}
+.temp-all .left .battle .pe .pe-ta .t2 td{
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #064982;
+	border-right: 1px solid #0067af;
+	border-bottom: 1px solid #0067af;
+	background: #F0FFFF;
+}
+.temp-all .left .battle .pe .pe-ta .t3 td{
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #fff;
+	border-right: 1px solid #0067af;
+	border-bottom: 1px solid #0067af;
+	background: #6495ED;
+}
+.temp-all .left .battle .pe .pe-ta .t1 td a{
+	color: #064982;
+}
+.temp-all .left .battle .pe .pe-ta .t2 td a{
+	color: #064982;
+}
+.temp-all .left .battle .pe .pe-ta .t3 td a{
+	color: #fff;
+}
+/*球队新闻*/
+.temp-all .temp-news{
+	width: 740px;
+	border-left: 5px solid #0067af;
+	border-right: 5px solid #0067af;
+	border-bottom: 25px solid #0067af;
+	background: #fff;
+}
+.temp-all .temp-news .texts{
+	width: 735px;
+	padding-left: 10px;
+}
+.temp-all .temp-news .texts a{
+	color: #064982;
+	font-size: 12px;
+}
+.temp-all .temp-news .texts span{
+	color: #000;
+	font-size: 12px;
+}
+
+/*右边栏*/
+.temp-all .right{
+	float: left;
+	width: 250px;
+}
+.temp-all .right .paiming{
+	width: 240px;
+	border:5px solid #0067af;
+	
+}
+.temp-all .right .paiming .t{
+	width: 240px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-weight: 900;
+	color: #064982;
+	background: #fff;
+}
+.temp-all .right .paiming .tb{
+	width: 238px;
+	margin-top: 3px;
+	border:1px solid #fff;
+}
+.temp-all .right .paiming .tb table{
+	width: 238px;
+	text-align: center;
+	font-size: 12px;
+	border-left: 1px solid #0067af;
+	border-top: 1px solid #0067af;
+	background: #fff;
+	color: #064982;
+}
+.temp-all .right .paiming .tb table tr td{
+	border-right: 1px solid #0067af;
+	border-bottom: 1px solid #0067af;
+}
+.temp-all .right .paiming .tb table .o td a{
+	color: #064982;
+}
+.temp-all .right .paiming .tb table .first{
+	background: #6495ED;
+	height: 20px;
+	color: #F0FFFF;
+}
+.temp-all .right .paiming .p{
+	background: #fff;
+	
+	font-size: 12px;
+	font-weight: 800;
+	text-align: center;
+	margin-top: 2px;
+}
+.temp-all .right .paiming .p a{
+	color: #064982;
+}
+
+/*球队历史的div*/
+.history{
+	overflow: scroll;
+	width: 237px;
+	height: 150px;
+}
+
+/*页面sporters.html中class="p"的css*/
+.right .paiming .p{
+	background: #F0FFFF;
+	color: #064982;
+}

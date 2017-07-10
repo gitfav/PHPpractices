@@ -1,0 +1,105 @@
+ <!DOCTYPE HTML>
+ <html lang="en-US">
+ <head>
+    <meta charset="UTF-8">
+    <title>HDmovie</title>
+    <hdjs/>
+    <link rel="stylesheet" href="../../Public/Font-Awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Public/css/inc.css">
+    <link rel="stylesheet" href="../../Public/css/style.css">
+    <script type="text/javascript" src="../../Public/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('.left_item .item_title').toggle(
+                function(){
+                    $(this).parent('.left_item').find('.item_list').hide();
+                    $(this).parent('.left_item').css('box-shadow','10px 5px 2px  red');
+                },
+                function(){
+                    $(this).parent('.left_item').find('.item_list').show();
+                    $(this).parent('.left_item').css('box-shadow','10px 5px 2px  #656565');
+                }
+            );
+
+            $('.left_item .item_list').click(function(){
+                $('.left_item .item_list').css('background','none');
+                $(this).css('background','#ccc');
+
+                $('.left_item').css('box-shadow','10px 5px 2px  #656565');
+                $(this).parents('.left_item').css('box-shadow','10px 5px 2px  red');
+            });
+        })
+    </script>   
+    <style type="text/css">
+        .now{
+            background: #656565;
+            color:#FFF;
+        }
+    </style>    
+    <base target="main_right">
+ </head>
+ <body>
+    <!-- 顶部区域开始 -->
+    <div id="top" class="pct100 h50 bgblack5 auto">
+        <div class="top_box w1200 auto h50 ">
+            <div class="logo l w200 mt10">
+                <!-- <img src="__PUBLIC__/image/logo.png"  class="w50 h50" alt=""> -->
+                <p class="white1 f20 l">HDmovie</p>
+            </div>
+            <!-- 顶部右侧去开始 -->
+            <ul class="r  h30 mt20">
+                <li class="l"><a href="" class="pl10 ml10 l white1"><i class="icon-user mr10"></i>admin</a></li>
+                <li class="l"><a href="__ROOT__" target="_blank" class="pl10 ml10 l white1"><i class="icon-home mr10"></i>前台首页</a></li>
+                <li class="l"><a href="" class="pl10 ml10 l white1"><i class=" icon-repeat icon-spin mr10"></i>退出</a></li>
+            </ul>
+            <!-- 顶部右侧区结束 -->
+        </div>
+    </div>
+    <!-- 顶部区域结束 -->
+    <div class=" w1200 h40  auto mt10" id="admin_msg"></div>
+    <div id="main" class="w1200 auto" >
+        
+        <!-- 左侧管理控制区开始 -->
+        <div class="main_left l w150">
+            <div class="left_item">
+                <div class="item_title">
+                    栏目管理
+                </div>
+                <div class="item_list">
+                    <a href="{|U:'Category/index'}">栏目列表</a>
+                </div>
+                <div class="item_list">
+                    <a href="{|U:'Category/add'}">添加栏目</a>
+                </div>
+            </div>
+
+            <div class="left_item">
+                <div class="item_title">
+                    文章管理
+                </div>
+                <div class="item_list">
+                    <a href="{|U:'Tag/index'}">标签列表</a>
+                </div>
+                <div class="item_list">
+                    <a href="{|U:'Tag/add'}">添加标签</a>
+                </div>
+
+                <div class="item_list">
+                    <a href="{|U:'Article/index'}">文章列表</a>
+                </div>
+                <div class="item_list">
+                    <a href="{|U:'Article/add'}">添加文章</a>
+                </div>
+            </div>
+
+            
+        </div>
+        <!-- 左侧管理控制区结束 -->
+        <!-- 右侧区域开始 -->
+        <div class="main_right">
+            <iframe src="" style="width:960px;height:800px;" frameborder="0" name="main_right" ></iframe>
+        </div>
+        <!-- 右侧区域结束 -->
+    </div>
+ </body>
+ </html>

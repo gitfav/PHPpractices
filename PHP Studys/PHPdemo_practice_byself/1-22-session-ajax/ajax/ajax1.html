@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>无标题</title>
+	<script type="text/javascript" src="./jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('input[name="phone"]').blur(function() {
+				number=$(this).val();
+				// alert(number);
+				$.ajax({
+					url:'./checkphone.php',//请求的文件
+					data: {phone: number},//请求后台的数据,向后台传输名为：phone，值为：number的数据
+					type: 'POST',//传输方式
+					dataType: 'json',//数据的类型
+					success:function(data){
+						alert(data);
+						alert(data['staues']);
+						if (data['staues']==0) {
+							$('.msg').html('该账号已注册');
+						}
+						else{
+							$('.msg').html('OK');
+						}
+					}
+				// error:function() {
+				// 	alert('error');
+				// }
+				});
+			})
+		})
+	</script>
+
+</head>
+<body>
+
+<form action="">
+	<input type="text" name="phone" id="" value=""><div class="msg"></div>
+	<br>
+	<input type="submit" value="注册">
+</form>
+
+</body>
+</html>

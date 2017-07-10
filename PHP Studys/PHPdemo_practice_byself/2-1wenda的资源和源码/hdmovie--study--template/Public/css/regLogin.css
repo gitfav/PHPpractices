@@ -1,0 +1,5 @@
+#reg_box{width:100%;height:700px;}#reg_box .reg_logoBox{width:475px;height:92px;margin:0 auto;margin-top:100px;}
+#reg_box .main_box{width:680px;height:380px;margin:0 auto;margin-top:60px;}#reg_box .main_box .qqlog_box{width:188px;height:166px;float:left;}#reg_box .main_box .qqlog_box a{width:188px;height:42px;border-radius:5px;line-height:42px;color:#FFF;display:block;text-align:center;margin-top:20px;}
+#reg_box .main_box .formbox{width:388px;height:340px;float:right;}#reg_box .main_box .formbox ul li{width:388px;height:65px;line-height:70px;}#reg_box .main_box .formbox ul li input[type="text"],#reg_box .main_box .formbox ul li input[type="password"]{height:20px;padding:10px 8px;margin-top:20px;margin-left:10px;}
+#reg_box .main_box .formbox ul li input[type='text']:focus,#reg_box .main_box .formbox ul li input[type="password"]:focus{box-shadow:0px 0px 2px red;}
+#reg_box .main_box .formbox ul li label{font-size:14px;width:70px;height:65px;float:left;text-align:right;}

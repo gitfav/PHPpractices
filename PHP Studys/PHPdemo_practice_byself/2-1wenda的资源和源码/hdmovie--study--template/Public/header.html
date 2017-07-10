@@ -1,0 +1,47 @@
+<div id="channel_box">
+			<div class="channel_commen">
+				<div class="logo">
+					拍客
+					<img src="" alt="">
+
+				</div>
+				
+				<ul class="channel_list">
+					<li><a href="__ROOT__">首页</a></li>
+						<foreach from="$category" value="$c">
+							<if value="$c['cid']==$cid">
+								<li><a href="{|U:'Index/category',array('cid'=>$c['cid'])}" style="color:#3498db;">{$c['cname']}</a></li>
+							<else>
+								<li><a href="{|U:'Index/category',array('cid'=>$c['cid'])}">{$c['cname']}</a></li>
+							</if>
+						</foreach>
+					<!-- <li class="move"></li> -->
+				</ul>
+
+				<if value="$_SESSION['user']">
+					<ul class="user_login" >
+						<li>
+							<a href="">{$_SESSION['user']['uname']}</a>
+							<ul class="hidden_list">
+								<li><a href="{|U:'Home/index'}">我的主页</a></li>
+								<li><a href="{|U:'Home/set'}">个人设置</a></li>
+								<li><a href="{|U:'Login/logout'}">退出</a></li>
+							</ul>
+						</li>
+					</ul>
+				<else>
+					<ul class="login">
+						<li><a href="" onfocus="this.blur();" style="color:black;">注册</a></li>
+						<li><a href="" class="d" onfocus="this.blur();" style="color:black;">登陆</a></li>
+					</ul>
+				</if>
+
+					
+				
+					
+				<form action="">
+					<input type="text" name="" class="search_box">
+					<a href=""><i class="icon-search icon-large"></i></a>
+				</form>
+			</div>
+		</div>

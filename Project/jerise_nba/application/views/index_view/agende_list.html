@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<link rel="stylesheet" href="<?php echo A_PUBLIC ?>/Css/public.css" />
+	<script type="text/javascript" src="<?php echo A_PUBLIC ?>/Js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="<?php echo A_PUBLIC ?>/Js/public.js"></script>	
+</head>
+
+<body>
+	<table>
+		<form action="<?php site_url('admin_/agende_view'); ?>" method="post">
+		<tr class="tableTop">
+			<td><?php echo ($thisYear-1).'-'.$thisYear; ?>赛季 NBA赛程</td>
+			<td>
+				<select name='year'>
+				<?php foreach ($year as $k => $v) { ?>
+					<option value="<?php echo $v['year']; ?>"<?php if ($v['year']==$pointYear) { ?>selected='selected'<?php } ?>><?php echo $v['year']; ?></option>
+				<?php } ?>
+				</select>
+			</td>
+			<td>
+				<select name='month' >
+				<option value="">选择月份</option>
+				<?php for ($i=1; $i <=12 ; $i++) {  ?>
+					<option value="<?php if($i<10){ echo '0'.$i; }else{echo $i;} ?>"<?php if ($month==$i) { ?>selected='selected'<?php } ?>><?php echo $i ?></option>
+				<?php } ?>
+				</select>
+			</td>
+			<td>
+				<select name="teid">
+					<option value="">球队赛程查询</option>
+				<?php foreach ($temp as $k => $v) { ?>
+					<option value="<?php echo $v['teid']; ?>" <?php if ($teid==$v['teid']) { ?>selected='selected'<?php } ?>><?php echo $v['te_name']; ?></option>
+				<?php } ?>
+				</select>
+			</td>
+			<td>
+				<td colspan="2">
+					<input type="submit" value="确定" class="input_button"/>
+				</td>
+			</td>
+		</tr>
+		</form>
+	</table>
+	<table class="table">
+		<tr>
+			<td class="th" colspan="20">比赛列表</td>
+		</tr>
+		<?php foreach ($day as $k => $v) { ?>
+		<tr class="tableTop">
+			<td width="10%"><?php echo $v; ?></td>
+			<td>类型</td>
+			<td>客队</td>
+			<td>比分</td>
+			<td>主队</td>
+			<td>统计</td>
+<!-- 			<td>比赛情况</td> -->
+			
+		</tr>
+		<?php foreach ($agende as $key => $value) { ?>
+			<?php if ($v==$value['rdate']) { ?>
+			<tr>
+				<td><?php echo $value['rtime']; ?> <?php if ($value['end']=='N') {echo '未赛';}else{echo '完场';} ?></td>
+				<td><?php echo $value['type']; ?></td>
+				<td><?php echo $value['temp_visit']; ?></td>
+				<td><?php echo $value['v_score'].'-'.$value['h_score']; ?></td>
+				<td><?php echo $value['temp_home']; ?></td>
+				<td><a href="">[统计]</a></td>
+			</tr>
+			<?php } ?>
+		<?php } ?>
+		<?php } ?>
+	</table>
+
+</body>
+</html>

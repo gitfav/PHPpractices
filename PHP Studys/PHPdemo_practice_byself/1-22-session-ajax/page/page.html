@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>无标题</title>
+	<script type="text/javascript" src="./jquery-1.7.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.page a').click(function(){
+				n=$(this).index();
+				// alert(n);
+				$.ajax({
+					url:'./data.php',
+					data:{page:n},
+					dataType:'json',
+					type:'post',
+					success:function(data){
+						str='';
+						$.each(data, function(k, v) {//与foreach功能类似
+							 str+='<li>'+v+'</li>';
+						});
+						$('.content').html(str);
+					}
+				})
+			})
+		})
+	</script>
+	<style type="text/css">
+		.box{
+			width:400px;
+			min-height: 400px;
+			border: 1px solid #333;
+			margin: 0 auto;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="box">
+		<ul class="content">
+			
+		</ul>
+		
+		<div class="page">
+			<a href="javascript:;">1</a>
+			<a href="javascript:;">2</a>
+			<a href="javascript:;">3</a>
+			<a href="javascript:;">4</a>
+		</div>
+	</div>
+
+</body>
+</html>

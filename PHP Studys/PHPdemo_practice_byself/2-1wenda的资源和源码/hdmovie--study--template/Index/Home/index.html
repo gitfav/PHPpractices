@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../Public/Font-Awesome/css/font-awesome.min.css">
+	 	<link rel="stylesheet" href="../../Public/css/inc.css">
+	 	<link rel="stylesheet" href="../../Public/css/index.css">
+	 	<script type="text/javascript">
+	 		var login = {$_SESSION['user']['uid']|default:0}?1:0;
+	 	</script>
+	 	<script type="text/javascript" src="__ROOT__/Public/js/js.js"></script>
+
+	 	<hdjs/>
+    </head>
+
+    <body  style="background:#F1F1F1;">
+    	<div id="top">
+			<div class="top_box">
+				<ul class="l">
+					<li class="l"><a href="" class="l lh25 white pr20">拍客</a></li>
+					<li class="l"><a href="" class="l lh25 white pr20">V社区</a></li>
+					<!-- <li class="l"><a href="" class="l lh25 white pr20">V电影</a></li> -->
+				</ul>
+			</div>
+		</div>
+		<!-- 公共导航区开始 -->
+		<include file="__PUBLIC__/header.html">
+		<!-- 公共导航区结束 顶部结束 -->
+		<div id="main_box" style="background:red;">
+			<div class="personal_left">
+				<div class="head_pic">
+					<img src="__ROOT__/{$_SESSION['user']['hdpic']}" alt="">
+					<p>用户名</p>
+				</div>
+
+				<div class="set_nav">
+					<!-- <a href="" style="background:#FFF;">我的主页</a> -->
+					<a href="">我喜欢的</a>
+					
+				</div>
+			</div>
+
+			<div class="personal_right">
+				<!-- <iframe src="" frameborder="0" name="content" style="height:100%;"></iframe> -->
+			<div class="like">
+	    		<h1>我喜欢的</h1>
+	    		<div class="tag">
+	    			<a href="javascript:;" class="a_now">收藏</a>
+	    			
+	    		</div>
+
+	    		<ul class="like_list">
+		    			<li>
+		    				<img src="__ROOT__/{$d['thumb']}" alt="">
+		    				<p>
+		    					<a href="{|U:'Index/article',array('aid'=>$d['articleid'])}">
+		    						文章标题
+		    					</a>
+		    				</p>
+		    				<div class="bank">
+		    					<i class="icon-comment"></i> <span style="color:#ccc;">1</span>&emsp;
+		    					<i class="icon-heart active"></i>  <span style="color:#ccc;">2</span>
+		    				</div>
+		    			</li>
+	    		</ul>
+	    	</div>
+		</div>
+
+    </body>
+
+</html>

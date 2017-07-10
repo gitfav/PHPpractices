@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="../ajax/jquery-1.7.2.min.js"></script>
+	<style type="text/css">
+		.box{
+			width:400px;
+			min-height: 400px;
+			border: 1px solid #333;
+			margin: 0 auto;
+			margin-top: 30px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$('.page a').click(function(){
+				n = $(this).index();
+				// alert(n);
+				$.ajax({
+					url:'./data.php',
+					data:{page:n},
+					dataType:'json',
+					type:'post',
+					success:function(data){
+						str = '';
+						$.each(data,function(k,v){	//表示
+							str += "<li>"+k+':'+v+"</li>";
+						});
+						$('.content').html(str);
+						
+					}
+				})
+			})
+			
+		})
+	</script>	
+</head>
+<body>
+	<div class="box">
+		<ul class="content">
+			
+		</ul>
+		
+		<div class="page">
+			<a href="javascript:;">1</a>
+			<a href="javascript:;">2</a>
+			<a href="javascript:;">3</a>
+			<a href="javascript:;">4</a>
+		</div>
+	</div>
+</body>
+</html>

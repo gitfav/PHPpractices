@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/add_category.css" />
+	<title></title>
+</head>
+<body>
+	<form action="" method="post">
+		<table>
+			<tr class="tableTop" col>
+				<td><?php echo ($thisYear['year']-1).'-'.$thisYear['year']; ?>赛季</td>
+				<td>
+				<select name="teid">
+					<option value="">选择球队</option>
+				<?php foreach ($temp as $k => $v) { ?>
+					<option value="<?php echo $v['teid']; ?>" <?php if ($de_temp==$v['teid']) { ?>selected='selected'<?php } ?>><?php echo $v['te_name']; ?></option>
+				<?php } ?>
+				</select>
+				</td>
+				<td colspan="2">
+					<input type="submit" value="确定" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<table class="table">
+		<tr >
+			<td class="th" colspan="5">球员列表</td>
+		</tr>
+		<?php foreach ($sports as $k => $v) { ?>
+			<tr>
+				<td>球衣号码：<?php echo $v['sp_num']; ?></td>
+				<td width="15%"><?php echo $v['sp_name']; ?></td>
+				<td><img src="<?php echo A_PUBLIC.'/'.'Images'.'/'.'sporter_face'.'/'.$v['sp_face']; ?>" alt="" width='60px' height='75px' /></td>
+				<td><a href="<?php echo site_url("admin_/sporter_list/alter_sporter").'/'.$v['spid']; ?>">[修改球员基本信息]</a></td>
+				<td><a href="<?php echo site_url("index_/sporter/index").'/'.$v['spid']; ?>">[球员信息]</a></td>
+			</tr>
+		<?php } ?>
+	</table>
+</body>
+</html>

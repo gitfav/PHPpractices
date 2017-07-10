@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>编辑标签</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/inc.css">
+	</head>
+	<body>
+		<form action="{|U:'Tag/edit'}" method="post">
+			<input type="hidden" name="tid" value="{$data['tid']}">
+			<table class="table hd-form">
+				<tr>
+					<th class="w100 h40">标签名称</th>
+					<td><input type="text" name="tname" class="w200 h40" value="{$data['tname']}"></td>
+					<td><input type="submit" value="提交" class="btn bgblack ml20"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

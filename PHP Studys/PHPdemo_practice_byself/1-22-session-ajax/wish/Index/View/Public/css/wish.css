@@ -1,0 +1,137 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+img{
+	border: 0px;
+}
+.all{
+	position: relative;
+	width: 100%;
+	height: 1024px;
+	background: url(../images/beijin.jpg);
+	background-repeat: no-repeat;
+	background-size: 1349px 1024px;
+}
+.message-board{
+	margin: 40px 0px 0px 180px;
+	width: 820px;
+	height: 720px;
+	background-color: white;
+	border-radius: 25px;
+	/*box-shadow: -10px -10px 15px #FFFFFF;*/
+	opacity: 0.6;
+	float: left;
+}
+.register-login{
+	width: 349px;
+	/*height: 200px;*/
+	margin-top: 40px;
+	float: left;
+}
+.login{
+	margin: 10px 0px 0px 10px;	
+	width: 339px;
+}
+.inputs{
+	width: 180px;
+	height: 20px;
+	border: 0px;
+	opacity: 0.7;
+}
+.login .text{
+	font-family: '微软雅黑';
+}
+.login .box{
+	font-family: '微软雅黑';
+	font-size: 12px;
+}
+.i-login{
+	width: 235px;
+	height: 30px;
+	border: 0px;
+	font-family: '微软雅黑';
+	color: white;
+	background: #999966;
+	transition:background 0.5s;
+}
+.i-login:hover{
+	background: #999900;
+	cursor: pointer;
+}
+.i-login:active{
+	background: #999966;
+}
+.login .link-register{			/*用于打开注册表*/
+	width: 339px;
+	font-family: '微软雅黑';
+	font-size: 14px;
+	padding-left: 180px;
+	color: #996633;
+}
+.login .link-register .n{
+	width: 56px;
+}
+.login .link-register .n:hover{
+	cursor: pointer;
+}
+.register{
+	width: 339px;
+	height: 180px;
+	left: 500px;
+	top: 100px;
+	position: absolute;
+	background: #996600;
+	z-index: 1;
+	/*display: none;*/
+}
+.register .text{
+	padding: 15px 0px 0px 50px;
+	font-family: "微软雅黑";
+}
+.register .text .code-img{
+	position: relative;
+	width: 178px;
+	height: 35px;
+}
+.register .text .codes{
+	float: left;
+}
+.register .text .code{
+	width: 50px;
+	height: 20px;
+	border: 0px;
+	opacity: 0.7;
+}
+.register .text .img{
+	float: left;
+	padding-top: 2px;
+	padding-left: 4px;
+}
+.register .text .img img{
+	width: 60px;
+	height: 30px;
+}
+.register .sub{
+	padding-left: 50px;
+	padding-top: 20px;
+}
+.register .close{
+	width: 25px;
+	height: 18px;
+	position: absolute;
+	background: #996600;
+	left: 310px;
+	top: 15px;
+	font-family: '宋体';
+	font-size: 12px;
+	color: white;
+	cursor: pointer;
+}
+.background{
+	width: 100%;
+	height: 1024px;
+	opacity: 0.3;
+	background: #000000;
+	/*display: none;*/
+}

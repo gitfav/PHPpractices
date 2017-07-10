@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css.css">
+    </head>
+    <body>
+    	<div id="nav">
+    		<div id="nav_box">
+    			<div class="logo">
+    				<img src="./image/logo2.png" alt="">
+    			</div>
+    			<ul id='t_menu'>
+    				<li><a href="">首页</a></li>
+    				<li class="active"><a href="">讲座</a></li>
+    				<li><a href="">悦读</a></li>
+    			</ul>
+    		</div>
+
+    	</div>
+
+        <div id="crumb">
+            <a href="">悦读</a> &nbsp;&nbsp;>&nbsp;&nbsp; <span>全部文章</span>
+        </div>
+        <div id="main_box">
+            <div id="left_box">
+                <?php foreach ($data as $k => $v) { ?>
+                    <div class="list">
+                        <div class="pic">
+                            <img src="<?php echo $v['pic'] ?>" alt="">
+                        </div>
+                        <div class="article">
+                            <div class="title"><a href=""><?php echo $v['title']?></a>
+                            </div class="title">
+                            <div class="time">
+                                2014-10-21
+                            </div>
+                            <div class="content">
+                                【MDCC 2014移动开发者大会】大讲堂用户独享福利，大会门票免费赠送！ 原价2000RMB（差旅费自理/不含餐），仅2张。 大会时间：2014年10月3...
+                            </div>
+                            <div class="reader">
+                                <i></i><span>43</span> 浏览
+                            </div>
+                        </div>
+                    </div>
+                <?php }?>
+            </div>
+            <div id="right_box">
+                <div class="relative_reading_header">
+                    <h2>
+                        相关悦读
+                    </h2>  
+                </div>
+                <ul class="relative_reading_list">
+                    <li>
+                        <a href="" class="title">微信转帐为何还需要对方确认？【对话产品经理 43期】</a>
+                        <div class="reading_info">
+                            <i></i> <span>39</span> 浏览
+                        </div>
+                    </li>
+                    <li>
+                        <a href="" class="title">【免费赠票】MPD软件大会 免费赠送，仅5张！</a>
+                        <div class="reading_info">
+                            <i></i> <span>39</span> 浏览
+                        </div>
+                    </li>
+                    <li>
+                        <a href="" class="title">【免费赠票】MPD软件大会 免费赠送，仅5张！</a>
+                        <div class="reading_info">
+                            <i></i> <span>39</span> 浏览
+                        </div>
+                    </li>
+                    <li>
+                        <a href="" class="title">浅色UI是否能省电？| 对话产品经理42期</a>
+                        <div class="reading_info">
+                            <i></i> <span>39</span> 浏览
+                        </div>
+                    </li>
+                </ul>
+            </div>
+           
+        </div>
+        <div id="page">
+           <a href=""><</a>
+           <a href="" class="active">1</a>
+           <a href="">2</a>
+           <a href="">3</a>
+           <a href="">4</a>
+           <a href="">></a>
+        </div>
+        <div id="footer">
+            <div id="footer_box">
+                Copyright © 2010 - 2014 houdunwang All Rights Reserved.  后盾教育 版权所有
+            </div>
+        </div>
+    </body>
+</html>

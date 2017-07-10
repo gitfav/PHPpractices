@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>添加栏目</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/inc.css">
+	</head>
+	<body>
+		<form action="{|U:'Category/edit'}" method="post">
+			<input type="text" name="cid" value="{$data['cid']}">
+			<table class="table hd-form">
+				<tr>
+					<th class="w100 h40">栏目名称</th>
+					<td><input type="text" name="cname" class="w200 h40" value="{$data['cname']}"></td>
+					<td><input type="submit" value="提交" class="btn bgblack ml20"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

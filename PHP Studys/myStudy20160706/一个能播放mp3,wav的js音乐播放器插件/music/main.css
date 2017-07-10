@@ -1,0 +1,29 @@
+﻿body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,table,td,th,form,fieldset,img,dl,dt,dd{margin:0;padding:0;}
+textarea,input,select,body,table{font-size:12px;}
+select,input{vertical-align:middle;}
+fieldset,img{border:0;}
+ul,ol{list-style:none;}
+
+
+
+#vBox{font-size:0;}
+
+.part_top{margin:11px;zoom:1;overflow:hidden;margin-bottom:10px;}
+.part_top .p_left{width:470px;height:143px;float:left;overflow:hidden;background:url(part_top_leftbg.gif) no-repeat;}
+
+.p_r1{zoom:1;margin:0 auto;overflow:hidden;margin-bottom:10px;border:1px solid #AEBAC5;width:950px;}
+
+.p_r2{zoom:1;margin:0 auto;overflow:hidden;margin-bottom:10px;width:950px;}
+
+/* 左列窗口样式 */
+.w_01{}
+.w_01 .w_title{height:39px;color:#fff;overflow:hidden;}
+.w_01 .w_title .w_name{font-size:14px;float:left;padding-left:12px;line-height:29px;height:29px;overflow:hidden;white-space:nowrap;}
+.w_01 .w_title .w_more{float:right;padding-right:10px;margin-top:15px;line-height:39px;font-size:12px; height:39px;font-weight:normal;color:#333;}
+.w_01 .w_title a:link,.w_01 .w_title a:visited{color:#fff}
+.w_01 .w_title a:hover{color:#fff;}
+.w_01 .w_cont{padding:0 5px;}
+.w_01 .w_cont .w_cont_bg{}
+.w_01 .w_bot{height:5px; overflow:hidden; padding-left:5px; }
+.w_01 .w_bot .w_bot_bg{height:5px;font-size:0; overflow:hidden}
+

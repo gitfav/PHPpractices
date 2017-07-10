@@ -1,0 +1,2 @@
+[Error]Table 'wenda.hd_ask' doesn't exist	SELECT  count(hd_ask.asid)  AS asid FROM hd_ask [Time]13-09-02 11:42 [File]/var/www/html/show/wenda/hdphp/Lib/Driver/Db/DbMysqli.class.php [Line]123
+[Error]Table 'wenda.hd_category' doesn't exist	SELECT `cid` , `title` , `pid` FROM hd_category WHERE hd_category.pid = 0 [Time]13-09-02 11:50 [File]/var/www/html/show/wenda/hdphp/Lib/Driver/Db/DbMysqli.class.php [Line]123

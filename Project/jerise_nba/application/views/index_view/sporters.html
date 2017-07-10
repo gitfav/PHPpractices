@@ -1,0 +1,344 @@
+<!-- 球队相关信息 -->
+	<div class="temp-all">
+		<!-- 左边栏 -->
+		<div class="left">
+			<div class="names">
+				<?php echo $sport['sp_name']; ?>
+			</div>
+			<!-- 球队基本信息 -->
+			<div class="interv">
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="20%" rowspan="7" class="coach">
+							<img src="<?php echo A_PUBLIC.'/Images/sporter_face/'.$sport['sp_face']; ?>" alt="" />
+						</td>
+						<td width="15%">生　　日</td>
+						<td width="30%"><?php echo $sport['sp_birthday']; ?></td>
+						<td width="15%">年　　龄</td>
+						<td width="20%"><?php echo $sport['age']; ?>岁</td>
+					</tr>
+					<tr>
+						<td width="15%">出 生 地</td>
+						<td width="25%"><?php echo $sport['sp_where']; ?></td>
+						<td width="15%">毕业学校</td>
+						<td width="20%"><?php echo $sport['sp_school']; ?></td>
+					</tr>
+					<tr>
+						<td width="15%">身　　高</td>
+						<td width="25%"><?php echo $sport['sp_h']; ?></td>
+						<td width="15%">体　　重</td>
+						<td width="20%"><?php echo $sport['sp_w']; ?></td>
+					</tr>
+					<tr>
+						<td width="15%">进入 NBA</td>
+						<td width="25%"><?php echo $sport['sp_inj']; ?>年</td>
+						<td width="15%">NBA 球龄</td>
+						<td width="20%"><?php echo $sport['t_age']; ?>年</td>
+					</tr>
+					<tr>
+						<td width="15%">伤病情况</td>
+						<td width="60%" colspan ="3"><?php echo $sport['sp_cause']; ?></td>
+					</tr>
+					<tr>
+						<td width="15%">选秀情况</td>
+						<td width="60%" colspan ="3"><?php echo $sport['sp_cip']; ?></td>
+					</tr>
+					<tr>
+						<td width="15%">赛季最高分</td>
+						<td width="25%"><?php echo $sport['score_max']; ?>分</td>
+						<td width="15%">生涯最高分</td>
+						<td width="20%"><?php echo $sport['max']; ?>分</td>
+					</tr>
+				</table>
+			</div>
+			<!-- 球员技术统计 -->
+			<div class="battle" id="battle">
+				<div class="top">
+					<div id="i" class="l">常规赛技术统计 | <a href="javascript:void(0)" style="color:#064982;">场均</a> | <a href="javascript:void(0)" style="color:#064982;">总计</a></div>
+				</div>
+				<!-- 场均 -->
+				<div class="pe">
+					<table id="pe-ta" class="pe-ta" border="0" cellpadding="0" cellspacing="0">
+						<tr class="ts">
+							<td width="8%">赛季</td>
+							<td width="5%">球队</td>
+							<td width="5%">出场</td>
+							<td width="5%">首发</td>
+							<td width="5%">时间</td>
+							<td width="8%">投篮</td>
+							<td width="8%">三分</td>
+							<td width="8%">罚球</td>
+							<td width="6%">前篮板</td>
+							<td width="6%">后篮板</td>
+							<td width="6%">总篮板</td>
+							<td width="5%">助攻</td>
+							<td width="5%">抢断</td>
+							<td width="5%">盖帽</td>
+							<td width="5%">失误</td>
+							<td width="5%">犯规</td>
+							<td width="5%">得分</td>
+						</tr>
+						<?php foreach ($season_data as $k => $v) { ?>
+						<tr class="t1">
+							<td width="8%"><?php echo ($v['season']-1).'-'.$v['season']; ?></td>
+							<td width="5%"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['teid']; ?>"><?php echo $v['sp_temp']; ?></a></td>
+							<td width="5%"><?php echo $v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_first']; ?></td>
+							<td width="5%"><?php echo round($v['sp_time']/$v['sp_appear'],1); ?></td>
+							<td width="8%"><?php if ($v['sp_shot']!=0) {
+								echo round($v['sp_shotin']/$v['sp_shot'],3)*100 ;
+							}else{ echo 0; }  ?>%</td>
+							<td width="8%"><?php if ($v['sp_tree']!=0) {
+								echo round($v['sp_treein']/$v['sp_tree'],3)*100 ;
+							}else{ echo 0; }  ?>%</td>
+							<td width="8%"><?php if ($v['sp_pen']!=0) {
+								echo round($v['sp_penin']/$v['sp_pen'],3)*100 ;
+							}else{ echo 0; }  ?>%</td>
+							<td width="6%"><?php echo $v['sp_be_re']/$v['sp_appear']; ?></td>
+							<td width="6%"><?php echo $v['sp_be_af']/$v['sp_appear']; ?></td>
+							<td width="6%"><?php echo ($v['sp_be_re']+$v['sp_be_af'])/$v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_assist']/$v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_steal']/$v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_block']/$v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_error']/$v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_foul']/$v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_score']/$v['sp_appear']; ?></td>
+						</tr>
+						<?php } ?>
+					</table>
+				</div>
+				<!-- 总计 -->
+				<div class="pe" style="display:none;">
+					<table id="pe-ta-2" class="pe-ta" border="0" cellpadding="0" cellspacing="0">
+						<tr class="ts">
+							<td width="8%">赛季</td>
+							<td width="5%">球队</td>
+							<td width="5%">出场</td>
+							<td width="5%">首发</td>
+							<td width="5%">时间</td>
+							<td width="8%">投篮</td>
+							<td width="8%">三分</td>
+							<td width="8%">罚球</td>
+							<td width="6%">前篮板</td>
+							<td width="6%">后篮板</td>
+							<td width="6%">总篮板</td>
+							<td width="5%">助攻</td>
+							<td width="5%">抢断</td>
+							<td width="5%">盖帽</td>
+							<td width="5%">失误</td>
+							<td width="5%">犯规</td>
+							<td width="5%">得分</td>
+						</tr>
+						<?php foreach ($season_data as $k => $v) { ?>
+						<tr class="t1">
+							<td width="8%"><?php echo ($v['season']-1).'-'.$v['season']; ?></td>
+							<td width="5%"><a target="_blank" href="<?php echo site_url('index_/temp/index').'/'.$v['teid']; ?>">骑士</a></td>
+							<td width="5%"><?php echo $v['sp_appear']; ?></td>
+							<td width="5%"><?php echo $v['sp_first']; ?></td>
+							<td width="5%"><?php echo $v['sp_time']; ?></td>
+							<td width="8%"><?php echo $v['sp_shotin'].'-'.$v['sp_shot']; ?></td>
+							<td width="8%"><?php echo $v['sp_treein'].'-'.$v['sp_tree']; ?></td>
+							<td width="8%"><?php echo $v['sp_penin'].'-'.$v['sp_pen']; ?></td>
+							<td width="6%"><?php echo $v['sp_be_re']; ?></td>
+							<td width="6%"><?php echo $v['sp_be_af']; ?></td>
+							<td width="6%"><?php echo $v['sp_be_re']+$v['sp_be_af']; ?></td>
+							<td width="5%"><?php echo $v['sp_assist']; ?></td>
+							<td width="5%"><?php echo $v['sp_steal']; ?></td>
+							<td width="5%"><?php echo $v['sp_block']; ?></td>
+							<td width="5%"><?php echo $v['sp_error']; ?></td>
+							<td width="5%"><?php echo $v['sp_foul']; ?></td>
+							<td width="5%"><?php echo $v['sp_score']; ?></td>
+						</tr>	
+						<?php } ?>
+					</table>
+				</div>
+			</div>
+			<!-- 球员今年比赛 -->
+			<div class="battle" id="battle">
+				<div class="top">
+					<div id="i" class="l">今年比赛数据</div>
+				</div>
+				<!-- 场均 -->
+				<div class="pe">
+					<table id="pe-ta-3" class="pe-ta" border="0" cellpadding="0" cellspacing="0">
+						<tr class="ts">
+							<td width="10%">日期</td>
+							<td width="14%">比赛</td>
+							<td width="6%">类型</td>
+							<td width="4%">首发</td>
+							<td width="5%">时间</td>
+							<td width="8%">投篮</td>
+							<td width="6%">三分</td>
+							<td width="6%">罚球</td>
+							<td width="5%">前篮板</td>
+							<td width="5%">后篮板</td>
+							<td width="5%">总篮板</td>
+							<td width="4%">助攻</td>
+							<td width="4%">抢断</td>
+							<td width="4%">盖帽</td>
+							<td width="4%">失误</td>
+							<td width="5%">犯规</td>
+							<td width="5%">得分</td>
+						</tr>
+						<?php foreach ($near_data as $k => $v) { ?>
+						<tr class="t1">
+							<td width="10%"><?php echo $v['day']; ?></td>
+							<td width="14%"><?php echo $v['temp_home'].' '.$v['h_score'].'-'.$v['v_score'].' '.$v['temp_visit']; ?></a></td>
+							<td width="6%"><?php echo $v['optem']; ?></td>
+							<td width="4%"><?php if ($v['sp_first']=='YES') {
+								echo '是';
+							}else{
+								echo '否';
+								} ?></td>
+							<td width="5%"><?php echo $v['sp_time']; ?></td>
+							<td width="8%"><?php echo $v['sp_shotin'].'-'.$v['sp_shot']; ?></td>
+							<td width="6%"><?php echo $v['sp_treein'].'-'.$v['sp_tree']; ?></td>
+							<td width="6%"><?php echo $v['sp_penin'].'-'.$v['sp_pen']; ?></td>
+							<td width="5%"><?php echo $v['sp_be_re']; ?></td>
+							<td width="5%"><?php echo $v['sp_be_af']; ?></td>
+							<td width="5%"><?php echo $v['sp_be_af']+$v['sp_be_re']; ?></td>
+							<td width="4%"><?php echo $v['sp_assist']; ?></td>
+							<td width="4%"><?php echo $v['sp_steal']; ?></td>
+							<td width="4%"><?php echo $v['sp_block']; ?></td>
+							<td width="4%"><?php echo $v['sp_error']; ?></td>
+							<td width="5%"><?php echo $v['sp_foul']; ?></td>
+							<td width="5%"><?php echo $v['sp_score']; ?></td>
+						</tr>
+						<?php } ?>
+					</table>
+				</div>
+			</div>
+			<!-- 球员新闻 -->
+			<div class="temp-news">
+				<div class="top">
+					<div class="l">相关新闻  |   <a href="">更多</a></div>
+				</div>
+				<div class="texts">
+					<a href="">图集：[常规赛]篮网vs骑士</a> <span>2015-03-19 08:30:39</span><br>
+					<a href="">骑士损一将进攻就瘫痪 还怪勒夫飘投大后锋?</a> <span>2015-03-17 11:41:29</span><br>
+					<a href="">视频-17日官方综述 骑士负热火勇士胜湖人</a><span>2015-03-17 14:10:41</span><br>
+				</div>
+			</div>
+		</div>
+		<!-- 右边栏 -->
+		<div class="right">
+
+			<!-- 球员重要技术统计对比 -->
+			<div class="paiming">
+				<div class="t">重要技术统计对比</div>
+				<div class="tb">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr class="first">
+							<td width="100%" colspan="2">场均得分排名</td>
+						</tr>
+						<?php if(!empty($pai_score_f )){ ?>
+						<?php foreach ($pai_score_f as $k => $v) { ?>
+						<tr class="o">
+							<td width="70%"><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$v['spid']; ?>"><?php echo $v['pai'].'.'.$v['sp_name']; ?></a></td>
+							<td width="30%"><?php echo round($v['sp_score']/$v['sp_appear'],1); ?></td>
+						</tr>
+						<?php } ?>
+						<?php }else{ ?>
+							<tr class="o">
+							<td>未达到排名标准</td>
+							</tr>
+						<?php } ?>
+					</table>
+				</div>
+				<div class="p">
+					全联盟最高：<?php if (!empty($best_score)) { ?><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$best_score['spid']; ?>"><?php echo $best_score['sp_name'] ?> | <?php echo round($best_score['sp_score']/$best_score['sp_appear'],1); ?></a><?php } ?>
+				</div>
+				<!-- 篮板 -->
+				<div class="tb">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr class="first">
+							<td width="100%" colspan="2">场均篮板排名</td>
+						</tr>
+						<?php foreach ($pai_sp_be_f as $k => $v) { ?>
+						<tr class="o">
+							<td width="70%"><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$v['spid']; ?>"><?php echo $v['pai'].'.'.$v['sp_name']; ?></a></td>
+							<td width="30%"><?php echo round(($v['sp_be_re']+$v['sp_be_af'])/$v['sp_appear'],1); ?></td>
+						</tr>
+						<?php } ?>
+					</table>
+				</div>
+				<div class="p">
+					全联盟最高：<?php if (!empty($best_sp_be)) { ?><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$best_sp_be['spid']; ?>"><?php echo $best_sp_be['sp_name']; ?> | <?php echo round(($best_sp_be['sp_be_re']+$best_sp_be['sp_be_af'])/$best_sp_be['sp_appear'],1); ?></a><?php } ?>
+				</div>
+				<!-- 助攻 -->
+				<div class="tb">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr class="first">
+							<td width="100%" colspan="2">场均助攻排名</td>
+						</tr>
+						<?php if(!empty($pai_assist_f )){ ?>
+						<?php foreach ($pai_assist_f as $k => $v) { ?>
+						<tr class="o">
+							<td width="70%"><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$v['spid']; ?>"><?php echo $v['pai'].'.'.$v['sp_name']; ?></a></td>
+							<td width="30%"><?php echo round($v['sp_assist']/$v['sp_appear'],1); ?></td>
+						</tr>
+						<?php } ?>
+						<?php }else{ ?>
+							<tr class="o">
+							<td>未达到排名标准</td>
+							</tr>
+						<?php } ?>
+					</table>
+				</div>
+				<div class="p">
+					全联盟最高：<?php if (!empty($best_assist)) { ?><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$best_assist['spid']; ?>"><?php echo $best_assist['sp_name']; ?> | <?php echo round(($best_assist['sp_assist'])/$best_assist['sp_appear'],1); ?></a><?php } ?>
+				</div>
+				<!-- 命中率 -->
+				<div class="tb">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr class="first">
+							<td width="100%" colspan="2">场均命中率排名</td>
+						</tr>
+						<?php if(!empty($pai_shot_f )){ ?>
+						<?php foreach ($pai_shot_f as $k => $v) { ?>
+						<tr class="o">
+							<td width="70%"><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$v['spid']; ?>"><?php echo $v['pai'].'.'.$v['sp_name']; ?></a></td>
+							<td width="30%"><?php if($v['sp_shot']!=0){ echo round($v['sp_shotin']/$v['sp_shot']*100,1); }else{echo 0.0; } ?>%</td>
+						</tr>
+						<?php } ?>
+						<?php }else{ ?>
+							<tr class="o">
+							<td>未达到排名标准</td>
+							</tr>
+						<?php } ?>
+					</table>
+				</div>
+				<div class="p">
+					全联盟最高：<?php if (!empty($best_shot)) { ?><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$best_shot['spid']; ?>"><?php echo $best_shot['sp_name']; ?> | <?php if($best_shot['sp_shot']!=0){ echo round(($best_shot['sp_shotin'])/$best_shot['sp_shot']*100,1); }else{echo 0.0; } ?>%</a><?php } ?>
+				</div>
+				<!-- 三分命中率 -->
+				<div class="tb">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr class="first">
+							<td width="100%" colspan="2">场均三分命中率排名</td>
+						</tr>
+						<?php if(!empty($pai_tree_f )){ ?>
+						<?php foreach ($pai_tree_f as $k => $v) { ?>
+						<tr class="o">
+							<td width="70%"><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$v['spid']; ?>"><?php echo $v['pai'].'.'.$v['sp_name']; ?></a></td>
+							<td width="30%"><?php if($v['sp_tree']!=0){ echo round($v['sp_treein']/$v['sp_tree']*100,1); }else{echo 0.0; } ?>%</td>
+						</tr>
+						<?php } ?>
+						<?php }else{ ?>
+							<tr class="o">
+							<td>未达到排名标准</td>
+							</tr>
+						<?php } ?>
+					</table>
+				</div>
+				<div class="p">
+					全联盟最高：<?php if (!empty($best_tree)) { ?><a target="_blank" href="<?php echo site_url('index_/sporter/index').'/'.$best_tree['spid']; ?>"><?php echo $best_tree['sp_name']; ?> | <?php if($best_tree['sp_tree']!=0){ echo round(($best_tree['sp_treein'])/$best_tree['sp_tree']*100,1); }else{echo 0.0; } ?>%</a><?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<body>
+</body>
+</html>

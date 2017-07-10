@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>后盾问答</title>
+	<meta name="keywords" content="后盾问答"/>
+	<meta name="description" content="后盾问答"/>
+	<link rel="stylesheet" href="{* $smarty.const.__PUBLIC__}/Css/common.css" />
+	<script type="text/javascript" src='{* $smarty.const.__PUBLIC__}/Js/jquery-1.7.2.min.js'></script>
+	<script type="text/javascript" src='{* $smarty.const.__PUBLIC__}/Js/top-bar.js'></script>
+	<link rel="stylesheet" href="{* $smarty.const.__PUBLIC__}/Css/list.css" />
+</head>
+<body>
+	{* include file='../Common/common.html'}
+
+	<div id='location'>
+		<a href="{* $smarty.const.__APP__}?c=list">全部分类</a>
+		{* if $set==1}
+		     {* if $length>1}
+			{* section loop=$f_arr name=n start=1}
+				&gt;&nbsp;<a href="{* $smarty.const.__APP__}?c=list&cid={* $f_arr[n].cid}">
+						{* $f_arr[n].title}
+					</a>&nbsp;&nbsp;
+			{* /section}
+		     {* /if}
+			&gt;&nbsp;<a href="{* $smarty.const.__APP__}?c=list&cid={* $f_arr[0].cid}">{* $f_arr[0].title}</a>&nbsp;&nbsp;
+		{* /if}
+		
+	</div>
+
+<!--------------------中部-------------------->
+	<div id='center'>
+		<div id='left'>
+			<div id='cate-list'>
+				<p class='title'>按分类查找</p>
+				<ul>	
+				{* if $set==1}
+					{* foreach from=$s_p_arr item=v}
+					<li>
+						<a href="{* $smarty.const.__APP__}?c=list&cid={* $v.cid}">{* $v.title}</a>
+					</li>
+					{* /foreach}
+				{* else if}
+					{* foreach from=$all item=v}
+					<li>
+						<a href="{* $smarty.const.__APP__}?c=list&cid={* $v.cid}">{* $v.title}</a>
+					</li>
+					{* /foreach}
+				{* /if}
+				</ul>
+			</div>
+			<div id='answer-list'>
+				<ul class='ans-sel' id="ans-sel">
+					<li class='on'>
+						<a href="javascript:void(0)">待解决问题</a>
+					</li>
+					<li >
+						<a href="javascript:void(0)">已解决</a>
+					</li>
+					<li >
+						<a href="javascript:void(0)">高悬赏</a>
+					</li>
+					<li >
+						<a href="javascript:void(0)">零回答</a>
+					</li>
+				</ul>
+				<script type="text/javascript">
+
+					$('#ans-sel li').click(function() {
+						$(this).attr('class', 'on').siblings().attr('class', '');
+						number=$(this).index();
+						$.ajax({
+							url:'{* $samrty.const.__APP__}?c=list&a=select&cid={* $smarty.get.cid}',
+							data:{w:number},
+							type:'POST',
+							dataType:'json',
+							success:function(data){
+								// alert(data);
+								//移除原来的元素
+								$('tr').remove('#t2');
+								for (var i = 0; i < data.length; i++) {
+									// alert(data[i]['content']);
+									var time=data[i]['time'];
+
+                                                                                                           str='<tr id="t2"><td class="t1 cons"><a href="{* $smarty.const.__APP__}?c=show&asid='+data[i]['asid']+'"><b>'+data[i]['reward']+'</b>'+data[i]['content']+'</a>&nbsp;&nbsp;['+data[i]['tit']+']</td><td>'+data[i]['answer']+'</td><td>'+time+'</td></tr>';
+
+									$('#t1').after(str);
+									// alert(str);
+								};		
+							}
+						})
+					});
+					//自动在此元素执行操作
+					$('.on').trigger('click');
+				</script>
+				<!-- 待解决问题 -->
+				<table id="wenti">
+					<tr id="t1">
+						<th class='t1'>标题</th>
+						<th>回答数</th>
+						<th>时间</th>
+					</tr>
+
+						<!-- <tr id="t2">
+							<td class='t1 cons'>
+								<a href="">
+									<b>20</b>后盾顶尖PHP培训</a>&nbsp;&nbsp;[培训]
+							</td>
+							<td>20</td>
+							<td>1900.1.1</td>
+						</tr>
+
+						<tr id="t2">
+							<td class='t1 cons'>
+								<a href="">
+									<b>20</b>后盾顶尖PHP培训</a>&nbsp;&nbsp;[培训]
+							</td>
+							<td>20</td>
+							<td>1900.1.1</td>
+						</tr>
+						<tr id="t2">
+							<td class='t1 cons'>
+								<a href="">
+									<b>20</b>后盾顶尖PHP培训</a>&nbsp;&nbsp;[培训]
+							</td>
+							<td>20</td>
+							<td>1900.1.1</td>
+						</tr>
+						<tr id="t2">
+							<td class='t1 cons'>
+								<a href="">
+									<b>20</b>后盾顶尖PHP培训</a>&nbsp;&nbsp;[培训]
+							</td>
+							<td>20</td>
+							<td>1900.1.1</td>
+						</tr> -->
+
+					<tr class='page'>
+						<td colspan='3'>
+							<a href="">1</a>
+							<a href="">2</a>
+							<a href="">3</a>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+		{* include file='../Common/right.html'}
+	</div>
+<!--------------------中部结束-------------------->
+
+<!-- 底部 -->
+	<div id='bottom'>
+		<p>Copyright © 2013 Qihoo.Com All Rights Reserved 后盾网</p>
+		<p>京公安网备xxxxxxxxxxxx</p>
+	</div>
+<!--[if IE 6]>
+    <script type="text/javascript" src="./Js/iepng.js"></script>
+    <script type="text/javascript">
+    	DD_belatedPNG.fix('.logo','background');
+        DD_belatedPNG.fix('.nav-sel a','background');
+        DD_belatedPNG.fix('.ask-cate i','background');
+    </script>
+<![endif]-->
+</body>
+</html>
+<!-- 底部结束 -->

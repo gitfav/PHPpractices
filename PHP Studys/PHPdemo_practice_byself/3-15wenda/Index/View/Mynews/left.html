@@ -1,0 +1,35 @@
+<!-- 左侧 -->
+		<div class='userinfo'>
+			<dl>
+				<dt>
+				{* if $user[0].face==''}
+					<a href=""><img src="{* $smarty.const.__PUBLIC__}/Images/profile_avatar.jpg" width='48' height='48' alt="占位符"/></a>
+				{* else if}
+					<a href=""><img src="{* $user[0].face}" width='48' height='48' alt="占位符"/></a>
+				{* /if}
+				</dt>
+				<dd class='username'>
+					<a href=""><b>后盾网</b>
+					</a>
+					<a href="">
+						<i class='level lv1' title='Level 1'></i>
+					</a>
+				</dd>
+				<dd>金币：<a href="" style="color: #888888;"><b class='point'>{* $user[0].exp}</b></a></dd>
+				<dd>经验值：{* $user[0].point}</dd>
+			</dl>
+			<table>
+				<tr>
+					<td>回答数</td>
+					<td>采纳率</td>
+					<td class='last'>提问数</td>
+				</tr>
+				<tr>
+					<td><a href="">{* $user[0].answer}</a></td>
+					<td><a href="">{* $user[0].accept/$user[0].answer*100|truncate:5:''}%</a></td>
+					<td class='last'><a href="">{* $user[0].ask}</a></td>
+				</tr>
+			</table>
+		</div>
+
+<!-- 左侧结束 -->

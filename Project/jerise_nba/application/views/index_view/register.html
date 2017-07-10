@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="<?php echo I_PUBLIC; ?>/css/css.css" />
+<link rel="stylesheet" href="<?php echo I_PUBLIC; ?>/css/register.css" />
+<script type="text/javascript" src="<?php echo I_PUBLIC; ?>/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	var APP='<?php echo site_url(); ?>';
+</script>
+<script type="text/javascript" src="<?php echo I_PUBLIC;  ?>/js/re_log.js"></script>
+<title>jerise-nba</title>
+</head>
+
+<div class="wrapper">
+	<div class="login register" style="">
+		<div class="lo">
+			<img src="<?php echo I_PUBLIC; ?>/images/0826_lqf_chinanba_imageLogo.png" alt="" />  NBA jerise网站
+		</div>
+		<div class="center">		
+			<form action="" method="post" name="register">
+				<input class="in" name="uname" type="text"  placeholder="请输入账号"/>
+				<div style="width:250px;height:12px"><span class="error" style="color:red;font-family:'微软雅黑';font-size:12px;"></span></div>
+
+				<input class="in" name="nname" type="text"  placeholder="请输入昵称"/>
+				<div style="width:250px;height:12px"><span class="error_fi" style="color:red;font-family:'微软雅黑';font-size:12px;"></span></div>
+
+				<input class="in" name="pw" type="password" placeholder="请输入密码"/>
+				<div class="yanz" style="width:250px;height:12px"><span class="error_t" style="color:red;font-family:'微软雅黑';font-size:12px;"></span></div>
+
+				<input class="in" name="pwag" type="password" placeholder="请再次输入密码"/>
+				<div style="width:250px;height:12px"><span class="error_th" style="color:red;font-family:'微软雅黑';font-size:12px;"></span></div>
+
+				<input class="in" name="code" style="width:80px;" type="text" placeholder="验证码"/>
+				<img class="yan_img" src="<?php echo site_url('tool/code_user/show'); ?>" alt="" /><span style="font-family:微软雅黑;color:rgb(255,255,255);padding-left:20px;">点击图片更换</span>
+				<div class="yanz" style="width:100px;height:12px"><span class="error_f" style="color:red;font-family:'微软雅黑';font-size:12px;"></span></div>
+
+				<input class="log" type="submit" value="注    册" />
+			</form>
+		</div>
+	</div>
+</div>
+
+<body>
+</body>
+</html>

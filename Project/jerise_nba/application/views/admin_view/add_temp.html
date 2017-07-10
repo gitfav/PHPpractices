@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/add_category.css" />
+	<title></title>
+</head>
+<body>
+	<form action="<?php echo site_url('admin_/temp_list/add_temp'); ?>" method="post" enctype="multipart/form-data">
+		<table class="table">
+			<tr >
+				<td class="th" colspan="2">添加球队</td>
+			</tr>
+			<tr>
+				<td>球队名称</td>
+				<td><input type="text" name="te_name"/></td>
+			</tr>
+			<tr>
+				<td>球队英文名</td>
+				<td><input type="text" name="te_e_name"/></td>
+			</tr>
+			<tr>
+				<td>球队缩写名称</td>
+				<td><input type="text" name="te_s_name"/></td>
+			</tr>
+			<tr>
+				<td>球队所在城市</td>
+				<td><input type="text" name="te_city"/></td>
+			</tr>
+			<tr>
+				<td>球队所在地区</td>
+				<td>
+					<select name="acid">
+					<?php foreach ($ar_ca as $k => $v): ?>
+						<option value="<?php echo $v['acid']; ?>"><?php echo $v['area']; ?></option>
+					<?php endforeach; ?>	
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>球队老板</td>
+				<td><input type="text" name="te_boss"/></td>
+			</tr>
+			<tr>
+				<td>球队主场体育馆</td>
+				<td><input type="text" name="te_gym"/></td>
+			</tr>
+			<tr>
+				<td>球队加入联盟时间</td>
+				<td><input type="text" name="te_in_time"/></td>
+			</tr>
+			<tr>
+				<td>球队得到的冠军数</td>
+				<td><input type="text" name="te_champion"/></td>
+			</tr>
+			<tr>
+				<td>球队当前排名</td>
+				<td><input type="text" name="te_rank"/></td>
+			</tr>
+			<tr>
+				<td>球队主教练</td>
+				<td><input type="text" name="te_coach"/></td>
+			</tr>
+			<tr>
+				<td>球队主教练头像</td>
+				<td><input type="file" name="userfile" id="c_face"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="添加" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>许愿墙</title>
+	<link rel="stylesheet" href="<?php echo __PUBLIC__; ?>/css/wish.css">
+	<script type="text/javascript" src="<?php echo __PUBLIC__; ?>/js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src='<?php echo __PUBLIC__; ?>/js/js.js'></script>
+
+</head>
+<body>
+
+	<div class="all">
+		<div class="message-board">
+			
+		</div>
+		<div class="register-login">
+
+		<!-- 登录账号 -->
+			<div class="login">
+				<form action="">
+					<div class="text">
+						账号： <input type="text" class="inputs" name="username" placeholder='请输入账号'><br>
+						密码： <input type="text" class="inputs" name="password" placeholder='请输入密码'><br>
+					</div>
+					<br>
+					<div class="box">
+						<input type="checkbox" name="keep" value="0">下次自动登录？
+					</div>
+					<input type="submit" class="i-login" value="登录"><br>
+					<div class="link-register"><div class="n">注册账号</div></div>	
+				</form>
+			</div>
+		</div>
+		
+		<!-- 注册框 -->
+		<?php require APP_VIEW.'/register/register.html'; ?>
+		
+
+		<!-- 遮罩框 -->
+		<div class="background" style="display:none;"></div>
+
+	</div>
+
+</body>
+</html>

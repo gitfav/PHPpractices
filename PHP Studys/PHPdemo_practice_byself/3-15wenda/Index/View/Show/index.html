@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>后盾问答</title>
+	<meta name="keywords" content="后盾问答"/>
+	<meta name="description" content="后盾问答"/>
+	<link rel="stylesheet" href="{* $smarty.const.__PUBLIC__}/Css/common.css" />
+	<script type="text/javascript" src='{* $smarty.const.__PUBLIC__}/Js/jquery-1.7.2.min.js'></script>
+	<script type="text/javascript" src='{* $smarty.const.__PUBLIC__}/Js/top-bar.js'></script>
+	<link rel="stylesheet" href="{* $smarty.const.__PUBLIC__}/Css/question.css" />
+	<script type="text/javascript" src="{* $smarty.const.__PUBLIC__}/Js/question.js"></script>
+</head>
+<body>
+	{* include file='../Common/common.html'}
+	<div id='location'>
+		<a href="{* $smarty.const.__APP__}?c=list">全部分类</a>
+		{* if $set==1}
+		     {* if $length>1 }
+			{* section loop=$f_arr name=n start=1}
+				&gt;&nbsp;<a href="{* $smarty.const.__APP__}?c=list&cid={* $f_arr[n].cid}">
+						{* $f_arr[n].title}
+					</a>&nbsp;&nbsp;
+			{* /section}
+		     {* /if}
+			&gt;&nbsp;<a href="{* $smarty.const.__APP__}?c=list&cid={* $f_arr[0].cid}">{* $f_arr[0].title}</a>&nbsp;&nbsp;
+		{* /if}
+	</div>
+
+<!--------------------中部-------------------->
+	<div id='center-wrap'>
+		<div id='center'>
+			<div id='left'>
+				<div id='answer-info'>
+					<!-- 如果没有解决用wait -->
+					<div class='ans-state wait'></div>
+					<div class='answer'>
+						<p class='ans-title'>{* $ask[0].content}
+							<b class='point'>{* $ask[0].reward}</b>
+						</p>
+					</div>
+					<ul>
+						<li><a href="">{* $ask[0].username}</a></li>
+						<li><i class='level lv1' title='Level 1'></i></li>
+						<li>{* $ask[0].time }</li>
+				
+					</ul>
+					<div class='ianswer'>
+						<form action="{* $smarty.const.__APP__}?c=show&a=answer&asid={* $ask[0].asid}" method='POST'>
+							<p>我来回答</p>
+							<textarea name="content"></textarea>
+							<input type="hidden" name='qid' value=''>
+							<input type="submit" value='提交回答' id='anw-sub'/>
+						</form>
+					</div>
+					<!-- 满意回答 -->
+					<div class='ans-right'>
+						<p class='title'><i></i>满意回答<span></span></p>
+						{* foreach from=$answer item=v}
+							{* if $v.accept>0 }
+								<p class='ans-cons'>{* $v.content}</p>
+								<dl>
+									<dt>
+										<a href="">{* if $v.face==''}
+										<img src="{* $smarty.const.__PUBLIC__}/Images/noface.gif" width='48' height='48'/>
+										{* else if }
+										<img src="{* $v.face}" alt="" />
+										{* /if}</a>
+									</dt>
+									<dd>
+									<a href="">{* $v.username}</a>
+									</dd>
+									<dd><i class='level lv1'></i></dd>
+									<dd>{* $v.accept/$ask[0].answer*100|truncate:5:''}%</dd>
+								</dl>
+							{* /if}
+						{* /foreach}
+						<!-- <p class='ans-cons'>很不错！</p>
+						<dl>
+							<dt>
+								<a href=""><img src="./Images/noface.gif" width='48' height='48'/></a>
+							</dt>
+							<dd>
+								<a href="">用户</a>
+							</dd>
+							<dd><i class='level lv1'></i></dd>
+							<dd>20%</dd>
+						</dl> -->
+					</div>
+					<!-- 满意回答 -->
+				</div>
+
+				<div id='all-answer'>
+					<div class='ans-icon'></div>
+					<p class='title' id="title">共 <strong>{* $all_le}</strong> 条回答</p>
+					{* section loop=$le name=c}
+					<ul id="ul_an" class="ul_an">
+					{* section loop=$answer name=n start=$le[c]*3 max=3}
+						<li id="answer">
+							<div class='face'>
+								<a href="">
+
+								{* if $answer[n].face==''}
+									<img src="{* $smarty.const.__PUBLIC__}/Images/noface.gif" width='48' height='48'/>
+								{* else if }
+									<img src="{* $answer[n].face}" alt="" />
+								{* /if}
+								</a>
+							</div>
+							<div class='cons blue'>
+								<p>{* $answer[n].content}<span style='color:#888;font-size:12px'>&nbsp;&nbsp;{* $answer[n].time}</span></p>
+							</div>
+								{* if $smarty.session.uid==$ask[0].uid }
+								{* if $ask[0].solve==0}
+								<a href="{* $smarty.const.__APP__}?c=show&a=accept&anid={* $answer[n].anid}" class='adopt-btn'>采纳</a>
+								{* /if}
+								{* /if}
+						</li>
+					{* /section}
+						<!-- <li>
+							<div class='face'>
+								<a href="">
+									<img src="./Images/noface.gif" width='48' height='48'/>
+								</a>
+							</div>
+							<div class='cons blue'>
+								<p>真不错啊！<span style='color:#888;font-size:12px'>&nbsp;&nbsp;(1900.1.1)</span></p>
+							</div>
+							
+								<a href="" class='adopt-btn'>采纳</a>
+							
+						</li> -->
+					</ul>
+					{* /section}
+					<div class='page'>
+						{* $str}
+					</div>
+					<script type="text/javascript">
+						$('.page a').click(function() {
+							number=$(this).index();
+							// alert(number);
+							$('.ul_an').eq(number).css('display', 'block').siblings('.ul_an').css('display', 'none');
+							//id是一个元素在整个源代码中独一无二的属性，id返回一个元素，class返回1个或更多元素。
+						});
+						$('.page a').eq(0).trigger('click');
+					</script>
+				</div>
+				<div id='other-ask'>
+					<p class='title'>待解决的相关问题</p>
+					<table>
+						<tr>
+							<td class='t1'><a href="">什么牌子电脑好？</a></td>
+							<td>20&nbsp;回答</td>
+							<td>1900.1.1</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		<!-- 右侧 -->
+		{* include file='../Common/right.html'}
+<!-- ---右侧结束---- -->
+			
+		</div>
+
+	</div>
+	
+<!--------------------中部结束-------------------->
+
+<!-- 底部 -->
+	<div id='bottom'>
+		<p>Copyright © 2013 Qihoo.Com All Rights Reserved 后盾网</p>
+		<p>京公安网备xxxxxxxxxxxx</p>
+	</div>
+<!--[if IE 6]>
+    <script type="text/javascript" src="./Js/iepng.js"></script>
+    <script type="text/javascript">
+    	DD_belatedPNG.fix('.logo','background');
+        DD_belatedPNG.fix('.nav-sel a','background');
+        DD_belatedPNG.fix('.ask-cate i','background');
+    </script>
+<![endif]-->
+</body>
+</html>
+<!-- 底部结束 -->

@@ -1,0 +1,175 @@
+	<!-- 页面内容 -->
+	<div class="new-text">
+		<!-- 新闻内容 -->
+		<div class="left">
+			<div class="new">
+				<!-- 新闻标题 -->
+				<h1 class="b1"><?php echo $news['new_title']; ?></h1>
+				<!-- 使字体变大变小 -->
+				<div class="s-b">
+					<div class="big">A+</div>
+					<div class="small">A-</div>
+				</div>
+				<!-- 新闻内容 -->
+				<div class="texts">
+					<div class="img-wapper">
+						<img class="image" style="width:508px;height:336px;" src="<?php echo A_PUBLIC.'/Images/new/'.$news['new_image']; ?>" alt="" />
+						<span class="title"><?php echo $news['new_title']; ?></span>
+					</div>
+					<?php echo $news['new_text']; ?>
+				</div>
+			</div>
+			<div class="speak">
+			
+				<div class="reply">
+					<h1 class="w">网友评论</h1>
+					<form action="<?php echo site_url('index_/news/replay'); ?>" method="post" name="f_content">
+					<div class="fabiao">
+						<input type="hidden" name="newid" value="<?php echo $num; ?>">
+						<input type="hidden" name='content' value="">
+						<div class="de">
+							<textarea class="te" style="height: 60px;" name="content" accesskey="u" autocomplete="off" tabindex="1" id="" ></textarea>
+						</div>
+						<div class="anniu" style="height: 25px;">
+							<input value="发表" type="submit" class="button" style="width: 40px; height: 25px;border:0px;">
+						</div>
+					</div>
+					</form>
+				</div>
+				<ul class="post-list">
+				<?php foreach ($content as $k => $v) { ?>
+					<li class="np-post">
+						<img src="<?php if ($v['user']['face']=='') { echo I_PUBLIC.'/images/user/g.jpg'; }else{echo I_PUBLIC.'/images/user/'.$v['user']['face'];} ?>" alt="" />
+						<div class="np-post-body">
+							<div class="np-post-head">
+								<a href="" class="name"><?php echo $v['user']['nname']; ?></a>
+								<span class="time"><?php echo $v['time']; ?></span>
+							</div>
+							<div class="np-post-content">
+								<p><?php echo $v['content']; ?></p>
+							</div>
+							<div class="np-post-footer" reid="<?php echo $v['reid']; ?>">
+								<a class="zangs" href="javascript:void(0)">赞</a>
+								<span>(<?php echo $v['good']; ?>)</span>
+								<a href="javascript:void(0)" class="z_h" id="z_h">回复</a>
+								<span>(<?php echo $v['re_num']; ?>)</span>
+							</div>
+							<form action="<?php echo site_url('index_/news/replay_t'); ?>" method="post" name="r_content">
+							<div class="fabiao" style="display:none;">
+								<input type="hidden" name="content">
+								<input type="hidden" name="newid" value="<?php echo $num; ?>">
+								<input type="hidden" name="f_reid" value="<?php echo $v['reid']; ?>">
+								<input type="hidden" name="re_num" value="<?php echo $v['re_num']; ?>">
+								<div class="de">
+									<textarea class="te" style="height: 60px;" name="content" accesskey="u" autocomplete="off" tabindex="1" id="" ></textarea>
+								</div>
+								<div class="anniu" style="height: 25px;">
+									<input value="发表" type="submit" class="button" style="width: 40px; height: 25px;border:0px;">
+								</div>
+							</div>
+							</form>
+							<ul class="post-list">
+							<?php foreach ($v['replay'] as $k_ => $v_) { ?>
+								<li class="np-post">
+									<img src="<?php if ($v_['user']['face']=='') { echo I_PUBLIC.'/images/user/g.jpg'; }else{echo I_PUBLIC.'/images/user/'.$v_['user']['face'];} ?>" alt="" />
+									<div class="np-post-body">
+										<div class="np-post-head">
+											<a href="" class="name"><?php echo $v_['user']['nname']; ?></a>
+											<span class="time"><?php echo $v_['time']; ?></span>
+										</div>
+										<div class="np-post-content">
+											<p><?php echo $v_['content']; ?></p>
+										</div>
+										<div class="np-post-footer" reid="<?php echo $v_['reid']; ?>">
+											<a class="zangs" href="javascript:void(0)"value="<?php echo $v_['reid'];?>">赞</a>
+											<span>(<?php echo $v_['good']; ?>)</span>
+										</div>
+									</div>
+								</li>
+							<?php } ?>
+							</ul>
+							
+						</div>
+					</li>
+				<?php } ?>
+				</ul>
+			</div>
+		</div>
+		<!-- 其它内容 -->
+		<div class="right">
+			<div class="new-news">
+				<!-- 新闻放7条 -->
+				<p class="p1">最新新闻</p>
+				<?php foreach ($news_ as $k => $v) { ?>
+				<a target="_blank" href="<?php echo site_url('index_/news/index').'/'.$v['newid']; ?>" class="title"><?php echo $v['new_title'] ?></a>
+				<?php } ?>
+			</div>
+			<!-- 广告 -->
+			<object data="http://ra.gtimg.com/web/default_fodders/300x250_0.swf?v=20130124" style="outline:none;width:300px;height:250px;" type="">
+				<param name="allowscriptaccess" value="always" />
+				<param name="wmode" value="opaque" />
+				<param name="quality" value="high" />
+				<param name="flashvars" value="ime=true&setFocus=crystal.ime.setFocus&swfid=auto_gen_6" />
+				<param name="type" value="application/x-shockwave-flash" />
+			</object>
+			<div class="gg">
+				<img src="<?php echo I_PUBLIC; ?>/images/guanggao/0.jpg" alt="" />
+			</div>
+			<div class="gg2">
+				<img src="<?php echo I_PUBLIC; ?>/images/guanggao/02.jpg" alt="" />
+			</div>
+		</div>
+	</div>
+	<!-- nba相关联系 -->
+	<div class="rel">
+		<div class="text">NBA微信</div>
+		<div class="imgs">
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344985.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>NBA微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344984.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>腾讯NBA微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344990.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>鱼乐NBA微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344986.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>于嘉微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344989.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>苏群微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+			<div class="img">
+				<div class="sao"><img src="<?php echo I_PUBLIC; ?>/images/weixin/116344988.jpg" alt="" /></div>
+				<div class="wh">
+					<h5>杨毅微信二维码</h5>
+					<p>扫一扫</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 点击到顶标签 -->
+<div class="to-top" style="display:none;"></div>
+</body>
+</html>

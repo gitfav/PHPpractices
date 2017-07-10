@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/add_category.css" />
+	<title></title>
+</head>
+<body>
+	<form action="" method="post">
+		<table class="table">
+			<tr >
+				<td class="th" colspan="2">修改默认赛季（本赛季为：<?php echo ($this_season-1).'-'.$this_season; ?>）</td>
+			</tr>
+			<tr>
+				<td width="20%">赛季列表</td>
+				<td width="80%">
+					<select name="sid" id="">
+					<?php foreach ($season as $k => $v) { ?>
+						<option value="<?php echo $v['sid']; ?>"><?php echo ($v['year']-1).'-'.$v['year']; ?></option>
+					<?php } ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="确认选择" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

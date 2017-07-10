@@ -1,0 +1,67 @@
+@CHARSET "UTF-8";
+#main{
+	width:600px;
+	height:auto;
+	margin:10px auto;
+	box-shadow:0px 0px 5px #ddd;
+	border:1px solid #ddd;
+	padding:15px;
+}
+#main .content{
+	width:100%;
+	height:auto;
+}
+#main .content dl{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	padding-bottom:10px;
+	border-bottom:1px dashed #999;
+}
+#main .content dl dt{
+	width:100px;
+	height:100px;
+	padding:10px;
+	box-shadow:0px 0px 5px #ddd;
+	border:1px solid #ddd;
+	border-radius:5px;
+	float:left;
+}
+#main .content dl dt img{
+	width:100%;
+	height:100%;
+}
+#main .content dl dd{
+	float:right;
+	width:450px;
+}
+#main .content dl dd.head{
+	line-height:30px;
+	height:30px;
+	overflow:hidden;
+}
+#main .content dl dd.head span{
+	color:#408080;
+	text-shadow:0px 1px 0px #ddd;
+}
+#main .content dl dd.head b{
+	margin:0px 10px;
+}
+#main .content dl dd.con{
+	font-size:14px;
+	line-height:24px;
+}
+#main .form{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	position:relative;
+}
+#main .form .form-horizontal .control-group .controls textarea{
+	width:80%;
+}
+#main .page{
+	width:100%;
+	height:30px;
+	margin:10px 0px;
+}

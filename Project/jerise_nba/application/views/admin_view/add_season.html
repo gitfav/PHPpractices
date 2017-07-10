@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/add_category.css" />
+		<script type="text/javascript" src="<?php echo A_PUBLIC; ?>/Js/jquery-1.7.2.min.js"></script>
+	<title></title>
+	<script type="text/javascript">
+		$(function(){
+			$('form[name=season]').submit(function() {
+				var _OK=$('input[name=year]').val()
+				if (_OK) {
+					return true;
+				}
+				$('input[name=year]').trigger('blur');
+				return false;
+			});
+
+			$('input[name=year]').blur(function() {
+				if ($(this).val()=='') {
+					var msg='请填上年份';
+					$(this).next().html(msg);
+				}
+			})
+		})
+	</script>
+</head>
+<body>
+	<form action="" method="post" name="season">
+		<table class="table">
+			<tr >
+				<td class="th" colspan="2">添加赛季</td>
+			</tr>
+			<tr>
+				<td width="20%">赛季列表</td>
+				<td width="80%">
+					<input type="text" name="year" /><span style='color:red;'></span><span>（输入赛季结束年份即可）</span>
+
+				</td>
+			</tr>
+			<tr>
+				<td width="20%">是否默认此赛季</td>
+				<td width="80%">
+					<select name="default" id="">
+						<option value="YES">是</option>
+						<option value="NO">否</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="确认添加" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

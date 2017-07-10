@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../Public/Font-Awesome/css/font-awesome.min.css">
+	 	<link rel="stylesheet" href="../../Public/css/inc.css">
+	 	<link rel="stylesheet" href="../../Public/css/index.css">
+	 	<script type="text/javascript" src="../../Public/js/jquery-1.7.2.min.js"></script>
+    </head>
+
+    <body  style="background:#F1F1F1;">
+    	<div id="top">
+			<div class="top_box">
+				<ul class="l">
+					<li class="l"><a href="" class="l lh25 white pr20">拍客</a></li>
+					<li class="l"><a href="" class="l lh25 white pr20">V社区</a></li>
+					<!-- <li class="l"><a href="" class="l lh25 white pr20">V电影</a></li> -->
+				</ul>
+			</div>
+		</div>
+		<!-- 公共导航区开始 -->
+		<include file="__PUBLIC__/header.html">
+		<!-- 公共导航区结束 顶部结束 -->
+		<div id="main_box" style="background:red;">
+			<div class="personal_left">
+				<div class="head_pic">
+					<img src="__ROOT__/{$_SESSION['user']['hdpic']}" alt="">
+					<p>用户名</p>
+				</div>
+
+				<div class="set_nav">
+					<a href="" style="background:#FFF;">个人设置</a>
+					<!-- <a href="">消息提醒</a> -->
+					
+				</div>
+			</div>
+
+			<div class="personal_right">
+				<!-- <iframe src="" frameborder="0" name="content" style="height:100%;"></iframe> -->
+				<div class="set">
+		    		<ul class="tab_change">
+		    			<li class="clicked">基本资料</li>
+		    			<li>上传头像</li>
+		    			<li>修改密码</li>
+		    		</ul>
+		    		<div class="tab_container">
+		    			<div class="tab_box" style="display:block;">
+		    				<form action="" method="post">
+		    					<input type="hidden" name="uid" value="{$_SESSION['user']['uid']}">
+			    				<table>
+			    					<tr>
+			    						<th>昵称：</th>
+			    						<td><input type="text" name="uname" id="" value="用户名"></td>
+			    					</tr>
+			    					<tr>
+			    						<th>邮箱：</th>
+			    						<td></td>
+			    					</tr>
+			    					
+			    					<tr>
+			    						<th>个性签名：</th>
+			    						<td><textarea name="sign" id="" cols="30" rows="10" value=""></textarea></td>
+			    					</tr>
+			    					<tr>
+			    						<th></th>
+			    						<td>个性签名不能超过30个字</td>
+			    					</tr>
+			    					<tr>
+			    						<th></th>
+			    						<td><input type="submit" value="保存" class="btn" style="background:#3498DB"></td>
+			    					</tr>
+			    				</table>
+			    			</form>
+		    			</div>
+		    			<div class="tab_box">
+		    				<form action="" method="post" enctype="multipart/form-data">
+		    					<input type="hidden" name="oldpic" value="{$_SESSION['user']['hdpic']}">
+			    				<div class="set_title">
+			    					<input type="file" name="hdpic" id=""> <span>支持jpg，且文件小于2M</span>
+			    				</div>
+			    				<div class="set_wrap">
+			    					<div class="left">
+			    						<img src="__ROOT__/{$_SESSION['user']['hdpic']}" alt="">
+			    					</div>
+			    				</div>
+			    				<input type="submit" value="保存" class="hd-success" style="margin-left:120px;">
+			    			</form>
+		    			</div>
+		    			<div class="tab_box">
+		    				<form action="" method="post" id="reset_password">
+		    					<input type="hidden" name="uid" value="">
+			    				<table>
+			    					<tr>
+			    						<th>当前密码：</th>
+			    						<td><input type="password" name="oldpassword" value=""> <span id="psdmsg"></span></td>
+			    					</tr>
+			    					<tr>
+			    						<th>新密码：</th>
+			    						<td>
+			    							<input type="password" name="password" id="">
+			    						</td>
+			    					</tr>
+			    					<tr>
+			    						<th>重复密码：</th>
+			    						<td>
+			    							<input type="password" name="repassword" id=""> <span id="repsd"></span>
+			    						</td>
+			    					</tr>
+			    					
+			    					<tr>
+			    						<th></th>
+			    						<td><input type="submit" id="resetpassword" value="保存" class="btn" style="background:#3498DB"></td>
+			    					</tr>
+			    				</table>
+			    			</form>
+			    			
+		    			</div>
+		    		</div>
+    			</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript">
+	    	$('.set .tab_change li').click(function(event) {
+	    		$(this).siblings('li').removeClass('clicked');
+	    		$(this).addClass('clicked');
+	    		var num = $('.tab_change .clicked').index();
+	    		$('.tab_box').hide();
+	    		$('.tab_box').eq(num).show();
+	    	});
+
+	    </script>
+    </body>
+
+</html>

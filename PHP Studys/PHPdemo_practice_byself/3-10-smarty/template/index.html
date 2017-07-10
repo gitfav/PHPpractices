@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<title>无标题</title>
+</head>
+<body>
+	{*$data.username}<br>
+	{*$smarty.get.id|default:'没有get参数！'}<br>
+	{*$smarty.session.uid}<br>
+	<!-- 输出常量 -->
+	{*$smarty.const.ROOT}<br>
+	{*$smarty.now|date_format:'%y-%m-%d %H:%M'}<br>
+	{*$word|upper|lower}<br>
+	{*$word|truncate:3:''}<br>
+	{*$chinese|truncate:9:''}<br>
+	{*$arr.web.name}<br>
+	{* if $arr.web.name=='html' && $address=='美国'}
+		<p>努力学习html</p>
+	{* else }
+		<p>暂时未在{*$address}找到html</p>
+	{*/if}
+	<table border="1" cellpadding="" cellspacing="">
+	{* foreach from=$rows key=k item=v}		
+			<tr>
+				<td>{*$v.asid}</td><td>{*$v.content}</td>
+			</tr>
+	{* /foreach}
+	</table>
+</body>
+</html>

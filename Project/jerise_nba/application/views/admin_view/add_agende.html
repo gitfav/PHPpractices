@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="<?php echo A_PUBLIC; ?>/Css/add_category.css" />
+		<script type="text/javascript" src="<?php echo A_PUBLIC; ?>/Js/jquery-1.7.2.min.js"></script>
+	<title></title>
+	<script type="text/javascript">
+		$(function(){
+			$('form[name=tijiao]').submit(function() {
+				var _OK=$('select[name=h_id]').val() && $('select[name=v_id]').val() && $('select[name=type]').val() && $('input[name=rdate]').val() && $('input[name=rtime]').val()
+				if (_OK) {
+					return true;
+				};
+				$('select[name=h_id]').trigger('blur');
+				$('select[name=v_id]').trigger('blur');
+				$('select[name=type]').trigger('blur');
+				$('input[name=rdate]').trigger('blur');
+				$('input[name=rtime]').trigger('blur');
+				return false;
+			});
+
+
+			$('select[name=h_id]').blur(function() {
+				if ($(this).val()=='') {
+					var msg='必填';
+					$(this).next().html(msg);
+				}
+				if($(this).val()==$('select[name=v_id]').val()){
+					var msg='两球队要不同';
+					$(this).next().html(msg);
+				}else{
+					var msg='OK';
+					$(this).next().html(msg);
+				}
+			});
+			$('select[name=v_id]').blur(function() {
+				if ($(this).val()=='') {
+					var msg='必填';
+					$(this).next().html(msg);
+				}
+				if($(this).val()==$('select[name=h_id]').val()){
+					var msg='两球队要不同';
+					$(this).next().html(msg);
+				}else{
+					var msg='OK';
+					$(this).next().html(msg);
+				}
+			});
+			$('input[name=rdate]').blur(function() {
+				if ($(this).val()=='') {
+					var msg='必填';
+					$(this).next().html(msg);
+				}else{
+					var msg='OK';
+					$(this).next().html(msg);
+				};
+			});
+			$('input[name=rtime]').blur(function() {
+				if ($(this).val()=='') {
+					var msg='必填';
+					$(this).next().html(msg);
+				}else{
+					var msg='OK';
+					$(this).next().html(msg);
+				};
+			});
+			$('select[name=type]').blur(function() {
+				if ($(this).val()=='') {
+					var msg='必填';
+					$(this).next().html(msg);
+				}else{
+					var msg='OK';
+					$(this).next().html(msg);
+				};
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<form action="<?php echo site_url('admin_/agende_list/add_agende'); ?>" method="post" enctype="multipart/form-data" name='tijiao'>
+		<table class="table">
+			<tr >
+				<td class="th" colspan="2">添加赛程</td>
+			</tr>
+			<tr >
+				<td colspan="2">赛季：<span style='font-weight:800;'><?php echo ($thisYear['year']-1).'-'.$thisYear['year']; ?></span></td>
+			</tr>
+			<input type="hidden" name="season_id" value="<?php echo $thisYear['sid']; ?>"/>
+			<tr>
+				<td>主队</td>
+				<td>
+					<select name="h_id">
+					<option value="">无</option>
+					<?php foreach ($temp as $k => $v): ?>
+						<option value="<?php echo $v['teid']; ?>"><?php echo $v['te_name']; ?></option>
+					<?php endforeach; ?>	
+					</select>
+					<span style='color:red;'></span>
+				</td>
+			</tr>
+			<tr>
+				<td>客队</td>
+				<td>
+					<select name="v_id">
+					<option value="">无</option>
+					<?php foreach ($temp as $k => $v): ?>
+						<option value="<?php echo $v['teid']; ?>"><?php echo $v['te_name']; ?></option>
+					<?php endforeach; ?>	
+					</select>
+					<span style='color:red;'></span>
+				</td>
+			</tr>
+			<tr>
+				<td>比赛日期</td>
+				<td>
+					<input  type="text" name="rdate">
+					<span style='color:red;'></span>
+					<span>格式：0000-00-00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>比赛时间</td>
+				<td>
+					<input type="text" name="rtime"/>
+					<span style='color:red;'></span>
+					<span>格式：00:00:00</span>
+					</td>
+			</tr>
+			<tr>
+				<td>赛季类型</td>
+				<td>
+					<select name="type">
+						<option value=""></option>
+						<option value="季前赛">季前赛</option>
+						<option value="常规赛">常规赛</option>
+						<option value="季后赛">季后赛</option>	
+					</select>
+					<span style='color:red;'></span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="添加" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

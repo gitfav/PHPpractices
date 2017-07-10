@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	*{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+#content-box{
+	margin: auto;
+	width: 500px;
+	height: 150px;
+	box-shadow: 2px 2px 2px red;
+	border-radius: 10px;
+	margin-top: 30px;
+}
+#content-box .userInfo{
+	width: 500px;
+	height: 25px;
+	font-family: 黑体;
+	font-size: 16px;
+}
+.pic-content{
+	width: 500px;
+	height: 125px;
+	position: relative;
+}
+.pic-content .pic{
+	width: 85px;
+	height: 85px;
+	line-height: 125px;
+	border-radius:50%;
+	overflow: hidden;
+	float: left; 
+	margin: 20px 0px 0px 20px;
+}
+#content-box .pic-content .content{
+	width: 335px;
+	height: 120px;
+	margin-bottom: 5px;
+	float: left;
+	background-color: yellow;
+}
+#content-box .pic-content .opt{
+	width: 40px;
+	height: 50px;
+	float: right;
+	font-size: 16px;
+	font-family: 微软雅黑;
+	margin: 20px  10px 0px 10px;
+}
+#content-box .pic-content .opt a{
+	color: blue;
+}
+
+#form-box{
+	width:500px;
+	min-height: 150px;
+	box-shadow: 2px 2px 2px red;
+	margin:auto;
+	margin-top: 30px;
+	border-radius: 10px;
+}
+</style>
+<body>
+	<div id="form-box">
+		<form action=""  method="post">
+			<div class="line">
+				<span>用户名</span>
+				<input type="text" name="username" value="<?php echo $Newdata['username']; ?>">
+			</div>
+			<div class="line">
+				<span>性别</span>
+				<input type="radio" name="sex" value="男" <?php if ($Newdata['sex']=='男') { ?> checked="" <?php } ?> > 男
+				<input type="radio" name="sex" value="女" <?php if ($Newdata['sex']=='女') { ?> checked=""<?php } ?>> 女
+			</div>
+			<div class="line">
+				<img src="<?php echo __PUBLIC__; ?>/images/1.jpg" alt="">
+				<input type="radio" name="face" value="1.jpg" <?php if ($Newdata['face']=='1.jpg'){?> checked="" <?php } ?>>
+				<img src="<?php echo __PUBLIC__; ?>/images/2.jpg" alt="">
+				<input type="radio" name="face" value="2.jpg" <?php if ($Newdata['face']=='2.jpg'){?> checked="" <?php } ?>>
+				<img src="<?php echo __PUBLIC__; ?>/images/3.jpg" alt="">
+				<input type="radio" name="face" value="3.jpg" <?php if ($Newdata['face']=='3.jpg'){?> checked="" <?php } ?>>
+			</div>
+			<div class="line">
+				<textarea name="content" id="" cols="30" rows="10" ><?php echo $Newdata['content']; ?></textarea>
+			</div>
+			<div class="line">
+				<input type="text" name="index" value="<?php echo $_GET['index']?>">
+				<input type="submit" value="留言">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

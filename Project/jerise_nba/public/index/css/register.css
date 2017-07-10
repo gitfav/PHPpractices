@@ -1,0 +1,24 @@
+.wrapper .register .lo img{
+	width: 23px;
+	height: 51px;
+}
+.wrapper .register .lo{
+	padding: 5px 0px 0px 20px;
+	color: #fff;
+	font-size: 24px;
+	font-style: italic;
+	font-weight: bolder;
+}
+.wrapper .register .center{
+	padding-top: 0px;
+}
+.wrapper .register .center .log{
+	margin-left: 80px;
+}
+.yan_img{
+	position: relative;
+	width: 120px;
+	height: 35px;
+	top: 12px;
+	left: 10px;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="./template/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="./template/bootstrap3/dist/js/jquery.js"></script>
+	<script type="text/javascript" src="./template/bootstrap3/dist/js/bootstrap.js"></script>
+	<link href="./template/bootstrap3/dist/css/bootstrap.css" rel="stylesheet" />
+	<link href="./template/css/index.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.face{
+			width: 250px;
+			height: 90px;
+			position: absolute;
+			right: 10px;
+			top: 5px;
+		}
+		.face img{
+			height: 60px;
+		}
+		.face div{
+			position: relative;
+			height: 80px;
+			border-radius: 5px;
+			overflow-y: hidden;
+			width: 62px;
+			float: left;
+			margin-left: 10px;
+			text-align: right;
+			font-weight: 700;
+			font-family: '微软雅黑';
+			color: #999;
+		}
+		.face .face_radio{
+			position: absolute;
+			left: 3px;
+			bottom: 4px;
+		}
+		.form-horizontal{
+			position: relative;
+		}
+	</style>
+	<title>留言本</title>
+</head>
+<body>
+	<div id="main">
+
+		<div class='form'>
+			<form class="form-horizontal" action="" method="post">
+				<div class="control-group">
+					<label class="control-label" for="inputEmail">昵称:</label>
+					<div class="controls">
+						<input type="text" name="username" placeholder="请输入你的昵称.." value="<?php echo $data['username']?>"></div>
+				</div>
+				<div class="control-group">
+					<input type="radio" name="sex" id="" <?php if($data['sex']=='男'){ ?> checked="" <?php }?> value="男" >
+					男
+					<input type="radio" name="sex" id="" <?php if($data['sex']=='女'){ ?> checked="" <?php }?> value="女" >女</div>
+				<div class="control-group">
+					<label class="control-label" for="inputPassword">留言内容：</label>
+					<div  class="controls">
+						<textarea   name="content"><?php echo $data['content']?></textarea>
+					</div>
+				</div>
+				<div class="face">
+					<div>
+						<img src="./template/images/1.jpg" alt="">
+						<input type="radio" name="face" class="face_radio" <?php if($data['face']=='1.jpg'){ ?> checked="" <?php }?> value="1.jpg">
+						头像1
+					</div>
+					<div>
+						<img src="./template/images/2.jpg" alt="">
+						<input type="radio" name="face" class="face_radio" <?php if($data['face']=='2.jpg'){ ?> checked="" <?php }?>  value="2.jpg">
+						头像2
+					</div>
+					<div>
+						<img src="./template/images/3.jpg" alt="">
+						<input type="radio" name="face"  <?php if($data['face']=='3.jpg'){ ?> checked="" <?php }?>  class="face_radio" value="3.jpg">
+						头像3
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" name="id" value="<?php echo $_GET['id']?>">
+						<button type="submit" class="btn btn-primary">给我留言</button>
+						
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

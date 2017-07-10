@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+
+<style type="text/css">
+
+*{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+#all{
+	margin: auto;
+	width: 500px;
+	min-height: 300px;
+}
+#login{
+	width: 500px;
+	height: 20px;
+	margin-top: 10px;
+}
+#login a{
+	font-family: 黑体;
+	color: black;
+}
+#content-box{	
+	width: 500px;
+	min-height: 150px;
+	box-shadow: 2px 2px 2px red;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+#content-box .userInfo{
+	width: 500px;
+	height: 25px;
+	font-family: 黑体;
+	font-size: 16px;
+}
+.pic-content{
+	width: 500px;
+	height: 125px;
+	position: relative;
+}
+.pic-content .pic{
+	width: 85px;
+	height: 85px;
+	line-height: 125px;
+	border-radius:50%;
+	overflow: hidden;
+	float: left; 
+	margin: 20px 0px 0px 20px;
+}
+#content-box .pic-content .content{
+	width: 335px;
+	height: 120px;
+	margin-bottom: 5px;
+	float: left;
+	background-color: yellow;
+}
+#content-box .pic-content .opt{
+	width: 40px;
+	height: 50px;
+	float: right;
+	font-size: 16px;
+	font-family: 微软雅黑;
+	margin: 20px  10px 0px 10px;
+}
+#content-box .pic-content .opt a{
+	color: blue;
+}
+
+#form-box{
+	width:500px;
+	min-height: 150px;
+	box-shadow: 2px 2px 2px red;
+	margin:auto;
+	margin-top: 10px;
+	border-radius: 10px;
+}
+</style>
+
+<body>
+	<div id="all">
+	<?php if(isset($_SESSION['user'])) { ?>
+		<div id="login">		
+			<span>欢迎回来<?php echo $_SESSION['user']['username']; ?></span>
+			<a href="./index.php?c=login&a=out">退出</a>
+		</div>
+	<?php }else{ ?>
+		<div id="login">
+			<a href="./index.php?c=login&a=login">登入</a>
+			<span>|</span>
+			<a href="./index.php?c=login&a=register">注册</a>
+		</div>
+	<?php } ?>
+	<div id="content-box">
+	<ul>
+		<?php if(!is_null($message)){?>
+		<?php foreach ($message as $k => $v) { ?>
+		<li>
+		
+		<div class="userInfo">
+			<span></span>
+			<span><?php echo $v["username"]; ?></span>
+			<span><?php echo $v["sex"]; ?></span>
+			<span><?php echo $v["time"]; ?></span>
+		</div>
+		<div class="pic-content">
+			<div class="pic"><img src="<?php echo __PUBLIC__; ?>/images/<?php echo $v["face"]; ?>" alt="" /></div>
+			<div class="content"><?php echo $v["content"]; ?></div>
+			<div class="opt">
+				<a href="./index.php?index=<?php  echo $k ?>&a=edit">编辑</a>
+				</br>
+				<a href="javascript:;" onclick="if(confirm('确定删除吗？')){
+					location.href='./index.php?index=<?php echo $k; ?>&a=del'; 
+				}">删除</a>
+			</div>
+		</div>
+		</li>
+		<?php } ?>
+		<?php } ?>
+	</ul>
+	</div>
+
+	<div id="form-box">
+		<form action=""  method="post">
+			<div class="line">
+				<span>用户名</span>
+				<input type="text" name="username" value="">
+			</div>
+			<div class="line">
+				<span>性别</span>
+				<input type="radio" name="sex" value="男" checked="" > 男
+				<input type="radio" name="sex" value="女"> 女
+			</div>
+			<div class="line">
+				<img src="<?php echo __PUBLIC__; ?>/images/1.jpg" alt="">
+				<input type="radio" name="face" value="1.jpg" checked="">
+				<img src="<?php echo __PUBLIC__; ?>/images/2.jpg" alt="">
+				<input type="radio" name="face" value="2.jpg">
+				<img src="<?php echo __PUBLIC__; ?>/images/3.jpg" alt="">
+				<input type="radio" name="face" value="3.jpg">
+			</div>
+			<div class="line">
+				<textarea name="content" id="" cols="30" rows="10"></textarea>
+			</div>
+			<div class="line">
+				<input type="submit" value="留言">
+			</div>
+		</form>
+	</div>
+	</div>
+</body>
+</html>

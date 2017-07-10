@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<link rel="stylesheet" href="<?php echo A_PUBLIC ?>/Css/add_category.css" />
+	<title></title>
+</head>
+<body>
+	<form action="<?php echo site_url('admin_/agende_list/add_sport_data'); ?>" method="post">
+		<table class="table">
+			<tr >
+				<td class="th" colspan="18">添加数据</td>
+			</tr>
+			<tr>
+				<td width="15%">姓名</td>
+				<td width="6%">是否出场</td>
+				<td width="6%">是否先发</td>
+				<td width="6%">出场时间</td>
+				<td width="6%">投篮出手</td>
+				<td width="6%">投篮进球</td>
+				<td width="6%">三分出手</td>
+				<td width="6%">三分进球</td>
+				<td width="6%">罚球出手</td>
+				<td width="6%">罚球进球</td>
+				<td width="4%">前篮板</td>
+				<td width="4%">后篮板</td>
+				<td width="4%">助攻</td>
+				<td width="4%">抢断</td>
+				<td width="4%">盖帽</td>
+				<td width="4%">失误</td>
+				<td width="4%">犯规</td>
+				<td width="4%">得分</td>
+			</tr>
+			<tr >
+				<td  class="th" colspan="18"><?php echo $agende['temp_home']; ?>（主场）</td>
+				<input type="hidden" name="season" value="<?php echo  $season; ?>" />
+				<input type="hidden" name="sid" value="<?php echo  $sid; ?>" />
+				<input type="hidden" name="optem" value="<?php echo  $agende['type']; ?>" />
+				<input type="hidden" name="agid" value="<?php echo  $agid; ?>" />
+				<input type="hidden" name="h_id" value="<?php echo  $agende['h_id']; ?>" />
+				<input type="hidden" name="v_id" value="<?php echo  $agende['v_id']; ?>" />
+				<input type="hidden" name="day" value="<?php echo $agende['rdate']; ?>" />
+			</tr>
+			<?php foreach ($h_temp as $k => $v) { ?>
+			<tr>
+				<td><?php echo $v['sp_name']; ?></td>
+				<input type="hidden" name="sp_name[]" value="<?php echo  $v['sp_name']; ?>" />
+				<input type="hidden" name="spid[]" value="<?php echo  $v['spid']; ?>" />
+				<input type="hidden" name="sp_temp[]" value="<?php echo  $agende['temp_home']; ?>" />
+				<input type="hidden" name="teid[]" value="<?php echo  $agende['h_id']; ?>" />
+				<td><select name="is_out[]" id="" >
+					<option value="Y">是</option>
+					<option value="N">否</option>
+				</select></td>
+				<td><select name="sp_first[]" id="" >
+					<option value="NO">否</option>
+					<option value="YES">是</option>
+				</select></td>
+				<td><input type="text" name="sp_time[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_shot[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_shotin[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_tree[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_treein[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_pen[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_penin[]" style="width:30px;" /></td>
+				<td><input type="text" name="sp_be_re[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_be_af[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_assist[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_steal[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_block[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_error[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_foul[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_score[]" style="width:30px;"/></td>
+			</tr>	
+			<?php } ?>
+			
+			<tr>
+				<td width="15%">姓名</td>
+				<td width="6%">是否出场</td>
+				<td width="6%">是否先发</td>
+				<td width="6%">出场时间</td>
+				<td width="6%">投篮出手</td>
+				<td width="6%">投篮进球</td>
+				<td width="6%">三分出手</td>
+				<td width="6%">三分进球</td>
+				<td width="6%">罚球出手</td>
+				<td width="6%">罚球进球</td>
+				<td width="4%">前篮板</td>
+				<td width="4%">后篮板</td>
+				<td width="4%">助攻</td>
+				<td width="4%">抢断</td>
+				<td width="4%">盖帽</td>
+				<td width="4%">失误</td>
+				<td width="4%">犯规</td>
+				<td width="4%">得分</td>
+			</tr>
+			<tr >
+				<td  class="th" colspan="18"><?php echo $agende['temp_visit']; ?>（客场）</td>
+			</tr>
+			<?php foreach ($v_temp as $k => $v) { ?>
+			<tr>
+				<td><?php echo $v['sp_name']; ?></td>
+				<input type="hidden" name="sp_name[]" value="<?php echo  $v['sp_name']; ?>" />
+				<input type="hidden" name="spid[]" value="<?php echo  $v['spid']; ?>" />
+				<input type="hidden" name="sp_temp[]" value="<?php echo  $agende['temp_visit']; ?>" />
+				<input type="hidden" name="teid[]" value="<?php echo  $agende['v_id']; ?>" />
+				<td><select name="is_out[]" id="" >
+					<option value="Y">是</option>
+					<option value="N">否</option>
+				</select></td>
+				<td><select name="sp_first[]" id="" >
+					<option value="NO">否</option>
+					<option value="YES">是</option>
+				</select></td>
+				<td><input type="text" name="sp_time[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_shot[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_shotin[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_tree[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_treein[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_pen[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_penin[]" style="width:30px;" /></td>
+				<td><input type="text" name="sp_be_re[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_be_af[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_assist[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_steal[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_block[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_error[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_foul[]" style="width:30px;"/></td>
+				<td><input type="text" name="sp_score[]" style="width:30px;"/></td>
+			</tr>	
+			<?php } ?>
+			<!-- <tr>
+				<td>确认密码：</td>
+				<td><input type="password" name="passwdS"/></td>
+			</tr> -->
+			<!-- <td><select name="optem[]" id="" >
+					<option value="常规赛">常规赛</option>
+					<option value="季后赛">季后赛</option>
+					<option value="季前赛">季前赛</option>
+				</select></td> -->
+			<tr>
+				<td colspan="18">
+					<input type="submit" value="添加数据" class="input_button"/>
+					<input type="reset" class="input_button"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
