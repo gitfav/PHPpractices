@@ -1,0 +1,1 @@
+2.5版本中的httpd.conf文件已经没有 deny from all 了。只要去掉#即可

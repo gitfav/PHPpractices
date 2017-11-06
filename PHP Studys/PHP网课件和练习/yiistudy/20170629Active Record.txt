@@ -1,0 +1,77 @@
+1、默认情况下，AR 类的名字和数据表的名字相同。如果不同，请覆盖 tableName() 方法。 model() 方法为每个 AR 类声明为如此（稍后解释）。
+信息: 要使用 1.1.0 版本中引入的 表前缀功能 AR 类的 tableName() 方法可以通过如下方式覆盖
+public function tableName()
+{
+    return '{{post}}';
+}
+这就是说，我们将返回通过双大括号括起来的没有前缀的表名，而不是完整的表的名字。
+
+2、AR 依靠表中良好定义的主键。如果一个表没有主键，则必须在相应的 AR 类中通过如下方式覆盖 primaryKey() 方法指定哪一列或哪几列作为主键。
+public function primaryKey()
+{
+    return 'id';
+    // 对于复合主键，要返回一个类似如下的数组
+    // return array('pk1', 'pk2');
+}
+
+3、要向数据表中插入新行，我们要创建一个相应 AR 类的实例，设置其与表的列相关的属性，然后调用 save() 方法完成插入：
+$post=new Post;
+$post->title='sample post';
+$post->content='content for the sample post';
+$post->create_time=time();
+$post->save();
+如果表的主键是自增的，在插入完成后，AR 实例将包含一个更新的主键。在上面的例子中， id 属性将反映出新插入帖子的主键值，即使我们从未显式地改变它。
+
+4、要读取数据表中的数据，我们可以通过如下方式调用 find 系列方法中的一种：
+
+// 查找满足指定条件的结果中的第一行
+$post=Post::model()->find($condition,$params);
+// 查找具有指定主键值的那一行
+$post=Post::model()->findByPk($postID,$condition,$params);
+// 查找具有指定属性值的行
+$post=Post::model()->findByAttributes($attributes,$condition,$params);
+// 通过指定的 SQL 语句查找结果中的第一行
+$post=Post::model()->findBySql($sql,$params);
+如上所示，我们通过 Post::model() 调用 find 方法。 请记住，静态方法 model() 是每个 AR 类所必须的。 此方法返回在对象上下文中的一个用于访问类级别方法（类似于静态类方法的东西）的 AR 实例。
+如果 find 方法找到了一个满足查询条件的行，它将返回一个 Post 实例，实例的属性含有数据表行中相应列的值。 然后我们就可以像读取普通对象的属性那样读取载入的值，例如 echo $post->title;。
+如果使用给定的查询条件在数据库中没有找到任何东西， find 方法将返回 null 。
+调用 find 时，我们使用 $condition 和 $params 指定查询条件。此处 $condition 可以是 SQL 语句中的 WHERE 字符串，$params 则是一个参数数组，其中的值应绑定到 $condation 中的占位符。例如：
+// 查找 postID=10 的那一行
+$post=Post::model()->find('postID=:postID', array(':postID'=>10));
+
+5、
+（1）我们也可以使用 $condition 指定更复杂的查询条件。 不使用字符串，我们可以让 $condition 成为一个 CDbCriteria 的实例，它允许我们指定不限于 WHERE 的条件。 例如：
+$criteria=new CDbCriteria;
+$criteria->select='title';  // 只选择 'title' 列
+$criteria->condition='postID=:postID';
+$criteria->params=array(':postID'=>10);
+$post=Post::model()->find($criteria); // $params 不需要了
+注意，当使用 CDbCriteria 作为查询条件时，$params 参数不再需要了，因为它可以在 CDbCriteria 中指定，就像上面那样。
+一种替代 CDbCriteria 的方法是给 find 方法传递一个数组。 数组的键和值各自对应标准（criterion）的属性名和值，上面的例子可以重写为如下：
+$post=Post::model()->find(array(
+    'select'=>'title',
+    'condition'=>'postID=:postID',
+    'params'=>array(':postID'=>10),
+));
+信息: 当一个查询条件是关于按指定的值匹配几个列时，我们可以使用 findByAttributes()。我们使 $attributes 参数是一个以列名做索引的值的数组。在一些框架中，此任务可以通过调用类似 findByNameAndTitle 的方法实现。虽然此方法看起来很诱人， 但它常常引起混淆，冲突和比如列名大小写敏感的问题。
+
+（2）、当有多行数据匹配指定的查询条件时，我们可以通过下面的 findAll 方法将他们全部带回。 每个都有其各自的 find 方法，就像我们已经讲过的那样。
+
+// 查找满足指定条件的所有行
+$posts=Post::model()->findAll($condition,$params);
+// 查找带有指定主键的所有行
+$posts=Post::model()->findAllByPk($postIDs,$condition,$params);
+// 查找带有指定属性值的所有行
+$posts=Post::model()->findAllByAttributes($attributes,$condition,$params);
+// 通过指定的SQL语句查找所有行
+$posts=Post::model()->findAllBySql($sql,$params);
+如果没有任何东西符合查询条件，findAll 将返回一个空数组。这跟 find 不同，find 会在没有找到什么东西时返回 null。
+
+除了上面讲述的 find 和 findAll 方法，为了方便，（Yii）还提供了如下方法：
+
+// 获取满足指定条件的行数
+$n=Post::model()->count($condition,$params);
+// 通过指定的 SQL 获取结果行数
+$n=Post::model()->countBySql($sql,$params);
+// 检查是否至少有一行复合指定的条件
+$exists=Post::model()->exists($condition,$params);

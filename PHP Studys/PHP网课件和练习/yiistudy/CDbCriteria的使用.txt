@@ -1,0 +1,15 @@
+在继承CActiveRecord的model类下
+$criteria = new CDbCriteria();
+$criteria->select = 'name,integral,img,description,obtainnum';
+$criteria->addCondition("eid=" . $eid);
+$criteria->addCondition("status=1");
+$criteria->order = "integral asc";
+$result = $this->model()->findAll($criteria);
+
+联合查询
+$criteria = new CDbCriteria();
+$criteria->select="t.id";
+$criteria->join = ' inner join {{medal}} b on t.meid=b.id and b.eid=:eid';
+$criteria->addCondition("t.uid=:uid");
+$criteria->params=array(":eid"=>Yii::app()->user->eid,":uid"=>Yii::app()->user->uid);
+$result = $this->model()->findAll($criteria);

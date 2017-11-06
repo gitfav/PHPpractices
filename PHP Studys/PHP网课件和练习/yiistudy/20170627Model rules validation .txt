@@ -1,0 +1,32 @@
+网址：http://www.yiiframework.com/wiki/56/
+
+1、How validation works 
+The CModel class uses a method named CModel::rules() to return an array with the rules for validation.
+
+public function rules()
+{
+    return array(
+        array('username, password', 'required'),
+        array('password_repeat', 'required', 'on'=>'register'),
+        array('password', 'compare', 'compareAttribute'=>'password_repeat', 'on'=>'register'),
+    );
+}
+
+2、Parameters of a validator
+array(
+    // mandatory arguments
+    'attribute list', 
+    'validator name', 
+    // optional parameters
+    'on'=>'scenario name', 
+    'message'=>'The attribute didn\'t validate!', 
+    ...validation parameters...
+);
+
+3、每个模型对象都有场景属性  $model->scenario = 'register'  。某些场景是yii内置的， 但也可以自己定义。
+$modelA = User::model()->findByPk(1); // $model->scenario = 'update'
+$modelB = new User();                 // $model->scenario = 'insert'
+$modelB->scenario = 'register';          // custom scenario
+if ($modelB->validate()) {            // will only apply rules of the "register" scenario、使用validate进行验证
+
+对基类的 $model->attribute 赋类的属性值，然后使用$model->validate()。

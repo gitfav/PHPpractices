@@ -1,0 +1,1 @@
+setState($name,$value);设置值到session中

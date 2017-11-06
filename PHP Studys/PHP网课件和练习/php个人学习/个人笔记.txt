@@ -1,0 +1,48 @@
+之前：	一、关于$_SERVER['HTTP_CLIENT_IP']
+		REMOTE_ADDR 是你的客户端跟你的服务器“握手”时候的IP。如果使用了“匿名代理”，REMOTE_ADDR将显示代理服务器的IP。 
+		HTTP_CLIENT_IP 是代理服务器发送的HTTP头。如果是“超级匿名代理”，则返回none值。同样，REMOTE_ADDR也会被替换为这个代理服务器的IP。 
+		$_SERVER['REMOTE_ADDR']; //访问端（有可能是用户，有可能是代理的）IP 
+		$_SERVER['HTTP_CLIENT_IP']; //代理端的（有可能存在，可伪造） 
+		$_SERVER['HTTP_X_FORWARDED_FOR']; //用户是在哪个IP使用的代理（有可能存在，也可以伪造）
+
+
+
+
+2015-5-28   is_readable() 函数判断指定文件名是否可读。
+			      提示和注释：本函数的结果会被缓存。请使用 clearstatcache() 来清除缓存。
+	    file_exists() 函数检查文件或目录是否存在。如果指定的文件或目录存在则返回 true，否则返回 false。
+
+	    fopen() 函数打开文件或者 URL。如果打开失败，本函数返回 FALSE。		
+		    语法：fopen(filename,mode,include_path,context)
+			filename	必需。规定要打开的文件或 URL。
+			mode	必需。规定要求到该文件/流的访问类型。可能的值见下表。
+			include_path	可选。如果也需要在 include_path 中检索文件的话，可以将该参数设为 1 或 TRUE。
+			context	可选。规定文件句柄的环境。Context 是可以修改流的行为的一套选项。
+
+	    feof() 函数检测是否已到达文件末尾 (eof)。
+		   如果文件指针到了 EOF 或者出错时则返回 TRUE，否则返回一个错误（包括 socket 超时），其它情况则返回 FALSE。
+	    fread() 函数读取文件（可安全用于二进制文件）。
+		    语法：fread(file,length)
+			file	必需。规定要读取打开文件。
+			length	必需。规定要读取的最大字节数。
+		    提示：如果只是想将一个文件的内容读入到一个字符串中，请使用 file_get_contents()，它的性能比 fread() 好得多。
+	    DIRECTORY_SEPARATOR 
+		    目录分隔符，是定义php的内置常量。在调试机器上，在windows我们习惯性的使用“\”作为文件分隔符，但是在linux上系统不认识这个标识，于是就要引入这个php内置常量了
+		    php的内置常量DIRECTORY_SEPARATOR是一个显示系统分隔符的命令，DIRECTORY_SEPARATOR是php的内部常量，不需要任何定义与包含即可直接使用。
+
+2015-5-29   在php配置项中(php.ini)   short_open_tag指的是是否开启短标签。如果值为Off，此服务器的.php文件必须以<?php 开头。如果值为On。此服务器的.php文件可以以<? 开头。
+	    在php配置项中(Apache配置文件目录中的httpd.conf文件)  打开“httpd.conf”配置文件。修改其中的DocumentRoot 改变默认路径地址，改为您自己指定的路径地址。 
+
+2015-6-2    关于url重写（百度：wamp url重写）   服务器配置问题（本地），首先打开“httpd.conf”配置文件，打开“httpd.conf”配置文件241行处的AllowOverride None改成AllowOverride All 然后关闭保存httpd.conf文件。之后，左击下面任务栏的wamp的图标，移动到Apache->Apache modules 然后点击rewrite_module勾选上去。
+
+2015-6-17   int preg_match ( string $pattern , string $subject [, array &$matches [, int $flags = 0 [, int $offset = 0 ]]] )（慕课网学习）
+
+ 		matches
+   		如果提供了参数matches，它将被填充为搜索结果。 $matches[0]将包含完整模式匹配到的文本， $matches[1] 将包含第一个捕获子组匹配到的文本，以此类推。
+
+2015-6-29   strtolower(string)函数。 函数把字符串转换为小写。
+	    strpos(string,find,start)函数。函数返回字符串在另一个字符串中第一次出现的位置。
+	    list(var1,var2...)。与 array() 类似，list() 实际上是一种语言结构，不是函数。用数组中的元素为一组变量赋值。
+	    explode(separator,string,limit)。把字符串分割为数组。
+	    substr(string,start,length)。返回字符串的一部分。
+	    strlen(string)。返回字符串的长度。

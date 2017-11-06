@@ -1,0 +1,352 @@
+显示数据库
+show databases;
+
+创建数据库c45
+create database c45 default charset=utf8;
+
+使用数据库c45
+use c45;
+
+删除数据库
+drop database if exists c45;
+
+
+
+--------------------操作表-----------------
+创建表 stu
+create table stu(sid int unsigned primary key auto_increment,sname char(20));
+
+查看库中所有表
+ show tables;
+
+查看表结构
+ desc 表名
+
+查看表数据
+select * from stu;
+
+查询指定列
+select sname,age from xh;
+
+
+
+
+表中插入数据
+insert into xh set sname='xh',age=9;
+insert into xh(sname,age) value('xaaa',666666),('xb',88888888);
+
+replace 插入、替换
+如果主键sid 不存在13，执行插入操作。主键存在sid=13 执行替换操作
+replace into stu (sid,sname,age) values(13,'查看变化',88);
+
+
+update 更新操作
+注意：要加where条件，否则会更新表中全部数据
+update stu set sname='老头' where age=88;
+
+delete 删除操作============
+注意：要加where条件,否则会删除表中全部数据
+delete from stu where sid=12;
+
+去重
+select distinct sname from xh;
+
+查找字段值是null 的
+select * from new where title is null;
+
+------------------if---------------------
+if(表达式，值1，值2）当表达式成立时返回值1，否则返回值2
+select age,if(age>21,"大","小") from stu;
+
+ifnull(字段,值) 如果字段值为null,返回值
+mysql> select age,ifnull(age,"空") from stu;
+
+
+
+
+=============like
+1,查找姓李的同学
+select * from stu where sname like '李%';
+2，查找以李结尾的同学
+select * from stu where sname like '%李';
+3,查找名字当中 包含李的同学
+select * from stu where sname like '%李%';
+
+
+--------------排序-----------------
+order by 排序默认升序
+select * from stu order by age;
+
+desc 降序排列
+select * from stu order by age desc;
+asc 升序排列
+mysql> select * from stu order by age asc;
+
+rand()随机数
+随机找两个同学
+mysql> select * from stu order by rand() limit 2;
+
+
+limit(n) 取出部分数据记录
+select * from stu order by age desc limit 1;//取出一个数据
+
+limit(m,n) 取出从m开始的n条数据， m以0开始记数
+select * from stu order by age desc limit 0,5;
+从查询出记录的第1条开始取（序号是从0开始的）取5条
+
+
+
+
+============between 值1 and 值2在值1与值2区间内检索内容
+ mysql> select * from stu where age between 19 and 21;
+
+============In(值1,值2....) 检测检索值是否在in表达式指定的值当中
+select * from stu where age=12 or age=22 or age=20;
+select * from stu where age in(12,20,22);
+
+
+
+----------关于set-------------
+1.建表create table new(title varchar(50),flag set('热门','推荐','图文'));
+2.插入数据insert into new set title='111',flag='热门，推荐';
+3.查找set类型字段find_in_set()
++----------+-----------+
+| title    | flag      |
++----------+-----------+
+| 11111    | 热门      |
+| 222222   | 热门,推荐 |
+| 33333333 | 热门,图文 |
++----------+-----------+
+select*from xh2 where find_in_set('推荐',flag);
++--------+-----------+
+| title  | flag      |
++--------+-----------+
+| 222222 | 热门,推荐 |
++--------+-----------+
+查询flag 字段中 有图文的记录
+select * from new where flag like '%图文%';
+select * from new where flag='推荐,图文';
+
+
+
+获得当前日期
+select curdate();
+获得当前时间
+select curtime();
+获得当前的日期与时间
+select now();
+
+
+date() 获取日期
+mysql> select date(times) from article;
+时间格式可以像数字一样直接比较
+mysql> select * from student where birthday>'1990-01-01' and sex='女';
+
+count 统计数量
+mysql> select count(*) from student;
+
+min () 取最小值
+mysql> select min(sid) from student;
+
+max() 取最大值
+mysql> select max(sid) from student;
+
+计算和
+mysql> select sum(price) from goods;
+
+求平均数
+mysql> select avg(price) from goods;
+
+
+=============分组统计
+mysql> select * from student;
++-----+----------+------+------+------------+-------+
+| sid | username | sex  | age  | birthday   | class |
++-----+----------+------+------+------------+-------+
+|   1 | 寺李     | 女   |    1 | 1990-08-09 |     1 |
+|   2 | 李磊     | 男   |    1 | 1890-08-09 |    45 |
+|   4 | 李克强   | 男   |    1 | 1986-08-09 |    41 |
+|   5 | 王涛     | 女   |    1 | 1990-08-09 |    45 |
+|   6 | 小明     | 男   |    1 | 1990-08-09 |    41 |
+|   7 | 小鬼     | 男   |    1 | 1990-08-09 |    45 |
+|   8 | 李彦宏   | 男   |    1 | 1990-08-09 |    45 |
++-----+----------+------+------+------------+-------+
+
+mysql> select class,count(*) from student group by class;
++-------+----------+
+| class | count(*) |
++-------+----------+
+|     1 |        1 |
+|    41 |        2 |
+|    45 |        4 |
++-------+----------+
+
+select * from 表明 
+关键字顺序
+1,where
+2,group by
+3,having
+4,order by
+5,limit
+
+---------------两个表之间的数据操作---------------
+
+inner join关联两个表--并匹配数据
+Select * from b2 inner join b1 on b2.id=b1.id
+关联两个表--并匹配数据--使用别名
+mysql> select * from b1 as c inner join b2 as z on c.zid = z.zid;
+
+查到和李磊同班的同学
+1，子查询
+select * from student where class=( select class from student where username='李磊');
+2.自连接
+select s2.username from     student s1 join student s2     on s1.class=s2.class where s1.username ='李磊';
+ 
+
+
+
+
+left从左侧取字符串
+截取学生名字的前两位
+mysql> select left(sname,2) as name from stu;
+
+mid从中间截取  第一个参数 从几号开始（起始值1），第二个参数 截几位
+mysql> select mid(sname,1,2) from stu;//截取前两位
+
+
+
+修改表名
+alter table 表名 rename 新表名
+alter table stu rename s;
+
+修改字段同时重新排列
+1,alter table 表名 modify 字段名 存储类型---修改存储类型--修改字段名以及属性
+	alter table s modify 字段名 存储类型
+2,alter table 表名 change 旧字段 新字段 存储类型 [ first | after 字段]
+alter table s change age age tinyint unsigned first//将表中的age 改为age 并且放在最开始
+alter table s change age age tinyint unsigned after name;
+
+======追加字段
+alter table 表名 add 字段 存储类型 [first | after 字段]
+alter table xh add class char(20) after name;
+======删除字段
+Alter table 表名 drop 字段名
+alter table xh drop date;
+
+=========添加主键属性=========
+例： alter table cb add primary key (id);gei字段id添加主键属性
+alter table s add primary key(sid);
+//=======删除主键=======
+例： alter table hd drop primary key;删除主键
+alter table s drop primary key;
+//当该字段有自增属性时 无法删除主键，
+//需先去掉自增属性  alter table s modify 字段名 存储类型（不写auto_increment）就去掉了自增
+
+
+where 增加筛选条件--and or
+取出年龄小于20 的学生
+mysql> select * from s where age<20 and sname='hu';
+所有记录都会出来，因为右边表达式永远是true
+mysql> select * from s where age<=18 or 1=1;
+
+字符串链接 concat();
+mysql> select concat('c45',sname) from s;
++---------------------+
+| concat('c45',sname) |
++---------------------+
+| c45yu               |
+| c45hu               |
+| c45duo              |
++---------------------+
+
+连接后起别名方便--别名as as可以省略
+select concat('c45',sname) as c45_s from s;
++--------+
+| c45_s  |
++--------+
+| c45yu  |
+| c45hu  |
+| c45duo |
++--------+
+
+字段自身比较  如果条件成立，那么值为1 不成立值为0
+mysql> select age ,age >20 as bigage from s;
++------+--------+
+| age  | bigage |
++------+--------+
+|   19 |      0 |
+|   20 |      0 |
+|   21 |      1 |
++------+--------+
+
+
+
+-------------------数值类型-----------------------
+***数字***
+tinyint,（0,255）
+smallint,(0,65535)
+int,大整数值
+
+deciaml(5,2)-- 一共5位，小数点后两位
+unsigned ==无符号，sid的取值变为0-255
+create table stu(sid tinyint unsigned,money decimal(5,2));
+
+***字符串***
+char（0-255字节）定常字符串char（10）
+varchar （0-65535）变长字符串
+tinytext（0-255）短文本字符串
+text 长文本数据
+
+char(10) 一共能存10个字符
+create table stu(sid tinyint unsigned,sname char(10));
+
+
+
+
+
+enum 类似radio单选框
+set 类似checkbox
+create table stu(sid tinyint,sex enum('男','女'));
+
+default 默认值--插入数据时，如果设置了sname 那么用设置的，没设置用默认值空
+unique  唯一
+create table stu(sid tinyint unique,sname char(20) default '');
+insert into stu set sid=1;
+insert into stu set sid=1;//执行第二遍时会报错，因为用unique限定了sid 的唯一性
+
+primary key 主键
+create table stu(sid int unsigned primary key,sname char(20));
+insert into stu set sid=1;
+insert into stu set sid=1;//主键同时具有唯一性，第二次插入也会报错
+
+主键 自增
+create table stu(sid int unsigned primary key auto_increment,sname char(20));
+insert into stu set sname=123;
+insert into stu set sname=222;
+
+
+
+
+
+
+
+复制表结构  结构一致，没有数据
+create table c1 like stu;
+
+复制表数据
+insert into c1 select * from stu;
+
+创建表同时复制数据--但是会丢失 主键及自增约束
+create table c1 select * from stu;
+
+
+
+deciaml(5,2)-- 一共5位，小数点后两位
+unsigned ==无符号，sid的取值变为0-255
+create table stu(sid tinyint unsigned,money decimal(5,2));
+
+
+zerofill 0填充，前面自动补0
+create table stu(sid tinyint(3) zerofill);
+
+
