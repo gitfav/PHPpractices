@@ -15,7 +15,7 @@ $model->asArray()->all();
 ```
 
 
-[原文链接](http://www.yii-china.com/post/detail/8.html, "Yii2.0数据库查询应用实例（二）")
+[原文链接](http://www.yii-china.com/post/detail/8.html "Yii2.0数据库查询应用实例（二）")
 
 where()条件：
 
