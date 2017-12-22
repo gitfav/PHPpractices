@@ -1,2 +1,0 @@
-# PHPpractices
-PHP练习
